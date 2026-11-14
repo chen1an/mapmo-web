@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>各地的故事 - MapMo | 許多來自不同地方的投稿者，分享她/他的回憶</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Outfit:wght@400;600;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=20261003_post_jpg">
+</head>
+
+<body class="post-page">
+
+    <!-- 1. 吸頂導覽列 (與其他頁面完全一致的標準白色 Navbar) -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-box">
+                <div class="logo-avatar">
+                    <img src="assets/icon.png" alt="MapMo Logo" class="logo-img">
+                </div>
+                <img src="assets/logo-text.png" alt="MapMo" class="logo-text-img">
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">首頁</a>
+                <a href="features.html" class="nav-link">功能介紹</a>
+                <a href="post.html" class="nav-link active">各地的故事</a>
+                <a href="about.html" class="nav-link">關於我們</a>
+                <a href="contact.html" class="nav-btn-highlight">聯絡我們</a>
+            </div>
+
+            <button class="mobile-menu-toggle" id="menuToggle" aria-label="選單">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 2. 投稿頁面開頭標題區 (Header Hero) -->
+    <header class="post-header-hero">
+        <div class="post-title-group">
+            <img src="assets/post-icon-red.png" alt="MapMo Red Icon" class="post-title-icon">
+            <h1 class="post-title-text">各地的故事</h1>
+        </div>
+        <p class="post-subtitle-text">許多來自不同地方的故事與回憶，分享她/他的感動</p>
+    </header>
+
+    <!-- 3. 可互動 3D 翻轉照片故事卡牌區塊 - 直向照片區 (Section 1: 4 Vertical Cards) -->
+    <section class="post-cards-section">
+        <div class="cards-container">
+
+            <!-- Card 1: 台中高美濕地 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <!-- 正面 (照片 1: 14.jpg 高美濕地) -->
+                    <div class="flip-card-front">
+                        <img src="assets/14.jpg" alt="台中高美濕地" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <!-- 背面 (深灰色) -->
+                    <div class="flip-card-back dark-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/y.png" class="emo-person-img" alt="快樂"> 快樂</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">和前女友一起去過的海邊 當時的天氣很好 第一次一起去看日落時 那天的日落就留在過去美好的回憶裡面了</p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 台中高美濕地</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: 桃園市 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <!-- 正面 (照片 2: 19.jpg 桃園市) -->
+                    <div class="flip-card-front">
+                        <img src="assets/19.jpg" alt="桃園市" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <!-- 背面 (淺米灰) -->
+                    <div class="flip-card-back light-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag emo-anxious"><img src="assets/Red.png" class="emo-person-img" alt="焦慮"> 焦慮</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">
+                                那陣子剛好結束專題發表，工作、球隊上也面臨許多課題需要解決，使得我非常焦躁不安，看著海的遼闊，才發現我的煩惱不過是這世界上微小的存在，世界上還有更多美的地方值得出去發現，撫慰了我的壓抑已久的情緒。
+                            </p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 桃園市</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: 臺中市沙鹿區竹林里 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <!-- 正面 (照片 3: 21.jpg 沙鹿區竹林里) -->
+                    <div class="flip-card-front">
+                        <img src="assets/21.jpg" alt="臺中市沙鹿區竹林里" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <!-- 背面 (深灰色) -->
+                    <div class="flip-card-back dark-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/y.png" class="emo-person-img" alt="快樂"> 快樂</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">當下很放鬆也很幸福 跟朋友們一起 看著美麗的天空</p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 臺中市沙鹿區竹林里</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: 建國高架橋快速道路 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <!-- 正面 (照片 4: 24.jpg 建國高架橋快速道路) -->
+                    <div class="flip-card-front">
+                        <img src="assets/24.jpg" alt="建國高架橋快速道路" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <!-- 背面 (淺米灰) -->
+                    <div class="flip-card-back light-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/y.png" class="emo-person-img" alt="快樂"> 快樂</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">5/30 清晨 5:38 建國高架快速道路 我覺的天空雲很美麗所以拍照下來</p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 建國高架橋快速道路</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4. 橫向照片專用 3 欄網格排版區 (Section 2: 3 Landscape Cards) -->
+    <section class="post-cards-section" style="margin-top: -30px;">
+        <div class="cards-container landscape-grid">
+
+            <!-- 橫向卡牌 1: 高雄市美濃區 雙溪熱帶樹木園 -->
+            <div class="flip-card landscape" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <!-- 正面照片 (18.jpg 高雄美濃樹木園) -->
+                    <div class="flip-card-front">
+                        <img src="assets/18.jpg" alt="高雄市美濃區 雙溪熱帶樹木園" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <!-- 背面 (淺米灰) -->
+                    <div class="flip-card-back light-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/g.png" class="emo-person-img" alt="沒有特定情緒"> 沒有特定情緒</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">待在大自然中，能感覺時間慢慢放緩，回歸正常秩序，城市生活中各種壓迫感被撫平。</p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 高雄市美濃區 雙溪熱帶樹木園</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 橫向卡牌 2: Marienplatz, München -->
+            <div class="flip-card landscape" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <!-- 正面照片 (9.jpg Marienplatz, München) -->
+                    <div class="flip-card-front">
+                        <img src="assets/9.jpg" alt="Marienplatz, München" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <!-- 背面 (深灰色) -->
+                    <div class="flip-card-back dark-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/y.png" class="emo-person-img" alt="快樂"> 快樂</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">世界很大，而我找到心靈的故鄉，總有一天還是會回到那</p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> Marienplatz, München</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 橫向卡牌 3: 台灣 353004 苗栗縣 南庄鄉 里金館 -->
+            <div class="flip-card landscape" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <!-- 正面照片 (13.jpg 苗栗南庄里金館) -->
+                    <div class="flip-card-front">
+                        <img src="assets/13.jpg" alt="苗栗縣 南庄鄉 里金館" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <!-- 背面 (淺米灰) -->
+                    <div class="flip-card-back light-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/y.png" class="emo-person-img" alt="快樂"> 快樂</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">與家人相處的快樂回憶</p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 台灣 353004 苗栗縣 南庄鄉 里金館</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. 延伸直向照片區塊 (Section 3: 4 Vertical Cards) -->
+    <section class="post-cards-section" style="margin-top: -30px;">
+        <div class="cards-container">
+
+            <!-- Card 3-1: 澳洲的雪梨大橋上 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/3.jpg" alt="澳洲的雪梨大橋上" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <div class="flip-card-back dark-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/y.png" class="emo-person-img" alt="快樂"> 快樂</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">讓我知道要不斷的進步能達到自己任何想去的地方</p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 澳洲的雪梨大橋上</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3-2: 英國愛丁堡 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/20.jpg" alt="英國愛丁堡" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <div class="flip-card-back light-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/y.png" class="emo-person-img" alt="快樂"> 快樂</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">
+                                因為是第一次獨自去到別的國家，而且語言文化飲食習慣都給台灣有很大的不同，能夠在那邊生活一個月，對我來說是一個很大的挑戰和成長，很高興自己能成長很多！🤍</p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 英國愛丁堡</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3-3: 基隆海邊 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/2.jpg" alt="基隆海邊" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <div class="flip-card-back dark-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/y.png" class="emo-person-img" alt="快樂"> 快樂</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">樸實無華 輕鬆自在</p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 基隆海邊</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3-4: 桃園市中壢區青埔里 春德路105號 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/4.jpg" alt="桃園市中壢區青埔里 春德路105號" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <div class="flip-card-back light-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/y.png" class="emo-person-img" alt="快樂"> 快樂</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">那天很久違地跟家人在一起</p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 桃園市中壢區青埔里 春德路105號</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 6. 延伸橫向照片區塊 (Section 4: Row 1 - 3 Landscape Cards) -->
+    <section class="post-cards-section" style="margin-top: -30px;">
+        <div class="cards-container landscape-grid">
+
+            <!-- Card 4-1: 菲律賓愛妮島 -->
+            <div class="flip-card landscape" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/26.jpg" alt="菲律賓愛妮島" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <div class="flip-card-back light-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/y.png" class="emo-person-img" alt="快樂"> 快樂</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">看到照片時覺得太好笑了😄覺得能匿名分享給大家真的很棒，博君一笑！
+                            </p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 菲律賓愛妮島</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4-2: 基隆市暖暖區八南里八堵路142號 -->
+            <div class="flip-card landscape" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/23.jpg" alt="基隆市暖暖區八南里八堵路142號" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <div class="flip-card-back dark-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/y.png" class="emo-person-img" alt="快樂"> 快樂</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">它不僅僅是一個車站，而是承載歲月時光的地方</p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 基隆市暖暖區八南里八堵路142號</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4-3: 330台灣桃園市桃園區大有路446號 -->
+            <div class="flip-card landscape" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/11.jpg" alt="330台灣桃園市桃園區大有路446號" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <div class="flip-card-back light-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/y.png" class="emo-person-img" alt="快樂"> 快樂</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">跟很難得見面的好姐妹們一起吃了一頓難得的大餐，我們可能太餓，也顧著聊天，根本忘記拍就開始暴吃，吃完了才發現一張照都沒拍，可能跟好姐妹出去就是這樣，總是會忘記留下記憶，只會記在心裡❤️</p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 330台灣桃園市桃園區大有路446號</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 7. 延伸直向照片區塊 (Section 5: Row 2 - 4 Vertical Cards) -->
+    <section class="post-cards-section" style="margin-top: -30px;">
+        <div class="cards-container">
+
+            <!-- Card 5-1: 臺南市安平區安平路574號 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/8.jpg" alt="臺南市安平區安平路574號" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <div class="flip-card-back dark-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/y.png" class="emo-person-img" alt="快樂"> 快樂</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">喝過這麼多家台南牛肉湯，這一家的最最最好吃，好想再去台南喔</p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 臺南市安平區安平路574號</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5-2: 夏慕尼 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/22.jpg" alt="夏慕尼" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <div class="flip-card-back light-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/y.png" class="emo-person-img" alt="快樂"> 快樂</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text"></p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 夏慕尼</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5-3: 鹿雅森林 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/6.jpg" alt="鹿雅森林" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <div class="flip-card-back dark-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/y.png" class="emo-person-img" alt="快樂"> 快樂</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">一個遙不可及的回憶</p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 鹿雅森林</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5-4: 桃園市龍潭區楊銅路二段562巷 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/7.jpg" alt="桃園市龍潭區楊銅路二段562巷" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <div class="flip-card-back light-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/y.png" class="emo-person-img" alt="快樂"> 快樂</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">夜景很美</p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 桃園市龍潭區楊銅路二段562巷</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 8. 延伸直向照片區塊 (Section 6: Row 3 - 4 Vertical Cards) -->
+    <section class="post-cards-section" style="margin-top: -30px;">
+        <div class="cards-container">
+
+            <!-- Card 6-1: 日本東京都港區芝公園四丁目2番8號 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/5.jpg" alt="日本東京都港區芝公園四丁目2番8號" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <div class="flip-card-back light-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/y.png" class="emo-person-img" alt="快樂"> 快樂</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">打卡Cortis拍照地點非常幸福🥞</p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 日本東京都港區芝公園四丁目2番8號</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6-2: 台中市西屯區 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/12.jpg" alt="台中市西屯區" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <div class="flip-card-back dark-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/y.png" class="emo-person-img" alt="快樂"> 快樂</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text"></p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 台中市西屯區</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6-3: 臺北市大安區忠孝東路四段248巷29號 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/16.jpg" alt="臺北市大安區忠孝東路四段248巷29號" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <div class="flip-card-back light-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag"><img src="assets/y.png" class="emo-person-img" alt="快樂"> 快樂</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">享用美食配著可愛貓咪，可謂是非常享受</p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 臺北市大安區忠孝東路四段248巷29號</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6-4: 台北市文山區試院路83號 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/25.jpg" alt="台北市文山區試院路83號" class="card-img">
+                        <div class="flip-hint-badge"><i class="fas fa-sync-alt"></i> 點擊翻面</div>
+                    </div>
+                    <div class="flip-card-back dark-theme">
+                        <div class="card-back-header">
+                            <span class="emo-tag emo-anxious"><img src="assets/Red.png" class="emo-person-img" alt="焦慮"> 焦慮</span>
+                        </div>
+                        <div class="card-back-body">
+                            <p class="story-text">
+                                在這麼小的房間裡，即使環境簡陋，但我的內心依舊澎湃，每天出門前都會站在這鏡子前，裡面的自己將決定一整天的狀態和情緒，大部分是焦慮的，但也總會期待某幾天突然來的自信和快樂，鏡前和鏡中哪個才是真的我。
+                            </p>
+                        </div>
+                        <div class="card-back-footer">
+                            <span class="location-label"><i class="far fa-compass"></i> 台北市文山區試院路83號</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 4. 頁尾 -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="pdf-footer-row">
+                <div class="pdf-footer-col">
+                    <h4 class="pdf-footer-heading">網站選單</h4>
+                    <ul class="pdf-footer-list">
+                        <li><a href="index.html">首頁</a></li>
+                        <li><a href="features.html">功能介紹</a></li>
+                        <li><a href="post.html">各地的故事</a></li>
+                        <li><a href="about.html">關於我們</a></li>
+                        <li><a href="contact.html">聯絡我們</a></li>
+                    </ul>
+                </div>
+                <div class="pdf-footer-col">
+                    <h4 class="pdf-footer-heading">常見問題</h4>
+                    <ul class="pdf-footer-list">
+                        <li><a href="faq.html">匿名登入說明</a></li>
+                        <li><a href="faq.html">公開與私人足跡</a></li>
+                    </ul>
+                </div>
+                <div class="pdf-footer-col">
+                    <h4 class="pdf-footer-heading">聯絡方式</h4>
+                    <ul class="pdf-footer-list">
+                        <li><i class="fab fa-instagram"></i> <a href="https://instagram.com/mapmo_112.ics"
+                                target="_blank">mapmo_112.ics</a></li>
+                        <li><i class="far fa-envelope"></i> <a
+                                href="mailto:mapmo.ics112@gmail.com">mapmo.ics112@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="pdf-footer-col">
+                    <h4 class="pdf-footer-heading">條款與條例</h4>
+                    <ul class="pdf-footer-list">
+                        <li><a href="privacy-policy.html" target="_blank">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" target="_blank">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pdf-footer-bottom">
+                <img src="assets/icon.png" class="pdf-footer-mini-logo" alt="Logo">
+                <span>© 2026 Mapmo</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=20261003_post_jpg"></script>
+</body>
+
+</html>

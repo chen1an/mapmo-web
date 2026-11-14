@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>功能介紹 - MapMo | 安心 × 純粹 × 共鳴</title>
+    <meta name="description" content="MapMo 提供情緒分類、照片定位、刪除紀錄管理、一鍵封鎖與安全審核機制，讓你純粹地記錄與分享每一段回憶。">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+
+    <!-- Shared CSS (Light Theme base) -->
+    <link rel="stylesheet" href="style.css?v=20261005_features_6ch">
+
+<style>
+/* ══════════════════════════════════════════════
+   MAPMO REAL APP SHOWCASE SCROLL STORYTELLING (6 CHAPTERS)
+   • Real App screenshots uploaded by user:
+     1. 主畫面，日間.jpg (Map & Emotions)
+     2. 相機畫面.jpg (Camera & GPS)
+     3. 刪除紀錄.jpg (Delete Posts & Footprints)
+     4. 個人檔案設定.jpg (Moderation & Safety)
+     5. 封鎖.jpg (Block User & Safety)
+     6. 個人檔案.jpg (User Footprints & Profile)
+   • Fully isolated scoped classes (.sp-*)
+   • Spacious 6-chapter plateau scroll transitions
+══════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    background-color: #FAF9F6;
+    background-image: url('assets/bg-pattern.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #2C2C2E;
+    font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+    overflow-x: hidden;
+    margin: 0; padding: 0;
+}
+
+/* Hide legacy section overrides */
+.page-header-banner,
+.features-main-section,
+.features-timeline-wrapper {
+    display: none !important;
+}
+
+/* ---------- 1. Top Header Banner ("劉海"對齊 Contact/About/Post 頁面) ---------- */
+.feat-page-header {
+    text-align: center;
+    padding-top: calc(var(--nav-height) + 40px);
+    padding-bottom: 30px;
+    background: transparent;
+    position: relative;
+    z-index: 10;
+}
+.feat-header-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+.feat-title-group {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+.feat-title-icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+}
+.feat-title {
+    font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: #111;
+    letter-spacing: 2px;
+    margin: 0;
+    line-height: 1.2;
+}
+.feat-subtitle {
+    font-size: 18px;
+    font-weight: 500;
+    color: #555;
+    letter-spacing: 0.5px;
+    line-height: 1.7;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+/* ═══════════════════════════════════════════
+   2. SPACED-OUT SCROLL STORYTELLING SECTION (6 CHAPTERS)
+═══════════════════════════════════════════ */
+.story-wrap {
+    height: 900vh; /* 900vh height for 6 spacious chapter transitions */
+    position: relative;
+    z-index: 20;
+}
+
+.story-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Soft Ambient Glow Layer */
+.story-bg-layer {
+    position: absolute; inset: 0; z-index: 0;
+    background-color: #FAF9F6;
+    transition: background-color 0.6s ease;
+}
+.story-glow-spot {
+    position: absolute; inset: 0; z-index: 1;
+    background: radial-gradient(circle 650px at 50% 50%, var(--glow-tint, rgba(251, 189, 4, 0.14)), transparent 70%);
+    transition: all 0.6s ease;
+    pointer-events: none;
+}
+
+/* Main Layout Container (Shifted center-right to guarantee watermark breathing room) */
+.sp-layout-container {
+    position: relative;
+    z-index: 20;
+    width: 100%;
+    max-width: 1240px;
+    height: 600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: max(6vw, 60px);
+    padding-left: 24px;
+}
+
+/* ---------- Background Giant Watermark Numbers (Full Viewport Positioned) ---------- */
+.sp-num-viewport {
+    position: absolute;
+    left: max(5vw, 60px);
+    top: 50%;
+    transform: translateY(-50%);
+    height: 400px;
+    width: 340px;
+    overflow: hidden;
+    z-index: 5;
+    pointer-events: none;
+}
+.sp-num-track {
+    display: flex;
+    flex-direction: column;
+    height: 600%;
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+}
+.sp-num-item {
+    height: 16.666667%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(6.5rem, 9vw, 9.5rem);
+    font-weight: 900;
+    line-height: 1;
+    color: rgba(28, 28, 30, 0.07);
+    letter-spacing: -2px;
+    user-select: none;
+}
+
+/* ---------- Scoped iPhone Mockup Frame (.sp-phone-*) ---------- */
+.sp-phone-container {
+    position: relative;
+    z-index: 25;
+    width: 285px;
+    height: 580px;
+    flex-shrink: 0;
+    margin-right: 56px;
+    filter: drop-shadow(0 28px 56px rgba(0, 0, 0, 0.16));
+}
+
+.sp-iphone-shell {
+    position: absolute; inset: 0;
+    border-radius: 46px;
+    border: 8px solid #1c1c22;
+    background: transparent;
+    box-shadow:
+        inset 0 0 0 1.5px rgba(255, 255, 255, 0.35),
+        0 14px 36px rgba(0, 0, 0, 0.14);
+    z-index: 30; pointer-events: none;
+}
+.sp-iphone-screen {
+    position: absolute;
+    top: 8px; left: 8px; right: 8px; bottom: 8px;
+    border-radius: 38px; overflow: hidden; z-index: 10;
+    background: #111116;
+}
+
+/* Phone Screen Track with Smooth Plateau Slide (6 Items) */
+.sp-phone-track {
+    display: flex;
+    flex-direction: column;
+    height: 600%;
+    width: 100%;
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+}
+.sp-screen-page {
+    height: 16.666667%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #000000;
+}
+.sp-app-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    image-rendering: auto;
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+/* ---------- Scoped Right Side Text Panels (.sp-text-*) ---------- */
+.sp-text-viewport {
+    position: relative;
+    z-index: 25;
+    width: min(420px, 38vw);
+    height: 400px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.sp-text-track {
+    display: flex;
+    flex-direction: column;
+    height: 600%;
+    width: 100%;
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+}
+.sp-text-card {
+    height: 16.666667%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 0;
+    flex-shrink: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    will-change: opacity, transform;
+}
+
+.panel-tag-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 16px; border-radius: 20px;
+    font-size: 13px; font-weight: 800;
+    margin-bottom: 14px; width: fit-content;
+}
+.panel-heading {
+    font-size: clamp(2rem, 3.2vw, 2.8rem); font-weight: 900;
+    line-height: 1.18; letter-spacing: -0.5px; margin-bottom: 14px;
+    color: #1C1C1E;
+}
+.panel-description {
+    font-size: 1.02rem; color: #6E6E73; line-height: 1.7; margin-bottom: 20px;
+}
+.panel-feature-card {
+    padding: 16px 18px; border-radius: 18px;
+    background: #ffffff;
+    border: 1px solid #E5E5EA;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+.panel-feature-card h4 { font-size: 0.95rem; font-weight: 800; color: #1C1C1E; margin: 0 0 4px 0; }
+.panel-feature-card p  { font-size: 0.88rem; color: #6E6E73; line-height: 1.6; margin: 0; }
+
+/* ---------- Side Progress Dots (Right Edge) ---------- */
+.story-dots {
+    position: fixed; right: 24px; top: 50%;
+    transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 12px;
+    z-index: 200;
+}
+.story-dot {
+    width: 9px; height: 9px; border-radius: 5px;
+    background: rgba(28, 28, 30, 0.2); cursor: pointer;
+    transition: all 0.3s ease;
+}
+.story-dot.active {
+    background: #1C1C1E; height: 32px;
+    box-shadow: 0 4px 12px rgba(28, 28, 30, 0.3);
+}
+
+@media (max-width: 900px) {
+    .sp-layout-container {
+        flex-direction: column;
+        justify-content: center;
+        padding-right: 24px;
+    }
+    .sp-phone-container {
+        width: 220px;
+        height: 440px;
+        margin-right: 0;
+        margin-bottom: 24px;
+    }
+    .sp-text-viewport {
+        width: 100%;
+        max-width: 380px;
+        height: 220px;
+    }
+    .sp-num-viewport { display: none !important; }
+}
+</style>
+</head>
+<body class="feat-page">
+
+<!-- ── 1. 吸頂導覽列 (與其他頁面完全一致) ── -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo-box">
+            <div class="logo-avatar"><img src="assets/icon.png" alt="MapMo Logo" class="logo-img"></div>
+            <img src="assets/logo-text.png" alt="MapMo" class="logo-text-img">
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html"    class="nav-link">首頁</a>
+            <a href="features.html" class="nav-link active">功能介紹</a>
+            <a href="post.html" class="nav-link">各地的故事</a>
+            <a href="about.html"    class="nav-link">關於我們</a>
+            <a href="contact.html"  class="nav-btn-highlight">聯絡我們</a>
+        </div>
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="選單">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</nav>
+
+<!-- ── 2. 頁面 Header (對齊 Contact / About / Post 頁面 "劉海" 區域) ── -->
+<header class="feat-page-header">
+    <div class="feat-header-container">
+        <div class="feat-title-group">
+            <img src="assets/post-icon-red.png" alt="MapMo Icon" class="feat-title-icon">
+            <h1 class="feat-title">功能介紹</h1>
+        </div>
+        <p class="feat-subtitle">每一個感受，都值得被好好放置。MapMo 帶你探索地圖與情緒對應的創新體驗。</p>
+    </div>
+</header>
+
+<!-- ── Side Dots Navigation (6 Chapters) ── -->
+<nav class="story-dots" id="storyDots" aria-label="章節導覽">
+    <div class="story-dot active" data-ch="0"></div>
+    <div class="story-dot" data-ch="1"></div>
+    <div class="story-dot" data-ch="2"></div>
+    <div class="story-dot" data-ch="3"></div>
+    <div class="story-dot" data-ch="4"></div>
+    <div class="story-dot" data-ch="5"></div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     3. SPACED-OUT SCROLL STORYTELLING SECTION (6 CHAPTERS)
+══════════════════════════════════════════ -->
+<div class="story-wrap" id="storyWrap">
+
+    <div class="story-sticky">
+
+        <!-- Soft Ambient Layer (MapMo Warm Light Tints) -->
+        <div class="story-bg-layer" id="storyBgLayer"></div>
+        <div class="story-glow-spot" id="storyGlowSpot"></div>
+
+        <!-- Giant Watermark Numbers Track (Unclipped) -->
+        <div class="sp-num-viewport">
+            <div class="sp-num-track" id="giantTrack">
+                <div class="sp-num-item">01</div>
+                <div class="sp-num-item">02</div>
+                <div class="sp-num-item">03</div>
+                <div class="sp-num-item">04</div>
+                <div class="sp-num-item">05</div>
+                <div class="sp-num-item">06</div>
+            </div>
+        </div>
+
+        <!-- ── Main Layout Container ── -->
+        <div class="sp-layout-container">
+
+            <!-- ── Centered iPhone Hardware (Real App Screenshots) ── -->
+            <div class="sp-phone-container">
+                <div class="sp-iphone-shell"></div>
+                <div class="sp-iphone-notch"></div>
+
+                <div class="sp-iphone-screen">
+                    <!-- Phone Screen Track displaying 6 user uploaded App screenshots -->
+                    <div class="sp-phone-track" id="phoneTrack">
+
+                        <!-- Page 0: 地圖與情緒分類 (主畫面，日間.jpg) -->
+                        <div class="sp-screen-page">
+                            <img src="assets/主畫面，日間.jpg" alt="MapMo 地圖與情緒標籤" class="sp-app-img">
+                        </div>
+
+                        <!-- Page 1: 放置回憶與相機拍攝 (相機畫面.jpg) -->
+                        <div class="sp-screen-page">
+                            <img src="assets/相機畫面.jpg?v=20261007_fixed_1x" alt="MapMo 相機拍攝畫面" class="sp-app-img">
+                        </div>
+
+                        <!-- Page 2: 足跡自主與刪除 (刪除紀錄.jpg) -->
+                        <div class="sp-screen-page">
+                            <img src="assets/刪除紀錄.jpg" alt="MapMo 刪除紀錄與管理" class="sp-app-img">
+                        </div>
+
+                        <!-- Page 3: 安全審核與檢舉 (封鎖.jpg - 顯示檢舉此紀錄與封鎖創作者) -->
+                        <div class="sp-screen-page">
+                            <img src="assets/封鎖.jpg" alt="MapMo 安全審核與一鍵檢舉" class="sp-app-img">
+                        </div>
+
+                        <!-- Page 4: 設定與帳號管理 (個人檔案設定.jpg - 顯示帳號管理面板) -->
+                        <div class="sp-screen-page">
+                            <img src="assets/個人檔案設定.jpg" alt="MapMo 設定與帳號管理" class="sp-app-img">
+                        </div>
+
+                        <!-- Page 5: 個人檔案與足跡 (個人檔案.jpg) -->
+                        <div class="sp-screen-page">
+                            <img src="assets/個人檔案.jpg" alt="MapMo 個人檔案足跡" class="sp-app-img">
+                        </div>
+
+                    </div><!-- /sp-phone-track -->
+                </div><!-- /sp-iphone-screen -->
+            </div><!-- /sp-phone-container -->
+
+            <!-- ── Right Side Text Panels Track (6 Cards) ── -->
+            <div class="sp-text-viewport">
+                <div class="sp-text-track" id="textTrack">
+
+                    <!-- Card 0: 地圖與情緒分類 -->
+                    <div class="sp-text-card">
+                        <div class="panel-tag-badge" style="background:rgba(251,189,4,0.15);color:#D99B00;border:1px solid rgba(251,189,4,0.3);">
+                            01 · EMOTIONS 😊
+                        </div>
+                        <h2 class="panel-heading">情緒分類與過濾</h2>
+                        <p class="panel-description">發文時選取情緒、瀏覽時側邊欄篩選，讓每段回憶被好好分類安放。五種情緒標籤對應不同色彩，一眼辨認你當下的感受。</p>
+                        <div class="panel-feature-card">
+                            <h4><i class="fas fa-filter" style="color:#FBBD04;margin-right:6px;"></i>即時地圖過濾</h4>
+                            <p>在地圖上快速勾選喜、樂、怒、哀、無，探索不同心境下的城市地標足跡。</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 1: 放置回憶與相機拍攝 -->
+                    <div class="sp-text-card">
+                        <div class="panel-tag-badge" style="background:rgba(48,209,88,0.15);color:#1E9E3C;border:1px solid rgba(48,209,88,0.3);">
+                            02 · CAMERA & GPS 📷
+                        </div>
+                        <h2 class="panel-heading">放置回憶與拍攝</h2>
+                        <p class="panel-description">走在路上隨手記錄下的風景，或是手機相簿裡一直想分享的照片，都可以安置在 MapMo 地圖上。</p>
+                        <div class="panel-feature-card">
+                            <h4><i class="fas fa-compass" style="color:#30D158;margin-right:6px;"></i>GPS 自動定位對齊</h4>
+                            <p>自動讀取相片 EXIF 地理位置資訊，相機即拍即上傳，讓每段故事精準落地。</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: 刪除紀錄與足跡自主 -->
+                    <div class="sp-text-card">
+                        <div class="panel-tag-badge" style="background:rgba(255,149,0,0.15);color:#D97700;border:1px solid rgba(255,149,0,0.3);">
+                            03 · DELETE & CONTROL 🗑️
+                        </div>
+                        <h2 class="panel-heading">足跡自主控制</h2>
+                        <p class="panel-description">隨時掌握自己的所有紀錄與回憶發文，在詳細資料中可隨心所欲地刪除過往貼文或轉為私人，資料完全由你自主掌控。</p>
+                        <div class="panel-feature-card">
+                            <h4><i class="fas fa-trash-alt" style="color:#FF9500;margin-right:6px;"></i>徹底刪除與清理</h4>
+                            <p>一鍵刪除個人歷史記錄與相片，系統即時同步清除，不留後患與痕跡。</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: 安全審核與一鍵檢舉 (對應 封鎖.jpg 畫面) -->
+                    <div class="sp-text-card">
+                        <div class="panel-tag-badge" style="background:rgba(234,67,53,0.15);color:#EA4335;border:1px solid rgba(234,67,53,0.3);">
+                            04 · REPORT & SAFETY 🛡️
+                        </div>
+                        <h2 class="panel-heading">安全審核與一鍵檢舉</h2>
+                        <p class="panel-description">瀏覽內容時發現不當內容或違規貼文？可在紀錄選單中「一鍵檢舉此紀錄」或「封鎖此創作者」，審核團隊將第一時間處理移除。</p>
+                        <div class="panel-feature-card">
+                            <h4><i class="fas fa-shield-alt" style="color:#EA4335;margin-right:6px;"></i>零容忍安心防護</h4>
+                            <p>MapMo 對惡意或不當內容採取零容忍態度，建立純粹、溫暖、共鳴的友好社群氛圍。</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: 設定與帳號管理 (對應 個人檔案設定.jpg 畫面) -->
+                    <div class="sp-text-card">
+                        <div class="panel-tag-badge" style="background:rgba(10,132,255,0.15);color:#0066CC;border:1px solid rgba(10,132,255,0.3);">
+                            05 · ACCOUNT & SETTINGS ⚙️
+                        </div>
+                        <h2 class="panel-heading">設定與帳號管理</h2>
+                        <p class="panel-description">提供直覺且完整的帳號設定面板，包含使用說明指南、封鎖名單管理、帳號登出與刪除帳號功能，保障個人使用權益。</p>
+                        <div class="panel-feature-card">
+                            <h4><i class="fas fa-cog" style="color:#0A84FF;margin-right:6px;"></i>封鎖名單與帳號自主</h4>
+                            <p>隨時在設定面板檢視與維護已封鎖名單，並可自主管理個人帳號狀態。</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: 個人檔案與足跡 (對應 個人檔案.jpg 畫面) -->
+                    <div class="sp-text-card">
+                        <div class="panel-tag-badge" style="background:rgba(175,82,222,0.15);color:#AF52DE;border:1px solid rgba(175,82,222,0.3);">
+                            06 · PRIVACY & FOOTPRINTS 🔒
+                        </div>
+                        <h2 class="panel-heading">個人檔案與權限</h2>
+                        <p class="panel-description">專屬回憶空間讓你好好回顧每個地標上的記憶。自由切換公開或私人權限，我們絕不出售或公開你的個資。</p>
+                        <div class="panel-feature-card">
+                            <h4><i class="fas fa-toggle-on" style="color:#AF52DE;margin-right:6px;"></i>獨立權限控管</h4>
+                            <p>每篇貼文皆可獨立開啟或關閉私人瀏覽，無論是珍藏私密紀錄或公開共鳴都輕鬆掌握。</p>
+                        </div>
+                    </div>
+
+                </div><!-- /sp-text-track -->
+            </div><!-- /sp-text-viewport -->
+
+        </div><!-- /sp-layout-container -->
+
+    </div><!-- /story-sticky -->
+</div><!-- /story-wrap -->
+
+<!-- ── Footer ── -->
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="pdf-footer-row">
+            <div class="pdf-footer-col">
+                <h4 class="pdf-footer-heading">網站選單</h4>
+                <ul class="pdf-footer-list">
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="features.html">功能介紹</a></li>
+                    <li><a href="post.html">各地的故事</a></li>
+                    <li><a href="about.html">關於我們</a></li>
+                    <li><a href="contact.html">聯絡我們</a></li>
+                </ul>
+            </div>
+            <div class="pdf-footer-col">
+                <h4 class="pdf-footer-heading">常見問題</h4>
+                <ul class="pdf-footer-list">
+                    <li><a href="faq.html">匿名登入說明</a></li>
+                    <li><a href="faq.html">公開與私人足跡</a></li>
+                </ul>
+            </div>
+            <div class="pdf-footer-col">
+                <h4 class="pdf-footer-heading">聯絡方式</h4>
+                <ul class="pdf-footer-list">
+                    <li><i class="fab fa-instagram"></i> <a href="https://instagram.com/mapmo_112.ics" target="_blank">mapmo_112.ics</a></li>
+                    <li><i class="far fa-envelope"></i> <a href="mailto:mapmo.ics112@gmail.com">mapmo.ics112@gmail.com</a></li>
+                </ul>
+            </div>
+            <div class="pdf-footer-col">
+                <h4 class="pdf-footer-heading">條款與條例</h4>
+                <ul class="pdf-footer-list">
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="pdf-footer-bottom">
+            <img src="assets/icon.png" class="pdf-footer-mini-logo" alt="Logo">
+            <span>© 2026 Mapmo</span>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js?v=20260928_0550"></script>
+
+<script>
+/* ═══════════════════════════════════════════════
+   MAPMO REAL APP SHOWCASE SCROLL ENGINE (6 CHAPTERS)
+   - Plateau scroll mapping: Each chapter locks cleanly in full view
+   - Ample scroll distance between 6 chapters
+═══════════════════════════════════════════════ */
+(function() {
+    'use strict';
+
+    const TINTS = [
+        'rgba(251, 189, 4, 0.14)',  // Mood Yellow (01)
+        'rgba(48, 209, 88, 0.14)',  // Mood Green (02)
+        'rgba(255, 149, 0, 0.14)',  // Orange Delete (03)
+        'rgba(234, 67, 53, 0.14)',  // Mood Red (04)
+        'rgba(10, 132, 255, 0.14)', // Blue Block (05)
+        'rgba(175, 82, 222, 0.14)'  // Mood Purple (06)
+    ];
+
+    const wrap = document.getElementById('storyWrap');
+    const glowSpot = document.getElementById('storyGlowSpot');
+    const phoneTrack = document.getElementById('phoneTrack');
+    const textTrack = document.getElementById('textTrack');
+    const giantTrack = document.getElementById('giantTrack');
+    const dots = document.querySelectorAll('.story-dot');
+    const textCards = document.querySelectorAll('.sp-text-card');
+
+    let currentChapter = -1;
+
+    /* Calculate plateau step position across 6 chapters */
+    function calcPlateauTarget(progress) {
+        // 6 chapters:
+        // Ch 0: 0.00 -> 0.12
+        // Ch 1: 0.18 -> 0.30
+        // Ch 2: 0.36 -> 0.48
+        // Ch 3: 0.54 -> 0.66
+        // Ch 4: 0.72 -> 0.84
+        // Ch 5: 0.90 -> 1.00
+
+        if (progress <= 0.12) return 0;
+        if (progress >= 0.18 && progress <= 0.30) return 1;
+        if (progress >= 0.36 && progress <= 0.48) return 2;
+        if (progress >= 0.54 && progress <= 0.66) return 3;
+        if (progress >= 0.72 && progress <= 0.84) return 4;
+        if (progress >= 0.90) return 5;
+
+        // Transition zones
+        if (progress > 0.12 && progress < 0.18) {
+            const t = (progress - 0.12) / (0.18 - 0.12);
+            return smoothEase(t);
+        }
+        if (progress > 0.30 && progress < 0.36) {
+            const t = (progress - 0.30) / (0.36 - 0.30);
+            return 1 + smoothEase(t);
+        }
+        if (progress > 0.48 && progress < 0.54) {
+            const t = (progress - 0.48) / (0.54 - 0.48);
+            return 2 + smoothEase(t);
+        }
+        if (progress > 0.66 && progress < 0.72) {
+            const t = (progress - 0.66) / (0.72 - 0.66);
+            return 3 + smoothEase(t);
+        }
+        if (progress > 0.84 && progress < 0.90) {
+            const t = (progress - 0.84) / (0.90 - 0.84);
+            return 4 + smoothEase(t);
+        }
+        return 5;
+    }
+
+    function smoothEase(t) {
+        return t * t * (3 - 2 * t);
+    }
+
+    function onScroll() {
+        if (!wrap) return;
+        const rect = wrap.getBoundingClientRect();
+        const totalScrollSpace = wrap.offsetHeight - window.innerHeight;
+
+        if (totalScrollSpace <= 0) return;
+
+        const scrolled = -rect.top;
+        const progress = Math.max(0, Math.min(1, scrolled / totalScrollSpace));
+        const chapterVal = calcPlateauTarget(progress);
+        
+        // Shift percentage: 0% to -83.333333% (for 6 items)
+        const shiftPercent = -(chapterVal / 5) * 83.333333;
+
+        if (phoneTrack) phoneTrack.style.transform = `translateY(${shiftPercent}%)`;
+        if (textTrack) textTrack.style.transform = `translateY(${shiftPercent}%)`;
+        if (giantTrack) giantTrack.style.transform = `translateY(${shiftPercent}%)`;
+
+        textCards.forEach((card, index) => {
+            const dist = Math.abs(chapterVal - index);
+            if (dist < 0.2) {
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
+            } else {
+                const opacity = Math.max(0.08, 1 - dist * 1.6);
+                const scale = Math.max(0.92, 1 - dist * 0.06);
+                card.style.opacity = opacity.toFixed(2);
+                card.style.transform = `scale(${scale.toFixed(2)})`;
+            }
+        });
+
+        let chapterIndex = Math.round(chapterVal);
+        chapterIndex = Math.max(0, Math.min(5, chapterIndex));
+
+        if (chapterIndex !== currentChapter) {
+            currentChapter = chapterIndex;
+            if (glowSpot) glowSpot.style.setProperty('--glow-tint', TINTS[chapterIndex]);
+
+            dots.forEach((d, i) => {
+                if (i === chapterIndex) d.classList.add('active');
+                else d.classList.remove('active');
+            });
+        }
+    }
+
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const chIndex = parseInt(dot.getAttribute('data-ch'), 10);
+            if (isNaN(chIndex)) return;
+
+            const wrapTop = wrap.getBoundingClientRect().top + window.scrollY;
+            const totalScrollSpace = wrap.offsetHeight - window.innerHeight;
+            const targetRatios = [0.06, 0.24, 0.42, 0.60, 0.78, 0.95];
+            const targetScroll = wrapTop + targetRatios[chIndex] * totalScrollSpace;
+
+            window.scrollTo({
+                top: targetScroll + 2,
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+})();
+</script>
+
+</body>
+</html>

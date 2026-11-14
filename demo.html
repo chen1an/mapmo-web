@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地圖體驗 - MapMo | 實機探索 App 情緒地圖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css?v=20260928_0300">
+</head>
+<body>
+
+    <!-- 1. 導覽列 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-box">
+                <div class="logo-avatar">
+                    <img src="assets/icon.png" alt="MapMo Logo" class="logo-img">
+                </div>
+                <img src="assets/logo-text.png" alt="MapMo" class="logo-text-img">
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">首頁</a>
+                <a href="features.html" class="nav-link">功能介紹</a>
+                <a href="post.html" class="nav-link">各地的故事</a>
+                <a href="about.html" class="nav-link">關於我們</a>
+                <a href="contact.html" class="nav-btn-highlight">聯絡我們</a>
+            </div>
+
+            <button class="mobile-menu-toggle" id="menuToggle" aria-label="選單">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 2. 頁面 Header -->
+    <header class="page-header-banner">
+        <div class="section-container">
+            <span class="section-tag">App Live Preview 體驗 🗺️</span>
+            <h1 class="page-title">實機探索 App 情緒地圖</h1>
+            <p class="page-subtitle">完全還原 MapMo 原生 App 的喜、樂、怒、哀、無五大情緒過濾切換與視覺圖示。</p>
+        </div>
+    </header>
+
+    <!-- 3. 擬真 App 地圖體驗區塊 -->
+    <section class="demo-section page-body-padding">
+        <div class="section-container">
+            <!-- 擬真 App 手機介面框 -->
+            <div class="app-map-mockup-container">
+                <div class="app-map-header-overlay">
+                    <!-- App 五大情緒切換列 -->
+                    <div class="app-emotion-bar">
+                        <button class="app-emo-pill emo-joy-pill" data-emo="joy">
+                            <div class="emo-icon-badge emo-joy-bg">
+                                <img src="assets/joy.png" class="emo-img" alt="喜">
+                            </div>
+                            <span>喜</span>
+                        </button>
+                        <button class="app-emo-pill emo-fun-pill" data-emo="fun">
+                            <div class="emo-icon-badge emo-fun-bg">
+                                <img src="assets/fun.png" class="emo-img" alt="樂">
+                            </div>
+                            <span>樂</span>
+                        </button>
+                        <button class="app-emo-pill emo-angry-pill" data-emo="angry">
+                            <div class="emo-icon-badge emo-angry-bg">
+                                <img src="assets/angry.png" class="emo-img" alt="怒">
+                            </div>
+                            <span>怒</span>
+                        </button>
+                        <button class="app-emo-pill emo-sad-pill" data-emo="sad">
+                            <div class="emo-icon-badge emo-sad-bg">
+                                <img src="assets/sad.png" class="emo-img" alt="哀">
+                            </div>
+                            <span>哀</span>
+                        </button>
+                        <button class="app-emo-pill emo-none-pill" data-emo="none">
+                            <div class="emo-icon-badge emo-none-bg">
+                                <img src="assets/none.png" class="emo-img" alt="無">
+                            </div>
+                            <span>無</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Leaflet 地圖容器 -->
+                <div class="map-view-canvas" id="interactiveMap"></div>
+
+                <!-- 底部引導 Hint -->
+                <div class="app-map-footer-hint">
+                    <i class="fas fa-hand-pointer"></i> 點擊情緒按鈕可切換過濾，再次點擊即可還原顯示全部情緒！
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 頁尾 -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="pdf-footer-row">
+                <div class="pdf-footer-col">
+                    <h4 class="pdf-footer-heading">網站選單</h4>
+                    <ul class="pdf-footer-list">
+                        <li><a href="index.html">首頁</a></li>
+                        <li><a href="features.html">功能介紹</a></li>
+                        <li><a href="post.html">各地的故事</a></li>
+                        <li><a href="about.html">關於我們</a></li>
+                        <li><a href="contact.html">聯絡我們</a></li>
+                    </ul>
+                </div>
+                <div class="pdf-footer-col">
+                    <h4 class="pdf-footer-heading">常見問題</h4>
+                    <ul class="pdf-footer-list">
+                        <li><a href="faq.html">匿名登入說明</a></li>
+                        <li><a href="faq.html">公開與私人足跡</a></li>
+                    </ul>
+                </div>
+                <div class="pdf-footer-col">
+                    <h4 class="pdf-footer-heading">聯絡方式</h4>
+                    <ul class="pdf-footer-list">
+                        <li><i class="fab fa-instagram"></i> <a href="https://instagram.com/mapmo_112.ics" target="_blank">mapmo_112.ics</a></li>
+                        <li><i class="far fa-envelope"></i> <a href="mailto:mapmo.ics112@gmail.com">mapmo.ics112@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="pdf-footer-col">
+                    <h4 class="pdf-footer-heading">條款與條例</h4>
+                    <ul class="pdf-footer-list">
+                        <li><a href="privacy-policy.html" target="_blank">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" target="_blank">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pdf-footer-bottom">
+                <img src="assets/icon.png" class="pdf-footer-mini-logo" alt="Logo">
+                <span>© 2026 Mapmo</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js?v=20260928_0300"></script>
+</body>
+</html>

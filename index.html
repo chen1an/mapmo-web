@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>MapMo - 首頁 | 全匿名地理情緒樹洞</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Outfit:wght@400;600;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+
+    <!-- Swiper 3D Coverflow CSS -->
+    <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css?v=20261114_zero_shake">
+</head>
+
+<body class="home-page">
+
+    <!-- 1. 吸頂導覽列 (Navbar) -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-box">
+                <div class="logo-avatar">
+                    <img src="assets/icon.png" alt="MapMo Logo" class="logo-img">
+                </div>
+                <img src="assets/logo-text.png" alt="MapMo" class="logo-text-img">
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link active">首頁</a>
+                <a href="features.html" class="nav-link">功能介紹</a>
+                <a href="post.html" class="nav-link">各地的故事</a>
+                <a href="about.html" class="nav-link">關於我們</a>
+                <a href="contact.html" class="nav-btn-highlight">聯絡我們</a>
+            </div>
+
+            <button class="mobile-menu-toggle" id="menuToggle" aria-label="選單">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 2. 首頁 Hero 區塊 -->
+    <section class="hero-section">
+        <div class="hero-full-container fade-in">
+            <img src="assets/hero-illustration.png" alt="MapMo 首頁滿版主視覺插畫" class="hero-full-img">
+        </div>
+    </section>
+
+    <!-- 3. 語錄三行無限跑馬燈區塊 (3-Row Infinite Marquee Section - 全部 20 條心聲語錄) -->
+    <section class="scattered-quotes-section marquee-quotes-section page-body-padding">
+        <div class="section-container full-bleed">
+            <div class="section-header center">
+                <span class="section-tag">心聲共鳴 💬</span>
+                <h2 class="section-title">你是否也曾有過這些煩惱？</h2>
+                <p class="section-subtitle">點選任意心聲字卡，拆閱 MapMo 樹洞溫柔信箋 ✦</p>
+            </div>
+
+            <!-- 三行無限輪播跑馬燈容器 -->
+            <div class="marquee-rows-container">
+                
+                <!-- Row 1: 向左滾動 (Left Scroll) -->
+                <div class="marquee-row marquee-row-1">
+                    <div class="marquee-track scroll-left">
+                        <!-- 第一組語錄 -->
+                        <div class="quote-chip dark-navy"><p>「如果大家覺得不好笑，只有我覺得好笑，我還要 Po 嗎？」</p></div>
+                        <div class="quote-chip blue-dark"><p>「主管／同事／家人好像看得到，發摯友好了...算了，不發了。」</p></div>
+                        <div class="quote-chip dark-gray"><p>「他們是不是看到我的限時動態，在討論我啊？」</p></div>
+                        <div class="quote-chip dark-blue"><p>「好麻煩喔...」</p></div>
+                        <div class="quote-chip dark-navy"><p>「這句話會不會太情緒勒索？我換個委婉一點的說法好了……算了，不發了。」</p></div>
+                        <div class="quote-chip blue-dark"><p>「我這樣發是不是會被說跟風啊？」</p></div>
+                        <div class="quote-chip dark-gray"><p>「都過十分鐘了，怎麼連一個愛心都沒有？」</p></div>
+                        <!-- 複製第二組 (實現無縫首尾接續) -->
+                        <div class="quote-chip dark-navy"><p>「如果大家覺得不好笑，只有我覺得好笑，我還要 Po 嗎？」</p></div>
+                        <div class="quote-chip blue-dark"><p>「主管／同事／家人好像看得到，發摯友好了...算了，不發了。」</p></div>
+                        <div class="quote-chip dark-gray"><p>「他們是不是看到我的限時動態，在討論我啊？」</p></div>
+                        <div class="quote-chip dark-blue"><p>「好麻煩喔...」</p></div>
+                        <div class="quote-chip dark-navy"><p>「這句話會不會太情緒勒索？我換個委婉一點的說法好了……算了，不發了。」</p></div>
+                        <div class="quote-chip blue-dark"><p>「我這樣發是不是會被說跟風啊？」</p></div>
+                        <div class="quote-chip dark-gray"><p>「都過十分鐘了，怎麼連一個愛心都沒有？」</p></div>
+                    </div>
+                </div>
+
+                <!-- Row 2: 向左滾動 (統一向左方向 + 柔和慢速) -->
+                <div class="marquee-row marquee-row-2">
+                    <div class="marquee-track scroll-left-slow">
+                        <!-- 第一組語錄 -->
+                        <div class="quote-chip dark-blue"><p>「我其實沒有想給ＸＸＸ看耶...但是他身邊的朋友都會看到，這樣不就發現我隱藏他了...」</p></div>
+                        <div class="quote-chip dark-navy"><p>「這篇貼文數據好差喔，我要刪掉。」</p></div>
+                        <div class="quote-chip blue-dark"><p>「如果沒人按讚怎麼辦？ 💬」</p></div>
+                        <div class="quote-chip dark-gray"><p>「那個人看過了嗎？……看完了，但他沒按愛心，是不是覺得我很無聊？」</p></div>
+                        <div class="quote-chip dark-navy"><p>「我這樣寫是不是容易被罵啊？」</p></div>
+                        <div class="quote-chip blue-dark"><p>「發這個會不會被覺得在炫耀啊？」</p></div>
+                        <div class="quote-chip dark-blue"><p>「好煩喔，到底要選哪一首音樂...」</p></div>
+                        <!-- 複製第二組 -->
+                        <div class="quote-chip dark-blue"><p>「我其實沒有想給ＸＸＸ看耶...但是他身邊的朋友都會看到，這樣不就發現我隱藏他了...」</p></div>
+                        <div class="quote-chip dark-navy"><p>「這篇貼文數據好差喔，我要刪掉。」</p></div>
+                        <div class="quote-chip blue-dark"><p>「如果沒人按讚怎麼辦？ 💬」</p></div>
+                        <div class="quote-chip dark-gray"><p>「那個人看過了嗎？……看完了，但他沒按愛心，是不是覺得我很無聊？」</p></div>
+                        <div class="quote-chip dark-navy"><p>「我這樣寫是不是容易被罵啊？」</p></div>
+                        <div class="quote-chip blue-dark"><p>「發這個會不會被覺得在炫耀啊？」</p></div>
+                        <div class="quote-chip dark-blue"><p>「好煩喔，到底要選哪一首音樂...」</p></div>
+                    </div>
+                </div>
+
+                <!-- Row 3: 向左滾動 (Left Scroll) -->
+                <div class="marquee-row marquee-row-3">
+                    <div class="marquee-track scroll-left-fast">
+                        <!-- 第一組語錄 -->
+                        <div class="quote-chip dark-gray"><p>「為什麼大家限動都很精彩，只有我在這裡發無病呻吟的東西。」</p></div>
+                        <div class="quote-chip dark-navy"><p>「這樣發會不會讓人覺得我在討拍啊？」</p></div>
+                        <div class="quote-chip blue-dark"><p>「我只是想抒發，到時候又一堆人來問，好煩喔，不想回。」</p></div>
+                        <div class="quote-chip dark-blue"><p>「我文案這樣寫會不會很裝啊？」</p></div>
+                        <div class="quote-chip dark-navy"><p>「我為什麼每次半夜腦波弱都要發這種東西？明天早上一定後悔死。」</p></div>
+                        <div class="quote-chip blue-dark"><p>「喔！有人問我『還好嗎？』，但是我只是想抒發而已，早知道就不發了。」</p></div>
+                        <!-- 複製第二組 -->
+                        <div class="quote-chip dark-gray"><p>「為什麼大家限動都很精彩，只有我在這裡發無病呻吟的東西。」</p></div>
+                        <div class="quote-chip dark-navy"><p>「這樣發會不會讓人覺得我在討拍啊？」</p></div>
+                        <div class="quote-chip blue-dark"><p>「我只是想抒發，到時候又一堆人來問，好煩喔，不想回。」</p></div>
+                        <div class="quote-chip dark-blue"><p>「我文案這樣寫會不會很裝啊？」</p></div>
+                        <div class="quote-chip dark-navy"><p>「我為什麼每次半夜腦波弱都要發這種東西？明天早上一定後悔死。」</p></div>
+                        <div class="quote-chip blue-dark"><p>「喔！有人問我『還好嗎？』，但是我只是想抒發而已，早知道就不發了。」</p></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 樹洞來信・晨霧手繪信箋浮層 (Option 3: Ambient Rice-Paper Letter Modal) -->
+    <div class="letter-modal-overlay" id="letterModalOverlay" aria-hidden="true">
+        <div class="letter-modal-backdrop" id="letterModalBackdrop"></div>
+        <div class="letter-card" id="letterCard" role="dialog" aria-modal="true" aria-labelledby="letterQuoteText">
+            <button class="letter-close-btn" id="letterCloseBtn" type="button" aria-label="收起信箋">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="letter-header">
+                <div class="letter-tag-group">
+                    <span class="letter-stamp-badge"><i class="fas fa-stamp"></i> 樹洞信箋</span>
+                    <span class="letter-tag" id="letterTag">#社群眼光</span>
+                </div>
+                <span class="letter-meta">MapMo 心聲共鳴 ✦ 全匿名</span>
+            </div>
+            <div class="letter-body">
+                <div class="letter-quote-box">
+                    <span class="letter-quote-mark">“</span>
+                    <blockquote class="letter-quote-text" id="letterQuoteText">
+                        「如果大家覺得不好笑，只有我覺得好笑，我還要 Po 嗎？」
+                    </blockquote>
+                </div>
+                <div class="letter-divider"></div>
+                <div class="letter-response-box">
+                    <div class="letter-responder">
+                        <img src="assets/post-icon-red.png" alt="MapMo Mascot" class="letter-responder-avatar">
+                        <div class="letter-responder-info">
+                            <span class="letter-responder-name">MapMo 樹洞傾聽</span>
+                            <span class="letter-responder-sub">全匿名・無讚無評・安放情緒</span>
+                        </div>
+                    </div>
+                    <p class="letter-response-text" id="letterResponseText">
+                        在 MapMo，幽默不需要經過任何人的審查。只要能逗樂你自己，那就是最珍貴的瞬間。
+                    </p>
+                </div>
+            </div>
+            <div class="letter-footer">
+                <button class="letter-dismiss-btn" id="letterDismissBtn" type="button">
+                    <span>輕觸收起並繼續流動</span> <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 4. 前言與主要特點卡片區塊 (Foreword & Features Section) -->
+    <section class="editorial-full-section">
+        <div class="editorial-container">
+            
+            <!-- ── Card 1: Foreword 前言 (用戶原圖原封不動放置) ── -->
+            <div class="foreword-user-card">
+                <img src="assets/foreword-user-image.png" alt="MapMo 前言" class="foreword-user-img">
+            </div>
+
+            <!-- ── Card 2: Features 主要特點 (去白底純淨版 + 虛線與動態卡片) ── -->
+            <div class="features-interactive-box" id="featuresSection">
+                <!-- Top Left Header: Features / 主要特點 -->
+                <div class="features-header-left">
+                    <h2 class="card-title-en">Features</h2>
+                    <span class="card-title-zh">主要特點</span>
+                </div>
+
+                <!-- SVG Path Background Container (向量 SVG 虛線，穿過小人且絕不重疊字卡) -->
+                <div class="features-path-wrapper">
+                    <svg class="features-svg-path" id="featuresSvg">
+                        <!-- Harmonic S-Curve dashed line connecting all 4 milestone waypoints with perfect C1 smoothness -->
+                        <path id="featuresPath" d="M 430 -55 C 455 -9, 494 14, 494 60 C 494 152, 366 198, 366 290 C 366 382, 494 428, 494 520 C 494 612, 366 658, 366 750 C 366 796, 405 819, 430 865" fill="none" stroke="#1A1A1A" stroke-width="7" stroke-dasharray="12 12" stroke-linecap="round" />
+                    </svg>
+
+                    <!-- 單一移動小人 (沿著虛線隨滾輪平滑向下走，絕不壓字卡) -->
+                    <div class="walking-pin-follower" id="walkingPinFollower">
+                        <img src="assets/post-icon-red.png" alt="Pin" class="pin-follower-img">
+                    </div>
+
+                    <!-- 4 Staggered Feature Rows (相差 100px，字卡寬度嚴格相等，小人在虛線上且不壓字卡) -->
+                    <div class="features-cards-flow">
+                        
+                        <!-- Row 1 (Right Aligned: 小人在虛線上，字卡在右側) -->
+                        <div class="feat-row feat-row-right" data-step="1">
+                            <div class="feat-curve-anchor anchor-left"></div>
+                            <div class="feat-float-card">
+                                <h3 class="feat-card-title">絕對匿名</h3>
+                                <p class="feat-card-sub">沒人知道你是誰。</p>
+                            </div>
+                        </div>
+
+                        <!-- Row 2 (Left Aligned: 字卡在左側，小人在虛線上) -->
+                        <div class="feat-row feat-row-left" data-step="2">
+                            <div class="feat-float-card">
+                                <h3 class="feat-card-title">零互動</h3>
+                                <p class="feat-card-sub">沒有按讚、沒有評論，<br>只有安靜的空間。</p>
+                            </div>
+                            <div class="feat-curve-anchor anchor-right"></div>
+                        </div>
+
+                        <!-- Row 3 (Right Aligned: 小人在虛線上，字卡在右側) -->
+                        <div class="feat-row feat-row-right" data-step="3">
+                            <div class="feat-curve-anchor anchor-left"></div>
+                            <div class="feat-float-card">
+                                <h3 class="feat-card-title">地圖形式</h3>
+                                <p class="feat-card-sub">把回憶留在地圖上，<br>形成你的專屬空間。</p>
+                            </div>
+                        </div>
+
+                        <!-- Row 4 (Left Aligned: 字卡在左側，小人在虛線上) -->
+                        <div class="feat-row feat-row-left" data-step="4">
+                            <div class="feat-float-card">
+                                <h3 class="feat-card-title">情緒地標</h3>
+                                <p class="feat-card-sub">使用情緒分類每個回憶，讓打開地標就像回到那一天。</p>
+                            </div>
+                            <div class="feat-curve-anchor anchor-right"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. 分頁快速導覽卡片 (Multi-Page Navigation Grid) -->
+    <section class="home-pages-overview">
+        <div class="section-container">
+            <div class="section-header center">
+                <span class="section-tag">探索 MapMo 專區 ✦</span>
+                <h2 class="section-title">選擇您想了解的核心分頁</h2>
+                <p class="section-subtitle">點選下方分頁卡片，體驗全新的 MapMo 多頁式網站架構。</p>
+            </div>
+
+            <div class="pages-grid">
+                <!-- 卡片 1: 功能介紹 -->
+                <a href="features.html" class="page-entry-card gold-style">
+                    <div class="card-icon-circle"><i class="fas fa-star"></i></div>
+                    <h3>功能介紹</h3>
+                    <p>絕對匿名、零互動、情緒地標。查看完整的手稿規格與設計初衷。</p>
+                    <span class="card-link-btn">深入了解 <i class="fas fa-arrow-right"></i></span>
+                </a>
+
+                <!-- 卡片 2: 各地的故事 -->
+                <a href="post.html" class="page-entry-card blue-style">
+                    <div class="card-icon-circle"><i class="fas fa-paper-plane"></i></div>
+                    <h3>各地的故事</h3>
+                    <p>探索與閱讀來自不同地方的故事與回憶，把情感留在地圖上。</p>
+                    <span class="card-link-btn">前往查看 <i class="fas fa-arrow-right"></i></span>
+                </a>
+
+                <!-- 卡片 3: 關於我們 -->
+                <a href="about.html" class="page-entry-card purple-style">
+                    <div class="card-icon-circle"><i class="fas fa-users"></i></div>
+                    <h3>關於我們</h3>
+                    <p>了解 MapMo 團隊初衷，遇見專案背後的創作者與設計理念。</p>
+                    <span class="card-link-btn">認識團隊 <i class="fas fa-arrow-right"></i></span>
+                </a>
+
+                <!-- 卡片 4: 聯絡我們 -->
+                <a href="contact.html" class="page-entry-card dark-style">
+                    <div class="card-icon-circle"><i class="fas fa-envelope"></i></div>
+                    <h3>聯絡我們</h3>
+                    <p>有任何建議或團隊合作想法？歡迎隨時與我們取得聯繫。</p>
+                    <span class="card-link-btn">聯絡團隊 <i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 頁尾 (Footer) -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="pdf-footer-row">
+                <div class="pdf-footer-col">
+                    <h4 class="pdf-footer-heading">網站選單</h4>
+                    <ul class="pdf-footer-list">
+                        <li><a href="index.html">首頁</a></li>
+                        <li><a href="features.html">功能介紹</a></li>
+                        <li><a href="post.html">各地的故事</a></li>
+                        <li><a href="about.html">關於我們</a></li>
+                        <li><a href="contact.html">聯絡我們</a></li>
+                    </ul>
+                </div>
+                <div class="pdf-footer-col">
+                    <h4 class="pdf-footer-heading">常見問題</h4>
+                    <ul class="pdf-footer-list">
+                        <li><a href="faq.html">匿名登入說明</a></li>
+                        <li><a href="faq.html">公開與私人足跡</a></li>
+                    </ul>
+                </div>
+                <div class="pdf-footer-col">
+                    <h4 class="pdf-footer-heading">聯絡方式</h4>
+                    <ul class="pdf-footer-list">
+                        <li><i class="fab fa-instagram"></i> <a href="https://instagram.com/mapmo_112.ics"
+                                target="_blank">mapmo_112.ics</a></li>
+                        <li><i class="far fa-envelope"></i> <a
+                                href="mailto:mapmo.ics112@gmail.com">mapmo.ics112@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="pdf-footer-col">
+                    <h4 class="pdf-footer-heading">條款與條例</h4>
+                    <ul class="pdf-footer-list">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pdf-footer-bottom">
+                <img src="assets/icon.png" class="pdf-footer-mini-logo" alt="Logo">
+                <span>© 2026 Mapmo</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Swiper 3D Coverflow JS -->
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="script.js?v=20261114_zero_shake"></script>
+</body>
+
+</html>
