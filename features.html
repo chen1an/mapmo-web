@@ -101,10 +101,10 @@ body {
 }
 
 /* ═══════════════════════════════════════════
-   2. RESPONSIVE SCROLL STORYTELLING SECTION (6 CHAPTERS)
+   2. BALANCED DWELL & GENTLE-SNAP STORYTELLING SECTION (6 CHAPTERS)
 ═══════════════════════════════════════════ */
 .story-wrap {
-    height: 320vh; /* 220vh scroll span (~44vh per chapter, ~3-4 wheel notches per step) */
+    height: 370vh; /* 270vh scroll span (~54vh per chapter, light dwell + clean page snap) */
     position: relative;
     z-index: 20;
 }
@@ -312,98 +312,13 @@ body {
     outline: 2px solid #1C1C1E;
     outline-offset: 4px;
 }
+.story-dot.pending {
+    background: rgba(28, 28, 30, 0.48);
+    height: 18px;
+}
 .story-dot.active {
     background: #1C1C1E; height: 32px;
     box-shadow: 0 4px 12px rgba(28, 28, 30, 0.3);
-}
-
-/* ---------- Native CSS Scroll-Driven Animations (Compositor Thread, Zero Damping) ---------- */
-@media (prefers-reduced-motion: no-preference) {
-    @supports ((animation-timeline: scroll()) and (animation-range: 0% 100%)) {
-        .story-wrap {
-            view-timeline: --story-progress block;
-        }
-
-        @keyframes spTrackScroll {
-            0% {
-                transform: translate3d(0, 0%, 0);
-                animation-timing-function: cubic-bezier(0.35, 0.22, 0.65, 0.78);
-            }
-            20% {
-                transform: translate3d(0, calc(-100% / 6), 0);
-                animation-timing-function: cubic-bezier(0.35, 0.22, 0.65, 0.78);
-            }
-            40% {
-                transform: translate3d(0, calc(-200% / 6), 0);
-                animation-timing-function: cubic-bezier(0.35, 0.22, 0.65, 0.78);
-            }
-            60% {
-                transform: translate3d(0, -50%, 0);
-                animation-timing-function: cubic-bezier(0.35, 0.22, 0.65, 0.78);
-            }
-            80% {
-                transform: translate3d(0, calc(-400% / 6), 0);
-                animation-timing-function: cubic-bezier(0.35, 0.22, 0.65, 0.78);
-            }
-            100% {
-                transform: translate3d(0, calc(-500% / 6), 0);
-            }
-        }
-
-        @keyframes spCard0 {
-            0% { opacity: 1; transform: scale(1); }
-            14%, 100% { opacity: 0.14; transform: scale(0.94); }
-        }
-        @keyframes spCard1 {
-            0%, 6% { opacity: 0.14; transform: scale(0.94); }
-            20% { opacity: 1; transform: scale(1); }
-            34%, 100% { opacity: 0.14; transform: scale(0.94); }
-        }
-        @keyframes spCard2 {
-            0%, 26% { opacity: 0.14; transform: scale(0.94); }
-            40% { opacity: 1; transform: scale(1); }
-            54%, 100% { opacity: 0.14; transform: scale(0.94); }
-        }
-        @keyframes spCard3 {
-            0%, 46% { opacity: 0.14; transform: scale(0.94); }
-            60% { opacity: 1; transform: scale(1); }
-            74%, 100% { opacity: 0.14; transform: scale(0.94); }
-        }
-        @keyframes spCard4 {
-            0%, 66% { opacity: 0.14; transform: scale(0.94); }
-            80% { opacity: 1; transform: scale(1); }
-            94%, 100% { opacity: 0.14; transform: scale(0.94); }
-        }
-        @keyframes spCard5 {
-            0%, 86% { opacity: 0.14; transform: scale(0.94); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        .sp-phone-track,
-        .sp-text-track,
-        .sp-num-track {
-            animation-name: spTrackScroll;
-            animation-duration: auto;
-            animation-timing-function: linear;
-            animation-fill-mode: both;
-            animation-timeline: --story-progress;
-            animation-range: contain 0% contain 100%;
-        }
-
-        .sp-text-card {
-            animation-duration: auto;
-            animation-timing-function: linear;
-            animation-fill-mode: both;
-            animation-timeline: --story-progress;
-            animation-range: contain 0% contain 100%;
-        }
-        .sp-text-card:nth-child(1) { animation-name: spCard0; }
-        .sp-text-card:nth-child(2) { animation-name: spCard1; }
-        .sp-text-card:nth-child(3) { animation-name: spCard2; }
-        .sp-text-card:nth-child(4) { animation-name: spCard3; }
-        .sp-text-card:nth-child(5) { animation-name: spCard4; }
-        .sp-text-card:nth-child(6) { animation-name: spCard5; }
-    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -696,9 +611,9 @@ body {
 <script>
 /* ═══════════════════════════════════════════════
    MAPMO REAL APP SHOWCASE SCROLL ENGINE (6 CHAPTERS)
-   - Native CSS Scroll-Driven Animation on supported browsers (compositor thread)
-   - Instant rAF-synced JS fallback + discrete reduced-motion support
-   - Strictly monotonic curve: zero dead-zone plateaus, immediate response per wheel notch
+   - Brief dwell zone around each page stop (~50px buffer, never freezes 9 clicks)
+   - Light frame-rate-independent inertia damping (no heavy 450ms CSS lag)
+   - Smart precision snap on scrollend: always lands cleanly on each chapter
 ═══════════════════════════════════════════════ */
 (function() {
     'use strict';
@@ -712,6 +627,12 @@ body {
         'rgba(175, 82, 222, 0.14)'  // Mood Purple (06)
     ];
 
+    const DWELL_EDGE = 0.10;         // Gentle 10% dwell at each end of an interval (~50px hold)
+    const DAMPING_SPEED = 15;        // Light exponential damping (120Hz/60Hz invariant)
+    const SNAP_PX_TRIGGER = 55;      // 1 crisp wheel notch (~100px) reliably advances chapter
+    const SNAP_SETTLE_TOLERANCE = 6; // Already centered within 6px -> skip auto-snap
+    const SNAP_IDLE_MS = 135;        // Fallback settle timer where scrollend isn't supported
+
     const wrap = document.getElementById('storyWrap');
     const glowSpot = document.getElementById('storyGlowSpot');
     const phoneTrack = document.getElementById('phoneTrack');
@@ -719,148 +640,346 @@ body {
     const giantTrack = document.getElementById('giantTrack');
     const dots = document.querySelectorAll('.story-dot');
     const textCards = document.querySelectorAll('.sp-text-card');
-
     const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const supportsCssScrollTimeline =
-        typeof CSS !== 'undefined' &&
-        typeof CSS.supports === 'function' &&
-        CSS.supports('(animation-timeline: scroll()) and (animation-range: 0% 100%)');
+    const supportsScrollEnd = 'onscrollend' in window;
 
-    let currentChapter = -1;
-    let rafPending = false;
-    let tracksHadInlineStyles = false;
+    let targetChapterVal = 0;
+    let displayChapterVal = 0;
+    let activeChapter = -1;
+    let pendingChapter = -2;
+    let rafId = null;
+    let lastFrameTime = 0;
 
-    function softEase(t) {
-        return 0.5 * t + 0.5 * (t * t * (3 - 2 * t));
+    let prevScrollY = window.scrollY;
+    let lastScrollDir = 0;
+    let scrollDirty = false;
+    let isPointerDown = false;
+    let isAutoSnapping = false;
+    let autoSnapTimer = null;
+    let settleTimer = null;
+
+    function smoothEase(t) {
+        return t * t * (3 - 2 * t);
     }
 
     function calcChapterVal(progress) {
         const scaled = Math.max(0, Math.min(5, progress * 5));
         const idx = Math.min(4, Math.floor(scaled));
-        const t = scaled - idx;
-        return idx + softEase(t);
+        const u = scaled - idx;
+
+        if (u <= DWELL_EDGE) return idx;
+        if (u >= 1 - DWELL_EDGE) return idx + 1;
+
+        const norm = (u - DWELL_EDGE) / (1 - 2 * DWELL_EDGE);
+        return idx + smoothEase(norm);
     }
 
-    function clearTrackInlineStyles() {
-        if (phoneTrack) phoneTrack.style.transform = '';
-        if (textTrack) textTrack.style.transform = '';
-        if (giantTrack) giantTrack.style.transform = '';
-        textCards.forEach(card => {
-            card.style.opacity = '';
-            card.style.transform = '';
-        });
-    }
-
-    function syncView() {
-        if (!wrap) return;
+    function getMetrics() {
+        if (!wrap) return null;
         const rect = wrap.getBoundingClientRect();
         const totalScrollSpace = wrap.offsetHeight - window.innerHeight;
-        if (totalScrollSpace <= 0) return;
+        if (totalScrollSpace <= 0) return null;
 
         const scrolled = -rect.top;
         const progress = Math.max(0, Math.min(1, scrolled / totalScrollSpace));
-        const isReducedMotion = reducedMotionQuery.matches;
-        const useNativeScrollTimeline = supportsCssScrollTimeline && !isReducedMotion;
+        const wrapTop = rect.top + window.scrollY;
+        return { rect, totalScrollSpace, scrolled, progress, wrapTop };
+    }
 
-        let chapterIndex;
-
-        if (useNativeScrollTimeline) {
-            if (tracksHadInlineStyles) {
-                clearTrackInlineStyles();
-                tracksHadInlineStyles = false;
-            }
-            chapterIndex = Math.max(0, Math.min(5, Math.round(progress * 5)));
-        } else if (isReducedMotion) {
-            chapterIndex = Math.max(0, Math.min(5, Math.round(progress * 5)));
-            const shiftPercent = -(chapterIndex / 6) * 100;
-            if (phoneTrack) phoneTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
-            if (textTrack) textTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
-            if (giantTrack) giantTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
-            textCards.forEach((card, index) => {
-                card.style.opacity = index === chapterIndex ? '1' : '0';
-                card.style.transform = 'none';
-            });
-            tracksHadInlineStyles = true;
-        } else {
-            const chapterVal = calcChapterVal(progress);
-            const shiftPercent = -(chapterVal / 6) * 100;
-
-            if (phoneTrack) phoneTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
-            if (textTrack) textTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
-            if (giantTrack) giantTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
-
-            textCards.forEach((card, index) => {
-                const dist = Math.abs(chapterVal - index);
-                if (dist < 0.08) {
-                    card.style.opacity = '1';
-                    card.style.transform = 'scale(1)';
-                } else {
-                    const opacity = Math.max(0.14, 1 - dist * 1.2);
-                    const scale = Math.max(0.94, 1 - dist * 0.06);
-                    card.style.opacity = opacity.toFixed(3);
-                    card.style.transform = `scale(${scale.toFixed(3)})`;
-                }
-            });
-
-            tracksHadInlineStyles = true;
-            chapterIndex = Math.max(0, Math.min(5, Math.round(chapterVal)));
+    function updateDotsAndGlow(settledIdx, pendingIdx) {
+        if (settledIdx === activeChapter && pendingIdx === pendingChapter) {
+            return;
         }
 
-        if (chapterIndex !== currentChapter) {
-            currentChapter = chapterIndex;
-            if (glowSpot) glowSpot.style.setProperty('--glow-tint', TINTS[chapterIndex]);
+        if (settledIdx !== activeChapter) {
+            activeChapter = settledIdx;
+            if (glowSpot) glowSpot.style.setProperty('--glow-tint', TINTS[settledIdx]);
+        }
+        pendingChapter = pendingIdx;
 
-            dots.forEach((d, i) => {
-                if (i === chapterIndex) {
-                    d.classList.add('active');
-                    d.setAttribute('aria-current', 'step');
-                } else {
-                    d.classList.remove('active');
-                    d.removeAttribute('aria-current');
-                }
+        dots.forEach((d, i) => {
+            if (i === settledIdx) {
+                d.classList.add('active');
+                d.classList.remove('pending');
+                d.setAttribute('aria-current', 'step');
+            } else {
+                d.classList.remove('active');
+                d.removeAttribute('aria-current');
+                if (i === pendingIdx) d.classList.add('pending');
+                else d.classList.remove('pending');
+            }
+        });
+    }
+
+    function applyVisuals(chapterVal, isReduced) {
+        if (isReduced) {
+            const discrete = Math.max(0, Math.min(5, Math.round(chapterVal)));
+            const shiftPercent = -(discrete / 6) * 100;
+            if (phoneTrack) phoneTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+            if (textTrack) textTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+            if (giantTrack) giantTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+            textCards.forEach((card, index) => {
+                card.style.opacity = index === discrete ? '1' : '0';
+                card.style.transform = 'none';
             });
+            updateDotsAndGlow(discrete, -1);
+            return;
+        }
+
+        const shiftPercent = -(chapterVal / 6) * 100;
+        if (phoneTrack) phoneTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+        if (textTrack) textTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+        if (giantTrack) giantTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+
+        textCards.forEach((card, index) => {
+            const dist = Math.abs(chapterVal - index);
+            if (dist < 0.05) {
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
+            } else {
+                const opacity = Math.max(0.12, 1 - dist * 1.25);
+                const scale = Math.max(0.94, 1 - dist * 0.06);
+                card.style.opacity = opacity.toFixed(3);
+                card.style.transform = `scale(${scale.toFixed(3)})`;
+            }
+        });
+
+        const settledIdx = Math.max(0, Math.min(5, Math.round(chapterVal)));
+        const targetRounded = Math.max(0, Math.min(5, Math.round(targetChapterVal)));
+        updateDotsAndGlow(settledIdx, targetRounded !== settledIdx ? targetRounded : -1);
+    }
+
+    function tickAnimation(now) {
+        if (reducedMotionQuery.matches) {
+            displayChapterVal = targetChapterVal;
+            applyVisuals(displayChapterVal, true);
+            rafId = null;
+            return;
+        }
+
+        const dt = lastFrameTime ? Math.min(0.05, (now - lastFrameTime) / 1000) : (1 / 60);
+        lastFrameTime = now;
+
+        const diff = targetChapterVal - displayChapterVal;
+        if (Math.abs(diff) <= 0.0008) {
+            displayChapterVal = targetChapterVal;
+            applyVisuals(displayChapterVal, false);
+            rafId = null;
+            lastFrameTime = 0;
+            return;
+        }
+
+        const alpha = 1 - Math.exp(-DAMPING_SPEED * dt);
+        displayChapterVal += diff * alpha;
+        applyVisuals(displayChapterVal, false);
+        rafId = requestAnimationFrame(tickAnimation);
+    }
+
+    function ensureAnimating() {
+        if (rafId !== null) return;
+        lastFrameTime = 0;
+        rafId = requestAnimationFrame(tickAnimation);
+    }
+
+    function cancelAutoSnap() {
+        isAutoSnapping = false;
+        clearTimeout(autoSnapTimer);
+    }
+
+    function pickSnapChapter(progress, totalScrollSpace, dir) {
+        const exact = progress * 5;
+        const pxPerChapter = totalScrollSpace / 5;
+        const triggerFrac = Math.min(0.24, SNAP_PX_TRIGGER / pxPerChapter);
+
+        const base = Math.min(4, Math.floor(exact));
+        const frac = exact - base;
+
+        if (dir > 0) {
+            return frac >= triggerFrac ? Math.min(5, base + 1) : base;
+        }
+        if (dir < 0) {
+            return (1 - frac) >= triggerFrac ? base : Math.min(5, base + 1);
+        }
+        return Math.max(0, Math.min(5, Math.round(exact)));
+    }
+
+    function scrollToChapter(chIndex, smooth) {
+        const m = getMetrics();
+        if (!m) return;
+
+        const minTarget = Math.ceil(m.wrapTop);
+        const maxTarget = Math.floor(m.wrapTop + m.totalScrollSpace);
+        const rawTarget = m.wrapTop + (chIndex / 5) * m.totalScrollSpace;
+        const targetScroll = Math.max(minTarget, Math.min(maxTarget, Math.round(rawTarget)));
+
+        if (Math.abs(window.scrollY - targetScroll) <= SNAP_SETTLE_TOLERANCE) {
+            scrollDirty = false;
+            return;
+        }
+
+        scrollDirty = false;
+        isAutoSnapping = true;
+        clearTimeout(autoSnapTimer);
+        autoSnapTimer = setTimeout(() => {
+            isAutoSnapping = false;
+        }, 700);
+
+        window.scrollTo({
+            top: targetScroll,
+            behavior: smooth && !reducedMotionQuery.matches ? 'smooth' : 'auto'
+        });
+    }
+
+    function onSettle() {
+        clearTimeout(settleTimer);
+
+        if (isAutoSnapping) {
+            isAutoSnapping = false;
+            scrollDirty = false;
+            clearTimeout(autoSnapTimer);
+            const settledIdx = Math.max(0, Math.min(5, Math.round(targetChapterVal)));
+            updateDotsAndGlow(settledIdx, -1);
+            return;
+        }
+
+        if (!scrollDirty || isPointerDown || reducedMotionQuery.matches) return;
+        scrollDirty = false;
+
+        const m = getMetrics();
+        if (!m) return;
+
+        // Allow free scrolling in top header and bottom footer
+        if (m.scrolled <= 2 || m.scrolled >= m.totalScrollSpace - 2) return;
+
+        const exact = m.progress * 5;
+        // Let user escape cleanly into header (top) or footer (bottom) when at boundary ends
+        if (lastScrollDir < 0 && exact < 0.16) return;
+        if (lastScrollDir > 0 && exact > 4.84) return;
+
+        const snapIdx = pickSnapChapter(m.progress, m.totalScrollSpace, lastScrollDir);
+        const settledIdx = Math.max(0, Math.min(5, Math.round(displayChapterVal)));
+        updateDotsAndGlow(settledIdx, -1);
+        scrollToChapter(snapIdx, true);
+    }
+
+    function onScroll() {
+        const curY = window.scrollY;
+        const dy = curY - prevScrollY;
+        if (Math.abs(dy) >= 1 && !isAutoSnapping) {
+            lastScrollDir = dy > 0 ? 1 : -1;
+            scrollDirty = true;
+        }
+        prevScrollY = curY;
+
+        const m = getMetrics();
+        if (!m) return;
+
+        targetChapterVal = calcChapterVal(m.progress);
+        if (reducedMotionQuery.matches) {
+            displayChapterVal = targetChapterVal;
+            applyVisuals(displayChapterVal, true);
+        } else {
+            ensureAnimating();
+        }
+
+        if (!supportsScrollEnd && !isAutoSnapping && !isPointerDown && !reducedMotionQuery.matches) {
+            clearTimeout(settleTimer);
+            settleTimer = setTimeout(onSettle, SNAP_IDLE_MS);
         }
     }
 
-    function scheduleSync() {
-        if (rafPending) return;
-        rafPending = true;
-        requestAnimationFrame(() => {
-            rafPending = false;
-            syncView();
-        });
+    function syncImmediate() {
+        const m = getMetrics();
+        if (!m) return;
+        prevScrollY = window.scrollY;
+        scrollDirty = false;
+        targetChapterVal = calcChapterVal(m.progress);
+        displayChapterVal = targetChapterVal;
+        applyVisuals(displayChapterVal, reducedMotionQuery.matches);
     }
 
     dots.forEach(dot => {
         dot.addEventListener('click', () => {
             const chIndex = parseInt(dot.getAttribute('data-ch'), 10);
             if (isNaN(chIndex)) return;
-
-            const wrapTop = wrap.getBoundingClientRect().top + window.scrollY;
-            const totalScrollSpace = wrap.offsetHeight - window.innerHeight;
-            if (totalScrollSpace <= 0) return;
-
-            const minTarget = Math.ceil(wrapTop);
-            const maxTarget = Math.floor(wrapTop + totalScrollSpace);
-            const rawTarget = wrapTop + (chIndex / 5) * totalScrollSpace;
-            const targetScroll = Math.max(minTarget, Math.min(maxTarget, Math.round(rawTarget)));
-
-            window.scrollTo({
-                top: targetScroll,
-                behavior: reducedMotionQuery.matches ? 'auto' : 'smooth'
-            });
+            lastScrollDir = 0;
+            scrollToChapter(chIndex, true);
         });
     });
 
-    if (typeof reducedMotionQuery.addEventListener === 'function') {
-        reducedMotionQuery.addEventListener('change', syncView);
-    } else if (typeof reducedMotionQuery.addListener === 'function') {
-        reducedMotionQuery.addListener(syncView);
+    window.addEventListener('wheel', () => {
+        isPointerDown = false;
+        if (isAutoSnapping) cancelAutoSnap();
+    }, { passive: true });
+
+    window.addEventListener('touchstart', () => {
+        isPointerDown = true;
+        if (isAutoSnapping) cancelAutoSnap();
+    }, { passive: true });
+
+    function onTouchRelease() {
+        isPointerDown = false;
+        if (!supportsScrollEnd && scrollDirty && !reducedMotionQuery.matches) {
+            clearTimeout(settleTimer);
+            settleTimer = setTimeout(onSettle, SNAP_IDLE_MS);
+        }
     }
 
-    window.addEventListener('scroll', scheduleSync, { passive: true });
-    window.addEventListener('resize', scheduleSync, { passive: true });
-    syncView();
+    window.addEventListener('touchend', onTouchRelease, { passive: true });
+    window.addEventListener('touchcancel', () => {
+        isPointerDown = false;
+    }, { passive: true });
+
+    window.addEventListener('pointerdown', (e) => {
+        if (e.pointerType !== 'mouse' && (!e.target.closest || !e.target.closest('.story-dot'))) {
+            isPointerDown = true;
+            if (isAutoSnapping) cancelAutoSnap();
+        }
+    }, { passive: true });
+
+    window.addEventListener('pointerup', (e) => {
+        if (e.pointerType !== 'mouse' && isPointerDown) {
+            onTouchRelease();
+        }
+    }, { passive: true });
+
+    window.addEventListener('pointercancel', () => {
+        isPointerDown = false;
+    }, { passive: true });
+
+    window.addEventListener('blur', () => {
+        isPointerDown = false;
+    }, { passive: true });
+
+    window.addEventListener('keydown', (e) => {
+        if (['ArrowDown', 'PageDown', ' '].includes(e.key)) {
+            lastScrollDir = 1;
+            if (isAutoSnapping) cancelAutoSnap();
+        } else if (['ArrowUp', 'PageUp'].includes(e.key)) {
+            lastScrollDir = -1;
+            if (isAutoSnapping) cancelAutoSnap();
+        }
+    }, { passive: true });
+
+    if (supportsScrollEnd) {
+        window.addEventListener('scrollend', onSettle, { passive: true });
+    }
+
+    if (typeof reducedMotionQuery.addEventListener === 'function') {
+        reducedMotionQuery.addEventListener('change', syncImmediate);
+    } else if (typeof reducedMotionQuery.addListener === 'function') {
+        reducedMotionQuery.addListener(syncImmediate);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', syncImmediate, { passive: true });
+
+    if (document.readyState === 'complete') {
+        syncImmediate();
+    } else {
+        window.addEventListener('load', syncImmediate, { once: true });
+        syncImmediate();
+    }
 })();
 </script>
 
