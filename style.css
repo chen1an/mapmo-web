@@ -30,7 +30,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
 }
 
 body {
@@ -44,6 +49,7 @@ body {
     font-family: var(--font-body);
     line-height: 1.6;
     overflow-x: hidden;
+    overflow-x: clip;
 }
 
 a {
@@ -3389,12 +3395,14 @@ a {
 html[data-device="mobile"],
 html[data-device="tablet"] {
     overflow-x: hidden !important;
+    overflow-x: clip !important;
     -webkit-tap-highlight-color: transparent;
 }
 
 body.is-mobile,
 body.is-tablet {
     overflow-x: hidden !important;
+    overflow-x: clip !important;
 }
 
 /* 行動版 / 平板自動最佳化 notification banner */

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
 
     <!-- Shared CSS (Light Theme base) -->
-    <link rel="stylesheet" href="style.css?v=20261005_features_6ch">
+    <link rel="stylesheet" href="style.css?v=20261116_scroll_smooth">
 
 <style>
 /* ══════════════════════════════════════════════
@@ -28,7 +28,7 @@
      5. 封鎖.jpg (Block User & Safety)
      6. 個人檔案.jpg (User Footprints & Profile)
    • Fully isolated scoped classes (.sp-*)
-   • Spacious 6-chapter plateau scroll transitions
+   • Responsive compositor-driven scroll transitions (6 chapters, zero dead zones)
 ══════════════════════════════════════════════ */
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -43,6 +43,7 @@ body {
     color: #2C2C2E;
     font-family: 'Outfit', 'Noto Sans TC', sans-serif;
     overflow-x: hidden;
+    overflow-x: clip;
     margin: 0; padding: 0;
 }
 
@@ -56,8 +57,8 @@ body {
 /* ---------- 1. Top Header Banner ("劉海"對齊 Contact/About/Post 頁面) ---------- */
 .feat-page-header {
     text-align: center;
-    padding-top: calc(var(--nav-height) + 40px);
-    padding-bottom: 30px;
+    padding-top: calc(var(--nav-height) + 28px);
+    padding-bottom: 18px;
     background: transparent;
     position: relative;
     z-index: 10;
@@ -100,10 +101,10 @@ body {
 }
 
 /* ═══════════════════════════════════════════
-   2. SPACED-OUT SCROLL STORYTELLING SECTION (6 CHAPTERS)
+   2. RESPONSIVE SCROLL STORYTELLING SECTION (6 CHAPTERS)
 ═══════════════════════════════════════════ */
 .story-wrap {
-    height: 900vh; /* 900vh height for 6 spacious chapter transitions */
+    height: 320vh; /* 220vh scroll span (~44vh per chapter, ~3-4 wheel notches per step) */
     position: relative;
     z-index: 20;
 }
@@ -112,7 +113,9 @@ body {
     position: sticky;
     top: 0;
     height: 100vh;
+    height: 100dvh;
     width: 100%;
+    padding-top: calc(var(--nav-height) * 0.45);
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -163,7 +166,6 @@ body {
     display: flex;
     flex-direction: column;
     height: 600%;
-    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
     will-change: transform;
 }
 .sp-num-item {
@@ -208,13 +210,12 @@ body {
     background: #111116;
 }
 
-/* Phone Screen Track with Smooth Plateau Slide (6 Items) */
+/* Phone Screen Track (6 Items, locked 1:1 to scroll progress without viscous lag) */
 .sp-phone-track {
     display: flex;
     flex-direction: column;
     height: 600%;
     width: 100%;
-    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
     will-change: transform;
 }
 .sp-screen-page {
@@ -252,7 +253,6 @@ body {
     flex-direction: column;
     height: 600%;
     width: 100%;
-    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
     will-change: transform;
 }
 .sp-text-card {
@@ -263,7 +263,6 @@ body {
     justify-content: center;
     padding: 10px 0;
     flex-shrink: 0;
-    transition: opacity 0.4s ease, transform 0.4s ease;
     will-change: opacity, transform;
 }
 
@@ -298,33 +297,152 @@ body {
     z-index: 200;
 }
 .story-dot {
+    position: relative;
     width: 9px; height: 9px; border-radius: 5px;
-    background: rgba(28, 28, 30, 0.2); cursor: pointer;
-    transition: all 0.3s ease;
+    border: none; padding: 0; appearance: none;
+    background: rgba(28, 28, 30, 0.22); cursor: pointer;
+    transition: height 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+.story-dot::after {
+    content: '';
+    position: absolute;
+    inset: -6px -10px;
+}
+.story-dot:focus-visible {
+    outline: 2px solid #1C1C1E;
+    outline-offset: 4px;
 }
 .story-dot.active {
     background: #1C1C1E; height: 32px;
     box-shadow: 0 4px 12px rgba(28, 28, 30, 0.3);
 }
 
+/* ---------- Native CSS Scroll-Driven Animations (Compositor Thread, Zero Damping) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+    @supports ((animation-timeline: scroll()) and (animation-range: 0% 100%)) {
+        .story-wrap {
+            view-timeline: --story-progress block;
+        }
+
+        @keyframes spTrackScroll {
+            0% {
+                transform: translate3d(0, 0%, 0);
+                animation-timing-function: cubic-bezier(0.35, 0.22, 0.65, 0.78);
+            }
+            20% {
+                transform: translate3d(0, calc(-100% / 6), 0);
+                animation-timing-function: cubic-bezier(0.35, 0.22, 0.65, 0.78);
+            }
+            40% {
+                transform: translate3d(0, calc(-200% / 6), 0);
+                animation-timing-function: cubic-bezier(0.35, 0.22, 0.65, 0.78);
+            }
+            60% {
+                transform: translate3d(0, -50%, 0);
+                animation-timing-function: cubic-bezier(0.35, 0.22, 0.65, 0.78);
+            }
+            80% {
+                transform: translate3d(0, calc(-400% / 6), 0);
+                animation-timing-function: cubic-bezier(0.35, 0.22, 0.65, 0.78);
+            }
+            100% {
+                transform: translate3d(0, calc(-500% / 6), 0);
+            }
+        }
+
+        @keyframes spCard0 {
+            0% { opacity: 1; transform: scale(1); }
+            14%, 100% { opacity: 0.14; transform: scale(0.94); }
+        }
+        @keyframes spCard1 {
+            0%, 6% { opacity: 0.14; transform: scale(0.94); }
+            20% { opacity: 1; transform: scale(1); }
+            34%, 100% { opacity: 0.14; transform: scale(0.94); }
+        }
+        @keyframes spCard2 {
+            0%, 26% { opacity: 0.14; transform: scale(0.94); }
+            40% { opacity: 1; transform: scale(1); }
+            54%, 100% { opacity: 0.14; transform: scale(0.94); }
+        }
+        @keyframes spCard3 {
+            0%, 46% { opacity: 0.14; transform: scale(0.94); }
+            60% { opacity: 1; transform: scale(1); }
+            74%, 100% { opacity: 0.14; transform: scale(0.94); }
+        }
+        @keyframes spCard4 {
+            0%, 66% { opacity: 0.14; transform: scale(0.94); }
+            80% { opacity: 1; transform: scale(1); }
+            94%, 100% { opacity: 0.14; transform: scale(0.94); }
+        }
+        @keyframes spCard5 {
+            0%, 86% { opacity: 0.14; transform: scale(0.94); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .sp-phone-track,
+        .sp-text-track,
+        .sp-num-track {
+            animation-name: spTrackScroll;
+            animation-duration: auto;
+            animation-timing-function: linear;
+            animation-fill-mode: both;
+            animation-timeline: --story-progress;
+            animation-range: contain 0% contain 100%;
+        }
+
+        .sp-text-card {
+            animation-duration: auto;
+            animation-timing-function: linear;
+            animation-fill-mode: both;
+            animation-timeline: --story-progress;
+            animation-range: contain 0% contain 100%;
+        }
+        .sp-text-card:nth-child(1) { animation-name: spCard0; }
+        .sp-text-card:nth-child(2) { animation-name: spCard1; }
+        .sp-text-card:nth-child(3) { animation-name: spCard2; }
+        .sp-text-card:nth-child(4) { animation-name: spCard3; }
+        .sp-text-card:nth-child(5) { animation-name: spCard4; }
+        .sp-text-card:nth-child(6) { animation-name: spCard5; }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sp-phone-track,
+    .sp-text-track,
+    .sp-num-track,
+    .sp-text-card,
+    .story-bg-layer,
+    .story-glow-spot,
+    .story-dot {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
 @media (max-width: 900px) {
     .sp-layout-container {
         flex-direction: column;
         justify-content: center;
-        padding-right: 24px;
+        height: auto;
+        padding-right: 28px;
     }
     .sp-phone-container {
-        width: 220px;
-        height: 440px;
+        width: clamp(140px, 21vh, 195px);
+        height: clamp(280px, 42vh, 390px);
         margin-right: 0;
-        margin-bottom: 24px;
+        margin-bottom: 14px;
     }
     .sp-text-viewport {
         width: 100%;
         max-width: 380px;
-        height: 220px;
+        height: 270px;
     }
+    .panel-tag-badge { margin-bottom: 8px; font-size: 12px; padding: 5px 12px; }
+    .panel-heading { font-size: 1.55rem; margin-bottom: 8px; }
+    .panel-description { font-size: 0.92rem; line-height: 1.55; margin-bottom: 12px; }
+    .panel-feature-card { padding: 12px 14px; border-radius: 14px; }
     .sp-num-viewport { display: none !important; }
+    .story-dots { right: 12px; gap: 10px; }
 }
 </style>
 </head>
@@ -363,16 +481,16 @@ body {
 
 <!-- ── Side Dots Navigation (6 Chapters) ── -->
 <nav class="story-dots" id="storyDots" aria-label="章節導覽">
-    <div class="story-dot active" data-ch="0"></div>
-    <div class="story-dot" data-ch="1"></div>
-    <div class="story-dot" data-ch="2"></div>
-    <div class="story-dot" data-ch="3"></div>
-    <div class="story-dot" data-ch="4"></div>
-    <div class="story-dot" data-ch="5"></div>
+    <button type="button" class="story-dot active" data-ch="0" aria-label="前往第 1 章：情緒分類與過濾" aria-current="step"></button>
+    <button type="button" class="story-dot" data-ch="1" aria-label="前往第 2 章：放置回憶與拍攝"></button>
+    <button type="button" class="story-dot" data-ch="2" aria-label="前往第 3 章：足跡自主控制"></button>
+    <button type="button" class="story-dot" data-ch="3" aria-label="前往第 4 章：安全審核與一鍵檢舉"></button>
+    <button type="button" class="story-dot" data-ch="4" aria-label="前往第 5 章：設定與帳號管理"></button>
+    <button type="button" class="story-dot" data-ch="5" aria-label="前往第 6 章：個人檔案與權限"></button>
 </nav>
 
 <!-- ══════════════════════════════════════════
-     3. SPACED-OUT SCROLL STORYTELLING SECTION (6 CHAPTERS)
+     3. RESPONSIVE SCROLL STORYTELLING SECTION (6 CHAPTERS)
 ══════════════════════════════════════════ -->
 <div class="story-wrap" id="storyWrap">
 
@@ -578,8 +696,9 @@ body {
 <script>
 /* ═══════════════════════════════════════════════
    MAPMO REAL APP SHOWCASE SCROLL ENGINE (6 CHAPTERS)
-   - Plateau scroll mapping: Each chapter locks cleanly in full view
-   - Ample scroll distance between 6 chapters
+   - Native CSS Scroll-Driven Animation on supported browsers (compositor thread)
+   - Instant rAF-synced JS fallback + discrete reduced-motion support
+   - Strictly monotonic curve: zero dead-zone plateaus, immediate response per wheel notch
 ═══════════════════════════════════════════════ */
 (function() {
     'use strict';
@@ -601,96 +720,115 @@ body {
     const dots = document.querySelectorAll('.story-dot');
     const textCards = document.querySelectorAll('.sp-text-card');
 
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const supportsCssScrollTimeline =
+        typeof CSS !== 'undefined' &&
+        typeof CSS.supports === 'function' &&
+        CSS.supports('(animation-timeline: scroll()) and (animation-range: 0% 100%)');
+
     let currentChapter = -1;
+    let rafPending = false;
+    let tracksHadInlineStyles = false;
 
-    /* Calculate plateau step position across 6 chapters */
-    function calcPlateauTarget(progress) {
-        // 6 chapters:
-        // Ch 0: 0.00 -> 0.12
-        // Ch 1: 0.18 -> 0.30
-        // Ch 2: 0.36 -> 0.48
-        // Ch 3: 0.54 -> 0.66
-        // Ch 4: 0.72 -> 0.84
-        // Ch 5: 0.90 -> 1.00
-
-        if (progress <= 0.12) return 0;
-        if (progress >= 0.18 && progress <= 0.30) return 1;
-        if (progress >= 0.36 && progress <= 0.48) return 2;
-        if (progress >= 0.54 && progress <= 0.66) return 3;
-        if (progress >= 0.72 && progress <= 0.84) return 4;
-        if (progress >= 0.90) return 5;
-
-        // Transition zones
-        if (progress > 0.12 && progress < 0.18) {
-            const t = (progress - 0.12) / (0.18 - 0.12);
-            return smoothEase(t);
-        }
-        if (progress > 0.30 && progress < 0.36) {
-            const t = (progress - 0.30) / (0.36 - 0.30);
-            return 1 + smoothEase(t);
-        }
-        if (progress > 0.48 && progress < 0.54) {
-            const t = (progress - 0.48) / (0.54 - 0.48);
-            return 2 + smoothEase(t);
-        }
-        if (progress > 0.66 && progress < 0.72) {
-            const t = (progress - 0.66) / (0.72 - 0.66);
-            return 3 + smoothEase(t);
-        }
-        if (progress > 0.84 && progress < 0.90) {
-            const t = (progress - 0.84) / (0.90 - 0.84);
-            return 4 + smoothEase(t);
-        }
-        return 5;
+    function softEase(t) {
+        return 0.5 * t + 0.5 * (t * t * (3 - 2 * t));
     }
 
-    function smoothEase(t) {
-        return t * t * (3 - 2 * t);
+    function calcChapterVal(progress) {
+        const scaled = Math.max(0, Math.min(5, progress * 5));
+        const idx = Math.min(4, Math.floor(scaled));
+        const t = scaled - idx;
+        return idx + softEase(t);
     }
 
-    function onScroll() {
+    function clearTrackInlineStyles() {
+        if (phoneTrack) phoneTrack.style.transform = '';
+        if (textTrack) textTrack.style.transform = '';
+        if (giantTrack) giantTrack.style.transform = '';
+        textCards.forEach(card => {
+            card.style.opacity = '';
+            card.style.transform = '';
+        });
+    }
+
+    function syncView() {
         if (!wrap) return;
         const rect = wrap.getBoundingClientRect();
         const totalScrollSpace = wrap.offsetHeight - window.innerHeight;
-
         if (totalScrollSpace <= 0) return;
 
         const scrolled = -rect.top;
         const progress = Math.max(0, Math.min(1, scrolled / totalScrollSpace));
-        const chapterVal = calcPlateauTarget(progress);
-        
-        // Shift percentage: 0% to -83.333333% (for 6 items)
-        const shiftPercent = -(chapterVal / 5) * 83.333333;
+        const isReducedMotion = reducedMotionQuery.matches;
+        const useNativeScrollTimeline = supportsCssScrollTimeline && !isReducedMotion;
 
-        if (phoneTrack) phoneTrack.style.transform = `translateY(${shiftPercent}%)`;
-        if (textTrack) textTrack.style.transform = `translateY(${shiftPercent}%)`;
-        if (giantTrack) giantTrack.style.transform = `translateY(${shiftPercent}%)`;
+        let chapterIndex;
 
-        textCards.forEach((card, index) => {
-            const dist = Math.abs(chapterVal - index);
-            if (dist < 0.2) {
-                card.style.opacity = '1';
-                card.style.transform = 'scale(1)';
-            } else {
-                const opacity = Math.max(0.08, 1 - dist * 1.6);
-                const scale = Math.max(0.92, 1 - dist * 0.06);
-                card.style.opacity = opacity.toFixed(2);
-                card.style.transform = `scale(${scale.toFixed(2)})`;
+        if (useNativeScrollTimeline) {
+            if (tracksHadInlineStyles) {
+                clearTrackInlineStyles();
+                tracksHadInlineStyles = false;
             }
-        });
+            chapterIndex = Math.max(0, Math.min(5, Math.round(progress * 5)));
+        } else if (isReducedMotion) {
+            chapterIndex = Math.max(0, Math.min(5, Math.round(progress * 5)));
+            const shiftPercent = -(chapterIndex / 6) * 100;
+            if (phoneTrack) phoneTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+            if (textTrack) textTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+            if (giantTrack) giantTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+            textCards.forEach((card, index) => {
+                card.style.opacity = index === chapterIndex ? '1' : '0';
+                card.style.transform = 'none';
+            });
+            tracksHadInlineStyles = true;
+        } else {
+            const chapterVal = calcChapterVal(progress);
+            const shiftPercent = -(chapterVal / 6) * 100;
 
-        let chapterIndex = Math.round(chapterVal);
-        chapterIndex = Math.max(0, Math.min(5, chapterIndex));
+            if (phoneTrack) phoneTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+            if (textTrack) textTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+            if (giantTrack) giantTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+
+            textCards.forEach((card, index) => {
+                const dist = Math.abs(chapterVal - index);
+                if (dist < 0.08) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                } else {
+                    const opacity = Math.max(0.14, 1 - dist * 1.2);
+                    const scale = Math.max(0.94, 1 - dist * 0.06);
+                    card.style.opacity = opacity.toFixed(3);
+                    card.style.transform = `scale(${scale.toFixed(3)})`;
+                }
+            });
+
+            tracksHadInlineStyles = true;
+            chapterIndex = Math.max(0, Math.min(5, Math.round(chapterVal)));
+        }
 
         if (chapterIndex !== currentChapter) {
             currentChapter = chapterIndex;
             if (glowSpot) glowSpot.style.setProperty('--glow-tint', TINTS[chapterIndex]);
 
             dots.forEach((d, i) => {
-                if (i === chapterIndex) d.classList.add('active');
-                else d.classList.remove('active');
+                if (i === chapterIndex) {
+                    d.classList.add('active');
+                    d.setAttribute('aria-current', 'step');
+                } else {
+                    d.classList.remove('active');
+                    d.removeAttribute('aria-current');
+                }
             });
         }
+    }
+
+    function scheduleSync() {
+        if (rafPending) return;
+        rafPending = true;
+        requestAnimationFrame(() => {
+            rafPending = false;
+            syncView();
+        });
     }
 
     dots.forEach(dot => {
@@ -700,18 +838,29 @@ body {
 
             const wrapTop = wrap.getBoundingClientRect().top + window.scrollY;
             const totalScrollSpace = wrap.offsetHeight - window.innerHeight;
-            const targetRatios = [0.06, 0.24, 0.42, 0.60, 0.78, 0.95];
-            const targetScroll = wrapTop + targetRatios[chIndex] * totalScrollSpace;
+            if (totalScrollSpace <= 0) return;
+
+            const minTarget = Math.ceil(wrapTop);
+            const maxTarget = Math.floor(wrapTop + totalScrollSpace);
+            const rawTarget = wrapTop + (chIndex / 5) * totalScrollSpace;
+            const targetScroll = Math.max(minTarget, Math.min(maxTarget, Math.round(rawTarget)));
 
             window.scrollTo({
-                top: targetScroll + 2,
-                behavior: 'smooth'
+                top: targetScroll,
+                behavior: reducedMotionQuery.matches ? 'auto' : 'smooth'
             });
         });
     });
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    if (typeof reducedMotionQuery.addEventListener === 'function') {
+        reducedMotionQuery.addEventListener('change', syncView);
+    } else if (typeof reducedMotionQuery.addListener === 'function') {
+        reducedMotionQuery.addListener(syncView);
+    }
+
+    window.addEventListener('scroll', scheduleSync, { passive: true });
+    window.addEventListener('resize', scheduleSync, { passive: true });
+    syncView();
 })();
 </script>
 
