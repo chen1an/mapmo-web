@@ -4,8 +4,9 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 0. 裝置偵測與智慧樣式推播系統 (Device Detection & Adaptive Layout System)
-    initDeviceDetection();
+    // 0. 響應式導覽列狀態機與鍵盤/觸控無障礙支援
+    initResponsiveNavbar();
+    initAccessibleFlipCards();
 
     // 1. Initialize Swiper 3D Coverflow Carousel (依據 PDF Page 3 方案一 視覺效果)
     let quotesSwiper = null;
@@ -75,14 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. Mobile Menu Toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
-        });
-    }
+    // 4. Mobile Menu Toggle -> 統一交由 initResponsiveNavbar() 管理狀態機、外部點擊與 Esc 鍵關閉
 
     // 4.5 Features S-Curve Dashed Path & Single Walking Pin Follower (小人隨滾輪沿虛線向下移動，絕不壓字卡)
     function initFeaturesCurve() {
@@ -111,10 +105,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
             });
 
-            // Midpoint line between left and right anchors
-            const xMid = (pts[0].x + pts[1].x) / 2;
-            const topH = 115;
-            const botH = 115;
+            // Phone (< 640px) collapses into a clean single-column left vertical timeline;
+            // Tablet/Desktop preserves the alternating S-curve between left/right anchors.
+            const isCompact = window.innerWidth < 640;
+            const xMid = isCompact ? pts[0].x : (pts[0].x + pts[1].x) / 2;
+            const topH = isCompact ? 42 : 115;
+            const botH = isCompact ? 42 : 115;
 
             // Start point (top center) and End point (bottom center)
             const startX = xMid;
@@ -288,12 +284,23 @@ document.addEventListener('DOMContentLoaded', () => {
             walkingPin.style.opacity = '1';
         }
 
+        let curveResizeFrame = null;
+        const scheduleCurveRefresh = () => {
+            if (curveResizeFrame) cancelAnimationFrame(curveResizeFrame);
+            curveResizeFrame = requestAnimationFrame(() => {
+                curveResizeFrame = null;
+                updateCurve();
+                calcScrollProgress();
+            });
+        };
+
         updateCurve();
         calcScrollProgress();
-        window.addEventListener('resize', () => {
-            updateCurve();
-            calcScrollProgress();
-        });
+        if (typeof ResizeObserver !== 'undefined') {
+            const curveObserver = new ResizeObserver(scheduleCurveRefresh);
+            curveObserver.observe(wrapper);
+        }
+        window.addEventListener('resize', scheduleCurveRefresh, { passive: true });
         window.addEventListener('scroll', calcScrollProgress, { passive: true });
         setTimeout(() => { updateCurve(); calcScrollProgress(); }, 150);
         setTimeout(() => { updateCurve(); calcScrollProgress(); }, 600);
@@ -463,9 +470,13 @@ document.addEventListener('DOMContentLoaded', () => {
             lockBodyScroll();
             overlay.classList.add('is-active');
             overlay.setAttribute('aria-hidden', 'false');
+            if (closeBtn) {
+                requestAnimationFrame(() => closeBtn.focus({ preventScroll: true }));
+            }
         }
 
         function closeLetter() {
+            const chipToRestore = currentActiveChip;
             overlay.classList.remove('is-active');
             overlay.setAttribute('aria-hidden', 'true');
             unlockBodyScroll();
@@ -476,6 +487,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentActiveChip.classList.remove('is-selected');
                 currentActiveChip = null;
             }
+            if (chipToRestore && chipToRestore.getAttribute('tabindex') === '0') {
+                chipToRestore.focus({ preventScroll: true });
+            }
         }
 
         let isScrollLocked = false;
@@ -483,6 +497,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function preventScrollEvent(e) {
             if (!isScrollLocked) return;
+            const cardEl = e.target && e.target.closest ? e.target.closest('.letter-card') : null;
+            if (cardEl && cardEl.scrollHeight > cardEl.clientHeight) {
+                return;
+            }
             e.preventDefault();
         }
 
@@ -510,13 +528,32 @@ document.addEventListener('DOMContentLoaded', () => {
             window.removeEventListener('scroll', enforceScrollPosition);
         }
 
-        // Attach click to all quote chips
-        const chips = document.querySelectorAll('.marquee-rows-container .quote-chip');
-        chips.forEach(chip => {
-            chip.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const p = chip.querySelector('p');
-                openLetter(p ? p.textContent : chip.textContent, chip);
+        // Attach click & keyboard activation to marquee quote chips
+        document.querySelectorAll('.marquee-rows-container .marquee-track').forEach(track => {
+            const trackChips = Array.from(track.querySelectorAll('.quote-chip'));
+            const primaryCount = Math.ceil(trackChips.length / 2);
+
+            trackChips.forEach((chip, index) => {
+                const activateChip = (e) => {
+                    e.stopPropagation();
+                    const p = chip.querySelector('p');
+                    openLetter(p ? p.textContent : chip.textContent, chip);
+                };
+
+                if (index < primaryCount) {
+                    chip.setAttribute('role', 'button');
+                    chip.setAttribute('tabindex', '0');
+                    chip.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            activateChip(e);
+                        }
+                    });
+                } else {
+                    chip.setAttribute('aria-hidden', 'true');
+                }
+
+                chip.addEventListener('click', activateChip);
             });
         });
 
@@ -531,7 +568,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'Escape') {
                 closeLetter();
             } else if (scrollKeys.has(e.key)) {
-                e.preventDefault();
+                const letterCardEl = overlay.querySelector('.letter-card');
+                const inScrollableCard = letterCardEl && letterCardEl.scrollHeight > letterCardEl.clientHeight && letterCardEl.contains(document.activeElement);
+                if (!inScrollableCard) {
+                    e.preventDefault();
+                }
             }
         });
     }
@@ -546,8 +587,14 @@ document.addEventListener('DOMContentLoaded', () => {
             center: [25.0350, 121.5450],
             zoom: 13,
             zoomControl: false,
+            scrollWheelZoom: false,
             attributionControl: false // Completely removes 'Leaflet | OpenStreetMap contributors' text!
         });
+        let mapResizeTimer = null;
+        window.addEventListener('resize', () => {
+            clearTimeout(mapResizeTimer);
+            mapResizeTimer = setTimeout(() => map.invalidateSize(), 150);
+        }, { passive: true });
 
         // Use Standard OpenStreetMap Tiles (100% FREE, NO API KEY REQUIRED, ZERO WATERMARKS)
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -714,72 +761,135 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ════════════════════════════════════════════════════════════════════
-// 裝置自動判別與狀態屬性更新 (Device Detector Implementation)
+// 響應式導覽列狀態機 (Single-Tree Navbar + Overflow Collapse Guard)
 // ════════════════════════════════════════════════════════════════════
-function initDeviceDetection() {
-    function detectDevice() {
-        const width = window.innerWidth;
-        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        const isMobileUA = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-        const isTabletUA = /iPad|Macintosh/i.test(userAgent) && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
-        const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+function initResponsiveNavbar() {
+    const navbar = document.getElementById('navbar');
+    const navContainer = navbar ? navbar.querySelector('.nav-container') : null;
+    const navLinks = document.getElementById('navLinks');
+    const menuToggle = document.getElementById('menuToggle');
+    if (!navbar || !navContainer || !navLinks || !menuToggle) return;
 
-        let deviceType = 'desktop';
-        if (width <= 767 || (isMobileUA && width <= 900)) {
-            deviceType = 'mobile';
-        } else if (width <= 1024 || isTabletUA || (isTouch && width <= 1100)) {
-            deviceType = 'tablet';
-        }
+    const mobileMediaQuery = window.matchMedia('(max-width: 767px)');
+    let collapsedAtWidth = 0;
 
-        document.documentElement.setAttribute('data-device', deviceType);
-        document.documentElement.setAttribute('data-touch', isTouch ? 'true' : 'false');
-        
-        if (document.body) {
-            document.body.classList.remove('is-mobile', 'is-tablet', 'is-desktop');
-            document.body.classList.add(`is-${deviceType}`);
-        }
-
-        updateMobileNoticeBanner(deviceType);
-    }
-
-    function updateMobileNoticeBanner(deviceType) {
-        let banner = document.getElementById('deviceAdaptiveNotice');
-        if (deviceType === 'mobile' || deviceType === 'tablet') {
-            if (!banner && !sessionStorage.getItem('mapmo_notice_closed')) {
-                banner = document.createElement('div');
-                banner.id = 'deviceAdaptiveNotice';
-                banner.className = 'device-adaptive-banner';
-                banner.innerHTML = `
-                    <div class="device-banner-content">
-                        <span>📱 您正在使用 ${deviceType === 'mobile' ? '手機' : '平板'} 瀏覽 MapMo！已自動為您最佳化排版與觸控體驗。</span>
-                        <button onclick="closeDeviceNotice()" aria-label="關閉提示">&times;</button>
-                    </div>
-                `;
-                if (document.body) {
-                    document.body.prepend(banner);
-                    document.body.classList.add('has-notice');
-                }
-            }
-        } else if (banner) {
-            banner.remove();
-            if (document.body) document.body.classList.remove('has-notice');
+    function syncMenuState(open) {
+        navLinks.classList.toggle('open', open);
+        menuToggle.classList.toggle('is-open', open);
+        menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuToggle.setAttribute('aria-label', open ? '關閉選單' : '選單');
+        const icon = menuToggle.querySelector('i');
+        if (icon) {
+            icon.className = open ? 'fas fa-times' : 'fas fa-bars';
+            icon.setAttribute('aria-hidden', 'true');
         }
     }
 
-    detectDevice();
-    window.addEventListener('resize', detectDevice);
-    window.addEventListener('orientationchange', () => {
-        setTimeout(detectDevice, 200);
+    function isCollapsedMode() {
+        return mobileMediaQuery.matches || navbar.classList.contains('navbar--collapsed');
+    }
+
+    function measureNavbarOverflow() {
+        if (mobileMediaQuery.matches) {
+            navbar.classList.remove('navbar--collapsed');
+            collapsedAtWidth = 0;
+            return;
+        }
+
+        const currentWidth = navContainer.clientWidth;
+        if (navbar.classList.contains('navbar--collapsed') && currentWidth <= collapsedAtWidth) {
+            return;
+        }
+
+        navbar.classList.add('is-measuring');
+        navbar.classList.remove('navbar--collapsed');
+
+        const wrapsOrOverflows =
+            navContainer.scrollWidth > currentWidth + 2 ||
+            navLinks.scrollHeight > 54;
+
+        if (wrapsOrOverflows) {
+            navbar.classList.add('navbar--collapsed');
+            collapsedAtWidth = currentWidth;
+        } else {
+            collapsedAtWidth = 0;
+            syncMenuState(false);
+        }
+
+        requestAnimationFrame(() => navbar.classList.remove('is-measuring'));
+    }
+
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        syncMenuState(!navLinks.classList.contains('open'));
     });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (isCollapsedMode()) {
+                syncMenuState(false);
+            }
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (navLinks.classList.contains('open') && !navbar.contains(e.target)) {
+            syncMenuState(false);
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+            syncMenuState(false);
+            menuToggle.focus();
+        }
+    });
+
+    if (typeof ResizeObserver !== 'undefined') {
+        const navObserver = new ResizeObserver(measureNavbarOverflow);
+        navObserver.observe(navContainer);
+    }
+
+    const onMediaChange = () => {
+        if (!isCollapsedMode()) syncMenuState(false);
+        measureNavbarOverflow();
+    };
+    if (typeof mobileMediaQuery.addEventListener === 'function') {
+        mobileMediaQuery.addEventListener('change', onMediaChange);
+    } else if (typeof mobileMediaQuery.addListener === 'function') {
+        mobileMediaQuery.addListener(onMediaChange);
+    }
+
+    window.addEventListener('resize', measureNavbarOverflow, { passive: true });
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(measureNavbarOverflow).catch(() => {});
+    }
+    measureNavbarOverflow();
 }
 
-window.closeDeviceNotice = function() {
-    const banner = document.getElementById('deviceAdaptiveNotice');
-    if (banner) {
-        banner.style.opacity = '0';
-        banner.style.transform = 'translateY(-100%)';
-        setTimeout(() => banner.remove(), 300);
-    }
-    if (document.body) document.body.classList.remove('has-notice');
-    sessionStorage.setItem('mapmo_notice_closed', 'true');
-};
+// ════════════════════════════════════════════════════════════════════
+// 故事翻轉卡無障礙與觸控體驗強化 (post.html)
+// ════════════════════════════════════════════════════════════════════
+function initAccessibleFlipCards() {
+    const cards = document.querySelectorAll('.flip-card');
+    if (!cards.length) return;
+
+    cards.forEach(card => {
+        if (!card.hasAttribute('tabindex')) card.setAttribute('tabindex', '0');
+        if (!card.hasAttribute('role')) card.setAttribute('role', 'button');
+        card.setAttribute('aria-pressed', card.classList.contains('flipped') ? 'true' : 'false');
+
+        card.addEventListener('click', () => {
+            requestAnimationFrame(() => {
+                card.setAttribute('aria-pressed', card.classList.contains('flipped') ? 'true' : 'false');
+            });
+        });
+
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.click();
+            }
+        });
+    });
+}
