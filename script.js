@@ -63,18 +63,80 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. FAQ Accordion Logic
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-        const questionBtn = item.querySelector('.faq-question');
-        questionBtn.addEventListener('click', () => {
-            const isActive = item.classList.contains('active');
-            faqItems.forEach(i => i.classList.remove('active'));
-            if (!isActive) {
-                item.classList.add('active');
-            }
+    // 3. FAQ Accordion + Deep-Link Anchor Auto-Expand Logic
+    const faqItems = Array.from(document.querySelectorAll('.faq-item'));
+    if (faqItems.length > 0) {
+        let hashHighlightTimer = null;
+        const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        const setFaqState = (targetItem, expand) => {
+            faqItems.forEach(item => {
+                const shouldOpen = Boolean(expand && item === targetItem);
+                item.classList.toggle('active', shouldOpen);
+                const btn = item.querySelector('.faq-question');
+                if (btn) btn.setAttribute('aria-expanded', String(shouldOpen));
+            });
+        };
+
+        faqItems.forEach(item => {
+            const questionBtn = item.querySelector('.faq-question');
+            if (!questionBtn) return;
+            questionBtn.setAttribute('aria-expanded', String(item.classList.contains('active')));
+            questionBtn.addEventListener('click', () => {
+                const wasActive = item.classList.contains('active');
+                setFaqState(item, !wasActive);
+            });
         });
-    });
+
+        const openFaqByHash = (hashStr, shouldScroll = true) => {
+            const cleanId = decodeURIComponent((hashStr || '').replace(/^#/, '')).trim();
+            if (!cleanId) return;
+            const target = document.getElementById(cleanId);
+            if (!target || !target.classList.contains('faq-item')) return;
+
+            setFaqState(target, true);
+            faqItems.forEach(item => item.classList.remove('is-hash-target'));
+            target.classList.add('is-hash-target');
+            clearTimeout(hashHighlightTimer);
+            hashHighlightTimer = setTimeout(() => {
+                target.classList.remove('is-hash-target');
+            }, 2200);
+
+            if (shouldScroll) {
+                requestAnimationFrame(() => {
+                    target.scrollIntoView({
+                        behavior: reducedMotionQuery.matches ? 'auto' : 'smooth',
+                        block: 'start'
+                    });
+                });
+            }
+        };
+
+        if (window.location.hash) {
+            openFaqByHash(window.location.hash, true);
+        }
+
+        window.addEventListener('hashchange', () => {
+            openFaqByHash(window.location.hash, true);
+        });
+
+        // 同頁點擊 Footer 錨點（包含重複點擊當前 hash）時立即定位並展開
+        document.querySelectorAll('a[href^="faq.html#"], a[href^="#faq-"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href') || '';
+                const hashPart = href.includes('#') ? '#' + href.split('#')[1] : '';
+                if (!hashPart) return;
+                const target = document.getElementById(hashPart.slice(1));
+                if (target && target.classList.contains('faq-item')) {
+                    e.preventDefault();
+                    if (window.location.hash !== hashPart) {
+                        history.replaceState(null, '', hashPart);
+                    }
+                    openFaqByHash(hashPart, true);
+                }
+            });
+        });
+    }
 
     // 4. Mobile Menu Toggle -> 統一交由 initResponsiveNavbar() 管理狀態機、外部點擊與 Esc 鍵關閉
 

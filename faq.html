@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=20261116_rwd">
+    <link rel="stylesheet" href="style.css?v=20261116_faq2">
 </head>
 <body>
 
@@ -42,7 +42,7 @@
         <div class="section-container">
             <span class="section-tag">FAQ 問與答 ❓</span>
             <h1 class="page-title">常見問題解答</h1>
-            <p class="page-subtitle">關於 MapMo 的匿名機制、隱私權保護、隱私與足跡設定的完整說明。</p>
+            <p class="page-subtitle">關於 MapMo 的匿名機制、AI 品味推播、隱私保護與足跡控管的完整說明。</p>
         </div>
     </header>
 
@@ -50,43 +50,63 @@
     <section class="faq-section page-body-padding">
         <div class="section-container">
             <div class="faq-accordion">
-                <div class="faq-item active">
-                    <button class="faq-question">
+                <div class="faq-item active" id="faq-anonymous">
+                    <button type="button" class="faq-question" aria-expanded="true" aria-controls="faq-ans-anonymous">
                         <span>MapMo 真的完全不需要註冊社交帳號嗎？</span>
-                        <i class="fas fa-chevron-down"></i>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
                     </button>
-                    <div class="faq-answer">
-                        <p>是的！MapMo 支援匿名訪客登入，您可以完全不提供任何個人社交帳號資料即可開始記錄心情足跡。</p>
+                    <div class="faq-answer" id="faq-ans-anonymous">
+                        <p>是的！MapMo 支援免社群帳號匿名訪客登入與獨立驗證機制，您無須綁定真實姓名、IG 或個人社交檔案即可開始記錄心情足跡。</p>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <button class="faq-question">
+                <div class="faq-item" id="faq-visibility">
+                    <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-ans-visibility">
                         <span>別人能看到我留下的足跡嗎？</span>
-                        <i class="fas fa-chevron-down"></i>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
                     </button>
-                    <div class="faq-answer">
-                        <p>您可以自由選擇將足跡設定為「🟢 公開」或「🔒 私人獨享」。公開足跡會顯示在地圖上供大家匿名探索；私人足跡則僅存於您的帳號，其他人絕對看不到。</p>
+                    <div class="faq-answer" id="faq-ans-visibility">
+                        <p>您可以隨時將單篇足跡自由切換為「🟢 公開」或「🔒 私人獨享」。公開足跡會以純粹匿名形式顯示在地圖上供大家探索；私人足跡則僅限您本人帳號查看，其他人絕對看不到。</p>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <button class="faq-question">
+                <div class="faq-item" id="faq-ai-vibe">
+                    <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-ans-ai-vibe">
+                        <span>「AI 品味推播」會追蹤我的個人身分或現實行蹤嗎？</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" id="faq-ans-ai-vibe">
+                        <p>完全不會！AI 品味推播採 16 大視覺風格向量演算，只根據您自己收藏（❤️）與發佈的畫面風格和關鍵字，推薦審美契合的城市足跡。系統嚴格採取「對風格不對個人」原則，絕不提供追蹤特定使用者位置的功能，徹底杜絕肉搜風險；「街區情緒氛圍」亦僅聚合 1 公里街區的匿名情緒比例，自動隱藏精確門牌。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" id="faq-echo-weather">
+                    <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-ans-echo-weather">
+                        <span>什麼是「故地重遊」與「AI 心靈拍立得」？</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" id="faq-ans-echo-weather">
+                        <p>當您以正式帳號再次走進自己 7 天前曾親手留下的真實足跡 80 公尺範圍內（且過了 24 小時冷卻提示後），地圖上方就會浮現「故地重遊」時空膠囊橫幅，帶您對比當時與現在的心情；而相機快門則會即時鎖定 GPS 經緯度並蓋上不可後製竄改的「即拍即傳」認證標章，上傳後可立刻生成專屬的時空拍立得回憶卡。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" id="faq-safety">
+                    <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-ans-safety">
                         <span>如果不小心遇到不當內容該怎麼辦？</span>
-                        <i class="fas fa-chevron-down"></i>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
                     </button>
-                    <div class="faq-answer">
-                        <p>MapMo 提供完整的「檢舉不當內容」與「一鍵封鎖創作者」功能。封鎖創作者後，該用戶的所有發布將會立即從您的地圖中隱蔽，您也可以隨時在設定中解除封鎖。</p>
+                    <div class="faq-answer" id="faq-ans-safety">
+                        <p>MapMo 採雙層 AI 安全防護與自主守門設計：貼文上傳前會先經 Google Gemini 多模態圖文審查攔截違規內容；瀏覽時也可在選單點選「檢舉此紀錄」或「一鍵封鎖創作者」，封鎖後該創作者的所有足跡將立刻從您的地圖隱蔽，檢舉案件亦會由雲端實際讀取影像仲裁。您還可以在設定中勾選「避開特定情緒標籤」，主動過濾負面情緒。</p>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <button class="faq-question">
+                <div class="faq-item" id="faq-delete">
+                    <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-ans-delete">
                         <span>如果想刪除我的所有資料可以嗎？</span>
-                        <i class="fas fa-chevron-down"></i>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
                     </button>
-                    <div class="faq-answer">
-                        <p>隨時可以！在 App 的設定選單中提供「刪除帳號」功能，點擊後系統會連動清理徹底銷毀您存放在雲端的所有照片與足跡數據。</p>
+                    <div class="faq-answer" id="faq-ans-delete">
+                        <p>隨時可以！每篇過往足跡皆可隨時單筆刪除或轉為私人；若希望徹底清空，在 App 的設定選單點擊「刪除帳號」並經雙重確認後，系統會徹底銷毀您存放在雲端的所有照片與足跡數據，不留痕跡。</p>
                     </div>
                 </div>
             </div>
@@ -110,8 +130,11 @@
                 <div class="pdf-footer-col">
                     <h4 class="pdf-footer-heading">常見問題</h4>
                     <ul class="pdf-footer-list">
-                        <li><a href="faq.html">匿名登入說明</a></li>
-                        <li><a href="faq.html">公開與私人足跡</a></li>
+                        <li><a href="faq.html#faq-anonymous">匿名登入說明</a></li>
+                        <li><a href="faq.html#faq-visibility">公開與私人足跡</a></li>
+                        <li><a href="faq.html#faq-ai-vibe">AI 推播與反肉搜</a></li>
+                        <li><a href="faq.html#faq-safety">檢舉與一鍵封鎖</a></li>
+                        <li><a href="faq.html#faq-delete">刪除所有帳號資料</a></li>
                     </ul>
                 </div>
                 <div class="pdf-footer-col">
@@ -137,6 +160,6 @@
         </div>
     </footer>
 
-    <script src="script.js?v=20261116_rwd"></script>
+    <script src="script.js?v=20261116_faq2"></script>
 </body>
 </html>

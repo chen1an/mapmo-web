@@ -82,7 +82,8 @@ h1, h2, h3 {
 .story-text,
 .about-text p,
 .letter-response-text,
-.letter-quote-text {
+.letter-quote-text,
+.app-update-card p {
     text-wrap: pretty;
 }
 
@@ -2341,6 +2342,13 @@ a {
     border: 1px solid rgba(0,0,0,0.06);
     overflow: hidden;
     box-shadow: var(--shadow-soft);
+    scroll-margin-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 28px);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.faq-item.is-hash-target {
+    border-color: rgba(217, 155, 0, 0.55);
+    box-shadow: 0 12px 32px rgba(251, 189, 4, 0.16), 0 0 0 3px rgba(251, 189, 4, 0.14);
 }
 
 .faq-question {
@@ -2357,6 +2365,11 @@ a {
     text-align: left;
     cursor: pointer;
     transition: background 0.2s ease;
+}
+
+.faq-question i {
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
 }
 
 .faq-question:hover {
@@ -2377,6 +2390,125 @@ a {
 
 .faq-item.active .faq-question i {
     transform: rotate(180deg);
+}
+
+/* ==========================================================================
+   6.5 App 全新進化核心引擎 Bento Showcase (共用首頁精選與功能詳情頁)
+   ========================================================================== */
+.app-updates-section {
+    padding: clamp(56px, 7vw, 88px) 0;
+    position: relative;
+}
+
+.app-updates-section.compact-home {
+    padding: clamp(32px, 5vw, 56px) 0 clamp(24px, 4vw, 40px);
+}
+
+.app-updates-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 34px;
+}
+
+.app-update-card {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(28, 28, 30, 0.08);
+    border-radius: 22px;
+    padding: 26px 24px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.045);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.app-update-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.08);
+    border-color: rgba(28, 28, 30, 0.16);
+}
+
+.app-update-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.app-update-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.app-update-badge {
+    font-size: 12px;
+    font-weight: 800;
+    padding: 5px 11px;
+    border-radius: 99px;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+}
+
+.app-update-card h3 {
+    font-size: 19px;
+    font-weight: 800;
+    color: #1C1C1E;
+    line-height: 1.35;
+    margin: 2px 0 0;
+}
+
+.app-update-card p {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: #555862;
+    margin: 0;
+}
+
+.app-updates-cta-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.app-updates-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 24px;
+    border-radius: 99px;
+    font-size: 15px;
+    font-weight: 700;
+    min-block-size: var(--target-size);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.app-updates-cta-btn.primary {
+    background: #1C1C1E;
+    color: #FFFFFF;
+    box-shadow: 0 8px 20px rgba(28, 28, 30, 0.16);
+}
+
+.app-updates-cta-btn.secondary {
+    background: rgba(255, 255, 255, 0.92);
+    color: #1C1C1E;
+    border: 1.5px solid rgba(28, 28, 30, 0.14);
+}
+
+.app-updates-cta-btn:hover {
+    transform: translateY(-2px);
 }
 
 /* ==========================================================================
@@ -3580,6 +3712,7 @@ a {
 
 /* 1. 卡片容器查詢環境設定 (讓元件依父層實寬自適應，而不僅依賴視窗寬度) */
 .home-pages-overview .section-container,
+.app-updates-section .section-container,
 .post-cards-section,
 .team-grid-section,
 .contact-section .section-container {
@@ -3590,6 +3723,9 @@ a {
     @container (max-width: 560px) {
         .page-entry-card {
             padding: 24px 20px;
+        }
+        .app-update-card {
+            padding: 20px 18px;
         }
         .flip-card-back {
             padding: 20px 18px;
@@ -3607,6 +3743,8 @@ a {
     .contact-card:hover,
     .team-card:hover,
     .feature-block-card:hover,
+    .app-update-card:hover,
+    .app-updates-cta-btn:hover,
     .quote-chip:hover,
     .flip-card:hover .flip-card-inner,
     .flip-card:hover .card-img {
@@ -3726,6 +3864,11 @@ a {
     .contact-cards-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 20px;
+    }
+
+    .app-updates-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
     }
 
     .contact-card:last-child:nth-child(odd) {
@@ -3917,9 +4060,15 @@ a {
     .cards-container.grid-3,
     .team-pastel-grid,
     .contact-cards-grid,
-    .mosaic-grid-canvas {
+    .mosaic-grid-canvas,
+    .app-updates-grid {
         grid-template-columns: 1fr;
-        gap: 18px;
+        gap: 16px;
+    }
+
+    .app-update-card {
+        padding: 20px 18px;
+        border-radius: 18px;
     }
 
     .contact-card:last-child:nth-child(odd) {

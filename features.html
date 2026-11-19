@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
 
     <!-- Shared CSS (Light Theme base) -->
-    <link rel="stylesheet" href="style.css?v=20261116_rwd">
+    <link rel="stylesheet" href="style.css?v=20261116_faq2">
 
 <style>
 /* ══════════════════════════════════════════════
@@ -301,6 +301,11 @@ body {
     transform: translateY(-50%);
     display: flex; flex-direction: column; gap: 12px;
     z-index: 200;
+    transition: opacity 0.25s ease;
+}
+.story-dots.is-outside-story {
+    opacity: 0;
+    pointer-events: none;
 }
 .story-dot {
     position: relative;
@@ -411,22 +416,22 @@ body {
     }
     .sp-text-viewport {
         max-width: 390px;
-        height: clamp(248px, 39dvh, 290px);
+        height: clamp(255px, 41dvh, 305px);
     }
-    .panel-heading { font-size: clamp(1.28rem, 5.2vw, 1.55rem); }
-    .panel-description { font-size: 0.88rem; margin-bottom: 10px; }
-    .panel-feature-card h4 { font-size: 0.88rem; }
-    .panel-feature-card p { font-size: 0.82rem; line-height: 1.5; }
+    .panel-heading { font-size: clamp(1.24rem, 5vw, 1.5rem); }
+    .panel-description { font-size: 0.87rem; line-height: 1.52; margin-bottom: 10px; }
+    .panel-feature-card h4 { font-size: 0.87rem; }
+    .panel-feature-card p { font-size: 0.81rem; line-height: 1.48; }
 }
 
 @media (max-width: 639px) and (max-height: 700px) {
     .sp-phone-container {
-        width: 130px;
-        height: 264px;
+        width: 124px;
+        height: 252px;
         margin-bottom: 8px;
     }
     .sp-text-viewport {
-        height: 242px;
+        height: 252px;
     }
 }
 </style>
@@ -466,12 +471,12 @@ body {
 
 <!-- ── Side Dots Navigation (6 Chapters) ── -->
 <nav class="story-dots" id="storyDots" aria-label="章節導覽">
-    <button type="button" class="story-dot active" data-ch="0" aria-label="前往第 1 章：情緒分類與過濾" aria-current="step"></button>
-    <button type="button" class="story-dot" data-ch="1" aria-label="前往第 2 章：放置回憶與拍攝"></button>
+    <button type="button" class="story-dot active" data-ch="0" aria-label="前往第 1 章：探索地圖與即時情緒篩選" aria-current="step"></button>
+    <button type="button" class="story-dot" data-ch="1" aria-label="前往第 2 章：0.01 秒即拍即傳與拍立得"></button>
     <button type="button" class="story-dot" data-ch="2" aria-label="前往第 3 章：足跡自主控制"></button>
-    <button type="button" class="story-dot" data-ch="3" aria-label="前往第 4 章：安全審核與一鍵檢舉"></button>
-    <button type="button" class="story-dot" data-ch="4" aria-label="前往第 5 章：設定與帳號管理"></button>
-    <button type="button" class="story-dot" data-ch="5" aria-label="前往第 6 章：個人檔案與權限"></button>
+    <button type="button" class="story-dot" data-ch="3" aria-label="前往第 4 章：雙層 AI 審核與一鍵檢舉"></button>
+    <button type="button" class="story-dot" data-ch="4" aria-label="前往第 5 章：設定、避開標籤與展覽模式"></button>
+    <button type="button" class="story-dot" data-ch="5" aria-label="前往第 6 章：個人檔案、我的收藏與權限"></button>
 </nav>
 
 <!-- ══════════════════════════════════════════
@@ -509,9 +514,9 @@ body {
                     <!-- Phone Screen Track displaying 6 user uploaded App screenshots -->
                     <div class="sp-phone-track" id="phoneTrack">
 
-                        <!-- Page 0: 地圖與情緒分類 (主畫面，日間.jpg) -->
+                        <!-- Page 0: 新版探索地圖、街區氛圍與品味推播 (主畫面_新版.jpg) -->
                         <div class="sp-screen-page">
-                            <img src="assets/主畫面，日間.jpg" alt="MapMo 地圖與情緒標籤" class="sp-app-img">
+                            <img src="assets/主畫面_新版.jpg" alt="MapMo 新版探索地圖與街區情緒氛圍畫面" class="sp-app-img">
                         </div>
 
                         <!-- Page 1: 放置回憶與相機拍攝 (相機畫面.jpg) -->
@@ -547,16 +552,16 @@ body {
             <div class="sp-text-viewport">
                 <div class="sp-text-track" id="textTrack">
 
-                    <!-- Card 0: 地圖與情緒分類 -->
+                    <!-- Card 0: 新版探索地圖與情緒分類 -->
                     <div class="sp-text-card">
                         <div class="panel-tag-badge" style="background:rgba(251,189,4,0.15);color:#D99B00;border:1px solid rgba(251,189,4,0.3);">
-                            01 · EMOTIONS 😊
+                            01 · EXPLORE &amp; VIBE 😊
                         </div>
-                        <h2 class="panel-heading">情緒分類與過濾</h2>
-                        <p class="panel-description">發文時選取情緒、瀏覽時側邊欄篩選，讓每段回憶被好好分類安放。五種情緒標籤對應不同色彩，一眼辨認你當下的感受。</p>
+                        <h2 class="panel-heading">探索地圖與即時篩選</h2>
+                        <p class="panel-description">改採輕巧五色迷你標點，搭配頂部「街區情緒氛圍」與底部「AI 品味推播」微膠囊，左側一鍵過濾喜樂怒哀無。</p>
                         <div class="panel-feature-card">
-                            <h4><i class="fas fa-filter" style="color:#FBBD04;margin-right:6px;"></i>即時地圖過濾</h4>
-                            <p>在地圖上快速勾選喜、樂、怒、哀、無，探索不同心境下的城市地標足跡。</p>
+                            <h4><i class="fas fa-layer-group" style="color:#FBBD04;margin-right:6px;"></i>聚合地標與展開抽屜</h4>
+                            <p>同地點累積多筆心聲時收合為數字徽章，點開抽屜即可橫向滑動並篩選情緒。</p>
                         </div>
                     </div>
 
@@ -565,11 +570,11 @@ body {
                         <div class="panel-tag-badge" style="background:rgba(48,209,88,0.15);color:#1E9E3C;border:1px solid rgba(48,209,88,0.3);">
                             02 · CAMERA & GPS 📷
                         </div>
-                        <h2 class="panel-heading">放置回憶與拍攝</h2>
-                        <p class="panel-description">走在路上隨手記錄下的風景，或是手機相簿裡一直想分享的照片，都可以安置在 MapMo 地圖上。</p>
+                        <h2 class="panel-heading">0.01s 即拍即傳與拍立得</h2>
+                        <p class="panel-description">快門瞬間鎖定 GPS 蓋上不可竄改「即拍即傳」標章，搭配 1.0x~5.0x 弧形變焦轉盤，相簿也能輕鬆上傳。</p>
                         <div class="panel-feature-card">
-                            <h4><i class="fas fa-compass" style="color:#30D158;margin-right:6px;"></i>GPS 自動定位對齊</h4>
-                            <p>自動讀取相片 EXIF 地理位置資訊，相機即拍即上傳，讓每段故事精準落地。</p>
+                            <h4><i class="fas fa-compass" style="color:#30D158;margin-right:6px;"></i>自動存相簿 ＋ 心靈拍立得</h4>
+                            <p>支援自動備份原圖至手機相簿，發文即贈帶時空印記的專屬拍立得憑證卡。</p>
                         </div>
                     </div>
 
@@ -579,49 +584,49 @@ body {
                             03 · DELETE & CONTROL 🗑️
                         </div>
                         <h2 class="panel-heading">足跡自主控制</h2>
-                        <p class="panel-description">隨時掌握自己的所有紀錄與回憶發文，在詳細資料中可隨心所欲地刪除過往貼文或轉為私人，資料完全由你自主掌控。</p>
+                        <p class="panel-description">隨時掌握自己的所有紀錄與回憶發文，在詳細資料中可隨心刪除過往貼文或轉為私人，資料完全自主掌控。</p>
                         <div class="panel-feature-card">
                             <h4><i class="fas fa-trash-alt" style="color:#FF9500;margin-right:6px;"></i>徹底刪除與清理</h4>
-                            <p>一鍵刪除個人歷史記錄與相片，系統即時同步清除，不留後患與痕跡。</p>
+                            <p>一鍵刪除個人歷史記錄與相片，系統即時同步清除，不留痕跡。</p>
                         </div>
                     </div>
 
-                    <!-- Card 3: 安全審核與一鍵檢舉 (對應 封鎖.jpg 畫面) -->
+                    <!-- Card 3: 雙層 AI 審核與一鍵檢舉 (對應 封鎖.jpg 畫面) -->
                     <div class="sp-text-card">
                         <div class="panel-tag-badge" style="background:rgba(234,67,53,0.15);color:#EA4335;border:1px solid rgba(234,67,53,0.3);">
-                            04 · REPORT & SAFETY 🛡️
+                            04 · AI SAFETY & REPORT 🛡️
                         </div>
-                        <h2 class="panel-heading">安全審核與一鍵檢舉</h2>
-                        <p class="panel-description">瀏覽內容時發現不當內容或違規貼文？可在紀錄選單中「一鍵檢舉此紀錄」或「封鎖此創作者」，審核團隊將第一時間處理移除。</p>
+                        <h2 class="panel-heading">雙層 AI 審核與一鍵檢舉</h2>
+                        <p class="panel-description">上傳前 Gemini 先把關圖文安全；遇違規貼文可檢舉由雲端讀取影像仲裁，或一鍵「封鎖此創作者」立即隱蔽。</p>
                         <div class="panel-feature-card">
-                            <h4><i class="fas fa-shield-alt" style="color:#EA4335;margin-right:6px;"></i>零容忍安心防護</h4>
-                            <p>MapMo 對惡意或不當內容採取零容忍態度，建立純粹、溫暖、共鳴的友好社群氛圍。</p>
+                            <h4><i class="fas fa-shield-alt" style="color:#EA4335;margin-right:6px;"></i>斷路器防誤殺保護</h4>
+                            <p>AI 信心度不足時轉由人工複核，防堵惡意檢舉濫殺正常足跡，守護溫暖社群。</p>
                         </div>
                     </div>
 
                     <!-- Card 4: 設定與帳號管理 (對應 個人檔案設定.jpg 畫面) -->
                     <div class="sp-text-card">
                         <div class="panel-tag-badge" style="background:rgba(10,132,255,0.15);color:#0066CC;border:1px solid rgba(10,132,255,0.3);">
-                            05 · ACCOUNT & SETTINGS ⚙️
+                            05 · ACCOUNT & GUARDIAN ⚙️
                         </div>
-                        <h2 class="panel-heading">設定與帳號管理</h2>
-                        <p class="panel-description">提供直覺且完整的帳號設定面板，包含使用說明指南、封鎖名單管理、帳號登出與刪除帳號功能，保障個人使用權益。</p>
+                        <h2 class="panel-heading">設定、避開標籤與展覽模式</h2>
+                        <p class="panel-description">支援維護封鎖名單、相簿自動備份、一鍵開啟「避開負面情緒標籤」，並內建「展覽演示模式」零限制展示。</p>
                         <div class="panel-feature-card">
-                            <h4><i class="fas fa-cog" style="color:#0A84FF;margin-right:6px;"></i>封鎖名單與帳號自主</h4>
-                            <p>隨時在設定面板檢視與維護已封鎖名單，並可自主管理個人帳號狀態。</p>
+                            <h4><i class="fas fa-cog" style="color:#0A84FF;margin-right:6px;"></i>心理界線 ＋ 帳號銷毀</h4>
+                            <p>想徹底離開時可透過雙重確認永久刪除帳號與所有數據。</p>
                         </div>
                     </div>
 
                     <!-- Card 5: 個人檔案與足跡 (對應 個人檔案.jpg 畫面) -->
                     <div class="sp-text-card">
                         <div class="panel-tag-badge" style="background:rgba(175,82,222,0.15);color:#AF52DE;border:1px solid rgba(175,82,222,0.3);">
-                            06 · PRIVACY & FOOTPRINTS 🔒
+                            06 · PROFILE & SAVED 🔒
                         </div>
-                        <h2 class="panel-heading">個人檔案與權限</h2>
-                        <p class="panel-description">專屬回憶空間讓你好好回顧每個地標上的記憶。自由切換公開或私人權限，我們絕不出售或公開你的個資。</p>
+                        <h2 class="panel-heading">個人檔案、收藏與權限</h2>
+                        <p class="panel-description">底部抽屜支援「我的足跡」與「我的收藏 ❤️」秒切連動地圖；每篇貼文皆可獨立切換公開或私人瀏覽。</p>
                         <div class="panel-feature-card">
-                            <h4><i class="fas fa-toggle-on" style="color:#AF52DE;margin-right:6px;"></i>獨立權限控管</h4>
-                            <p>每篇貼文皆可獨立開啟或關閉私人瀏覽，無論是珍藏私密紀錄或公開共鳴都輕鬆掌握。</p>
+                            <h4><i class="fas fa-toggle-on" style="color:#AF52DE;margin-right:6px;"></i>對風格不對人的隱私守護</h4>
+                            <p>僅運算視覺風格偏好、絕不追蹤個人行蹤，放心回味每段城市故事。</p>
                         </div>
                     </div>
 
@@ -632,6 +637,82 @@ body {
 
     </div><!-- /story-sticky -->
 </div><!-- /story-wrap -->
+
+<!-- ── 4. App 全新進化：六大智慧引擎與細節亮點 (Bento Showcase) ── -->
+<section class="app-updates-section" id="appUpdatesShowcase">
+    <div class="section-container">
+        <div class="section-header center">
+            <span class="section-tag">WHAT'S NEW IN MAPMO APP ✦</span>
+            <h2 class="section-title">新版 App 嶄新進化：六大核心引擎與細節</h2>
+            <p class="section-subtitle">不只保留零壓力匿名初衷，更加入 AI 視覺品味運算、1KM 街區氛圍感應與時空重遊體驗。</p>
+        </div>
+
+        <div class="app-updates-grid">
+            <article class="app-update-card">
+                <div class="app-update-top">
+                    <span class="app-update-icon" style="background:rgba(109, 76, 230, 0.12);color:#6D4CE6;"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i></span>
+                    <span class="app-update-badge" style="background:rgba(109, 76, 230, 0.1);color:#5B3BD4;">16 大風格向量</span>
+                </div>
+                <h3>AI 大數據風格品味推播</h3>
+                <p>結合你的 ❤️ 收藏與公開貼文，以 Cosine 相似度＋畫面關鍵字計算審美契合度（例如「夜色霓虹 85%」）並附上透明理由；嚴格「對風格不對個人」，徹底反肉搜。</p>
+            </article>
+
+            <article class="app-update-card">
+                <div class="app-update-top">
+                    <span class="app-update-icon" style="background:rgba(251, 189, 4, 0.16);color:#C48A00;"><i class="fas fa-bullseye" aria-hidden="true"></i></span>
+                    <span class="app-update-badge" style="background:rgba(251, 189, 4, 0.14);color:#A87400;">1km 生活圈感知</span>
+                </div>
+                <h3>街區情緒氛圍</h3>
+                <p>頂部「探索・氛圍」微膠囊會即時統計目前街區（1 公里半徑）的匿名情緒色譜與主調比例，讓你一秒感知身邊城市的集體心情脈動，並自動移除精確門牌保護隱私。</p>
+            </article>
+
+            <article class="app-update-card">
+                <div class="app-update-top">
+                    <span class="app-update-icon" style="background:rgba(245, 158, 11, 0.14);color:#D97706;"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span>
+                    <span class="app-update-badge" style="background:rgba(245, 158, 11, 0.12);color:#B45309;">80m 時空回音</span>
+                </div>
+                <h3>時空膠囊「故地重遊」</h3>
+                <p>以正式帳號重返自己 7 天前曾親手留下的足跡 80 公尺內，地圖上方將喚醒「故地重遊」微膠囊（具 24 小時貼心冷卻），帶你打開當時的畫面與心情對話。</p>
+            </article>
+
+            <article class="app-update-card">
+                <div class="app-update-top">
+                    <span class="app-update-icon" style="background:rgba(10, 132, 255, 0.12);color:#0066CC;"><i class="fas fa-layer-group" aria-hidden="true"></i></span>
+                    <span class="app-update-badge" style="background:rgba(10, 132, 255, 0.1);color:#0055B3;">百筆足跡不重疊</span>
+                </div>
+                <h3>聚合地標展開抽屜</h3>
+                <p>熱門商圈或校園展覽聚集大量足跡時，自動收合為數字徽章避免標點互蓋；一指點開底部抽屜即可橫向滑動翻閱每張回憶，並直接依 5 種情緒二次篩選。</p>
+            </article>
+
+            <article class="app-update-card">
+                <div class="app-update-top">
+                    <span class="app-update-icon" style="background:rgba(48, 209, 88, 0.14);color:#1E9E3C;"><i class="fas fa-camera-retro" aria-hidden="true"></i></span>
+                    <span class="app-update-badge" style="background:rgba(48, 209, 88, 0.12);color:#188531;">即拍即傳憑證</span>
+                </div>
+                <h3>弧形變焦 ＋ 心靈拍立得</h3>
+                <p>拍照介面配備 1.0x~5.0x 弧形刻度變焦轉盤，快門 0.01 秒鎖定 GPS 加蓋不可後製「即拍即傳」綠標；上傳成功還會獲得帶時空戳記的專屬拍立得回憶卡。</p>
+            </article>
+
+            <article class="app-update-card">
+                <div class="app-update-top">
+                    <span class="app-update-icon" style="background:rgba(234, 67, 53, 0.12);color:#DC2626;"><i class="fas fa-shield-heart" aria-hidden="true"></i></span>
+                    <span class="app-update-badge" style="background:rgba(234, 67, 53, 0.1);color:#B91C1C;">雙層守護清單</span>
+                </div>
+                <h3>Gemini 雙層安全 ＆ 避開負面情緒</h3>
+                <p>結合上傳前圖文審查與檢舉雲端影像仲裁（附人工斷路器不誤殺）；同時可在個人設定勾選「避開特定情緒標籤」，或透過 ❤️ 收藏管理自己的純淨品味相簿。</p>
+            </article>
+        </div>
+
+        <div class="app-updates-cta-row">
+            <a href="demo.html" class="app-updates-cta-btn primary">
+                <i class="fas fa-map-marked-alt" aria-hidden="true"></i> 體驗地圖情緒篩選 Demo
+            </a>
+            <a href="faq.html#faq-ai-vibe" class="app-updates-cta-btn secondary">
+                <i class="fas fa-circle-question" aria-hidden="true"></i> 查看 AI 反肉搜與重遊 FAQ
+            </a>
+        </div>
+    </div>
+</section>
 
 <!-- ── Footer ── -->
 <footer class="site-footer">
@@ -650,8 +731,11 @@ body {
             <div class="pdf-footer-col">
                 <h4 class="pdf-footer-heading">常見問題</h4>
                 <ul class="pdf-footer-list">
-                    <li><a href="faq.html">匿名登入說明</a></li>
-                    <li><a href="faq.html">公開與私人足跡</a></li>
+                    <li><a href="faq.html#faq-anonymous">匿名登入說明</a></li>
+                    <li><a href="faq.html#faq-visibility">公開與私人足跡</a></li>
+                    <li><a href="faq.html#faq-ai-vibe">AI 推播與反肉搜</a></li>
+                    <li><a href="faq.html#faq-safety">檢舉與一鍵封鎖</a></li>
+                    <li><a href="faq.html#faq-delete">刪除所有帳號資料</a></li>
                 </ul>
             </div>
             <div class="pdf-footer-col">
@@ -676,7 +760,7 @@ body {
     </div>
 </footer>
 
-<script src="script.js?v=20261116_rwd"></script>
+<script src="script.js?v=20261116_faq2"></script>
 
 <script>
 /* ═══════════════════════════════════════════════
@@ -709,6 +793,7 @@ body {
     const textTrack = document.getElementById('textTrack');
     const giantTrack = document.getElementById('giantTrack');
     const dots = document.querySelectorAll('.story-dot');
+    const dotsNav = document.getElementById('storyDots');
     const textCards = document.querySelectorAll('.sp-text-card');
     const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     const supportsScrollEnd = 'onscrollend' in window;
@@ -943,6 +1028,10 @@ body {
 
         const m = getMetrics();
         if (!m) return;
+        if (dotsNav) {
+            const outside = m.rect.top > window.innerHeight * 0.65 || m.rect.bottom < window.innerHeight * 0.45;
+            dotsNav.classList.toggle('is-outside-story', outside);
+        }
 
         targetChapterVal = calcChapterVal(m.progress);
         if (reducedMotionQuery.matches) {
@@ -961,6 +1050,10 @@ body {
     function syncImmediate() {
         const m = getMetrics();
         if (!m) return;
+        if (dotsNav) {
+            const outside = m.rect.top > window.innerHeight * 0.65 || m.rect.bottom < window.innerHeight * 0.45;
+            dotsNav.classList.toggle('is-outside-story', outside);
+        }
         prevScrollY = window.scrollY;
         scrollDirty = false;
         targetChapterVal = calcChapterVal(m.progress);
