@@ -454,127 +454,202 @@
             }
         }
 
+        /* Mobile Horizontal Chapter Selector (Hidden on Desktop Sticky Showcase) */
+        .sp-mobile-chapters {
+            display: none;
+        }
+
+        .feat-title,
+        .panel-heading,
+        .app-update-card h3 {
+            text-wrap: balance;
+        }
+
+        .feat-subtitle,
+        .panel-description,
+        .app-update-card p {
+            text-wrap: pretty;
+        }
+
         @media (max-width: 900px) {
+            .feat-page-header {
+                padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 14px);
+                padding-bottom: 10px;
+            }
+
+            .feat-title-group {
+                margin-bottom: 8px;
+                gap: 8px;
+            }
+
+            .feat-subtitle {
+                font-size: 0.92rem;
+                line-height: 1.55;
+            }
+
+            /* 取消手機版 sticky 高度鎖定，改為自然垂直排版與清楚大圖呈現 */
+            .story-wrap {
+                height: auto;
+            }
+
+            .story-sticky {
+                position: relative;
+                top: auto;
+                height: auto;
+                min-height: 0;
+                padding: 8px 0 36px;
+                overflow: visible;
+                display: block;
+            }
+
+            /* 省略手機版小圓點、浮水印與卡片內重複白框，留給實機畫面充足呼吸空間 */
+            .sp-num-viewport,
+            .story-dots,
+            .panel-feature-card {
+                display: none !important;
+            }
+
             .sp-layout-container {
                 flex-direction: column;
-                justify-content: center;
+                justify-content: flex-start;
+                align-items: center;
                 height: auto;
-                padding: 0 max(36px, env(safe-area-inset-right, 0px) + 28px) 0 max(20px, env(safe-area-inset-left, 0px));
+                padding: 0 max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px));
+            }
+
+            .sp-mobile-chapters {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                width: fit-content;
+                max-width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                scroll-snap-type: x proximity;
+                padding: 4px 2px 14px;
+                margin-bottom: 4px;
+            }
+
+            .sp-mobile-chapters::-webkit-scrollbar {
+                display: none;
+            }
+
+            .sp-mobile-ch-pill {
+                appearance: none;
+                flex: 0 0 auto;
+                scroll-snap-align: center;
+                min-block-size: 44px;
+                min-inline-size: 44px;
+                padding: 8px 14px;
+                border-radius: 99px;
+                border: 1px solid rgba(28, 28, 30, 0.14);
+                background: rgba(255, 255, 255, 0.92);
+                color: #48484A;
+                font-family: inherit;
+                font-size: 13px;
+                font-weight: 700;
+                line-height: 1.2;
+                white-space: nowrap;
+                cursor: pointer;
+                transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            }
+
+            .sp-mobile-ch-pill.is-active {
+                background: #1C1C1E;
+                color: #FFFFFF;
+                border-color: #1C1C1E;
+                box-shadow: 0 4px 12px rgba(28, 28, 30, 0.18);
+            }
+
+            .sp-mobile-ch-pill:focus-visible {
+                outline: 2.5px solid #1C1C1E;
+                outline-offset: 2px;
             }
 
             .sp-phone-container {
-                width: clamp(160px, 25dvh, 245px);
-                height: clamp(325px, 50dvh, 498px);
+                width: clamp(228px, 60vw, 272px);
+                height: auto;
+                aspect-ratio: 285 / 580;
                 margin-right: 0;
                 margin-bottom: 18px;
             }
 
+            .sp-iphone-shell {
+                border-width: 7px;
+                border-radius: 42px;
+            }
+
+            .sp-iphone-screen {
+                top: 7px;
+                left: 7px;
+                right: 7px;
+                bottom: 7px;
+                border-radius: 35px;
+            }
+
+            .sp-phone-track {
+                transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+
             .sp-text-viewport {
                 width: 100%;
-                max-width: 500px;
-                height: clamp(255px, 32dvh, 320px);
+                max-width: 460px;
+                height: auto;
+                overflow: visible;
+            }
+
+            .sp-text-track {
+                height: auto;
+                transform: none !important;
+            }
+
+            .sp-text-card {
+                display: none;
+                height: auto;
+                padding: 4px 4px 8px;
+                align-items: center;
+                text-align: center;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .sp-text-card.is-mobile-active {
+                display: flex;
             }
 
             .panel-tag-badge {
-                margin-bottom: 8px;
+                margin-bottom: 10px;
                 font-size: 12px;
                 padding: 5px 12px;
             }
 
             .panel-heading {
-                font-size: clamp(1.38rem, 3.8vw, 1.85rem);
+                font-size: clamp(1.38rem, 5.2vw, 1.8rem);
                 margin-bottom: 8px;
             }
 
             .panel-description {
-                font-size: clamp(0.88rem, 2.3vw, 0.98rem);
-                line-height: 1.55;
+                font-size: 0.94rem;
+                line-height: 1.62;
                 margin-bottom: 12px;
-            }
-
-            .panel-feature-card {
-                padding: 12px 14px;
-                border-radius: 14px;
-            }
-
-            .sp-num-viewport {
-                display: none !important;
-            }
-
-            .story-dots {
-                right: max(10px, env(safe-area-inset-right, 0px));
-                gap: 10px;
-            }
-        }
-
-        @media (max-width: 639px) {
-            .sp-layout-container {
-                padding: 0 36px 0 16px;
-            }
-
-            .sp-phone-container {
-                width: clamp(138px, 21dvh, 185px);
-                height: clamp(280px, 42dvh, 376px);
-                margin-bottom: 12px;
-            }
-
-            .sp-iphone-shell {
-                border-width: 6px;
-                border-radius: 36px;
-            }
-
-            .sp-iphone-screen {
-                top: 6px;
-                left: 6px;
-                right: 6px;
-                bottom: 6px;
-                border-radius: 30px;
-            }
-
-            .sp-text-viewport {
-                max-width: 390px;
-                height: clamp(275px, 42dvh, 325px);
-            }
-
-            .panel-heading {
-                font-size: clamp(1.24rem, 5vw, 1.5rem);
-            }
-
-            .panel-description {
-                font-size: 0.87rem;
-                line-height: 1.52;
-                margin-bottom: 10px;
-            }
-
-            .panel-feature-card h4 {
-                font-size: 0.87rem;
-            }
-
-            .panel-feature-card p {
-                font-size: 0.81rem;
-                line-height: 1.48;
-            }
-        }
-
-        @media (max-width: 639px) and (max-height: 700px) {
-            .sp-phone-container {
-                width: 120px;
-                height: 244px;
-                margin-bottom: 8px;
-            }
-
-            .sp-text-viewport {
-                height: 274px;
+                max-width: 34ch;
             }
 
             .sp-subscreen-tabs {
-                margin-top: 8px;
-                gap: 5px;
+                justify-content: center;
+                margin-top: 6px;
+                gap: 8px;
             }
+        }
 
-            .sp-sub-pill {
-                padding: 4px 10px;
-                font-size: 11px;
+        @media (pointer: coarse) {
+            .sp-sub-pill,
+            .sp-mobile-ch-pill {
+                min-block-size: 44px;
+                min-inline-size: 44px;
+                padding: 8px 14px;
+                font-size: 13px;
             }
         }
 
@@ -703,6 +778,16 @@
             <!-- ── Main Layout Container ── -->
             <div class="sp-layout-container">
 
+                <!-- Mobile Horizontal Chapter Rail (Hidden on Desktop Sticky Showcase) -->
+                <div class="sp-mobile-chapters" id="mobileChapters" role="group" aria-label="選擇功能章節">
+                    <button type="button" class="sp-mobile-ch-pill is-active" data-mch="0" aria-pressed="true">01 探索地圖</button>
+                    <button type="button" class="sp-mobile-ch-pill" data-mch="1" aria-pressed="false">02 即拍即傳</button>
+                    <button type="button" class="sp-mobile-ch-pill" data-mch="2" aria-pressed="false">03 足跡控制</button>
+                    <button type="button" class="sp-mobile-ch-pill" data-mch="3" aria-pressed="false">04 AI 安全</button>
+                    <button type="button" class="sp-mobile-ch-pill" data-mch="4" aria-pressed="false">05 帳號設定</button>
+                    <button type="button" class="sp-mobile-ch-pill" data-mch="5" aria-pressed="false">06 收藏權限</button>
+                </div>
+
                 <!-- ── Centered iPhone Hardware (Real App Screenshots) ── -->
                 <div class="sp-phone-container">
                     <div class="sp-iphone-shell"></div>
@@ -772,7 +857,7 @@
                     <div class="sp-text-track" id="textTrack">
 
                         <!-- Card 0: 新版探索地圖與情緒分類 -->
-                        <div class="sp-text-card">
+                        <div class="sp-text-card is-mobile-active">
                             <div class="panel-tag-badge"
                                 style="background:rgba(251,189,4,0.15);color:#D99B00;border:1px solid rgba(251,189,4,0.3);">
                                 01 · EXPLORE &amp; VIBE 😊
@@ -1051,11 +1136,15 @@
             const dots = document.querySelectorAll('.story-dot');
             const dotsNav = document.getElementById('storyDots');
             const textCards = document.querySelectorAll('.sp-text-card');
+            const mobileChapterPills = document.querySelectorAll('.sp-mobile-ch-pill');
+            const mobileModeQuery = window.matchMedia('(max-width: 900px)');
             const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
             const supportsScrollEnd = 'onscrollend' in window;
 
             let targetChapterVal = 0;
             let displayChapterVal = 0;
+            let mobileActiveChapter = 0;
+            let wasMobileMode = mobileModeQuery.matches;
             let activeChapter = -1;
             let pendingChapter = -2;
             let rafId = null;
@@ -1214,7 +1303,54 @@
                 return Math.max(0, Math.min(5, Math.round(exact)));
             }
 
+            function applyMobileChapter(chIndex, shouldScrollPillIntoView) {
+                const idx = Math.max(0, Math.min(5, chIndex));
+                mobileActiveChapter = idx;
+                targetChapterVal = idx;
+                displayChapterVal = idx;
+
+                if (rafId !== null) {
+                    cancelAnimationFrame(rafId);
+                    rafId = null;
+                    lastFrameTime = 0;
+                }
+                cancelAutoSnap();
+                clearTimeout(settleTimer);
+
+                const shiftPercent = -(idx / 6) * 100;
+                if (phoneTrack) phoneTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+                if (textTrack) textTrack.style.transform = '';
+                if (giantTrack) giantTrack.style.transform = '';
+
+                textCards.forEach((card, index) => {
+                    card.classList.toggle('is-mobile-active', index === idx);
+                    card.style.opacity = '';
+                    card.style.transform = '';
+                });
+
+                mobileChapterPills.forEach((pill, index) => {
+                    const active = index === idx;
+                    pill.classList.toggle('is-active', active);
+                    pill.setAttribute('aria-pressed', active ? 'true' : 'false');
+                    if (active && shouldScrollPillIntoView && typeof pill.scrollIntoView === 'function') {
+                        pill.scrollIntoView({
+                            behavior: reducedMotionQuery.matches ? 'auto' : 'smooth',
+                            inline: 'center',
+                            block: 'nearest'
+                        });
+                    }
+                });
+
+                if (glowSpot) glowSpot.style.setProperty('--glow-tint', TINTS[idx]);
+                if (dotsNav) dotsNav.classList.add('is-outside-story');
+            }
+
             function scrollToChapter(chIndex, smooth) {
+                if (mobileModeQuery.matches) {
+                    applyMobileChapter(chIndex, true);
+                    return;
+                }
+
                 const m = getMetrics();
                 if (!m) return;
 
@@ -1243,6 +1379,7 @@
 
             function onSettle() {
                 clearTimeout(settleTimer);
+                if (mobileModeQuery.matches) return;
 
                 if (isAutoSnapping) {
                     isAutoSnapping = false;
@@ -1274,6 +1411,8 @@
             }
 
             function onScroll() {
+                if (mobileModeQuery.matches) return;
+
                 const curY = window.scrollY;
                 const dy = curY - prevScrollY;
                 if (Math.abs(dy) >= 1 && !isAutoSnapping) {
@@ -1304,6 +1443,23 @@
             }
 
             function syncImmediate() {
+                const isMobile = mobileModeQuery.matches;
+                if (isMobile) {
+                    if (!wasMobileMode) {
+                        wasMobileMode = true;
+                        mobileActiveChapter = Math.max(0, Math.min(5, Math.round(displayChapterVal)));
+                    }
+                    applyMobileChapter(mobileActiveChapter, false);
+                    return;
+                }
+
+                if (wasMobileMode) {
+                    wasMobileMode = false;
+                    activeChapter = -1;
+                    pendingChapter = -2;
+                    textCards.forEach(card => card.classList.remove('is-mobile-active'));
+                }
+
                 const m = getMetrics();
                 if (!m) return;
                 if (dotsNav) {
@@ -1323,6 +1479,14 @@
                     if (isNaN(chIndex)) return;
                     lastScrollDir = 0;
                     scrollToChapter(chIndex, true);
+                });
+            });
+
+            mobileChapterPills.forEach(pill => {
+                pill.addEventListener('click', () => {
+                    const chIndex = parseInt(pill.getAttribute('data-mch'), 10);
+                    if (isNaN(chIndex)) return;
+                    applyMobileChapter(chIndex, true);
                 });
             });
 
@@ -1388,6 +1552,12 @@
                 reducedMotionQuery.addEventListener('change', syncImmediate);
             } else if (typeof reducedMotionQuery.addListener === 'function') {
                 reducedMotionQuery.addListener(syncImmediate);
+            }
+
+            if (typeof mobileModeQuery.addEventListener === 'function') {
+                mobileModeQuery.addEventListener('change', syncImmediate);
+            } else if (typeof mobileModeQuery.addListener === 'function') {
+                mobileModeQuery.addListener(syncImmediate);
             }
 
             window.addEventListener('scroll', onScroll, { passive: true });
