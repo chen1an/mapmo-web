@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="text-scale" content="scale">
     <title>功能介紹 - MapMo | 安心 × 純粹 × 共鳴</title>
     <link rel="icon" type="image/png" href="assets/icon.png">
     <meta name="description" content="MapMo 提供情緒分類、照片定位、刪除紀錄管理、一鍵封鎖與安全審核機制，讓你純粹地記錄與分享每一段回憶。">
@@ -19,7 +20,7 @@
     <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
 
     <!-- Shared CSS (Light Theme base) -->
-    <link rel="stylesheet" href="style.css?v=20261116_faq2">
+    <link rel="stylesheet" href="style.css?v=20261121_f1">
 
     <style>
         /* ══════════════════════════════════════════════
@@ -473,8 +474,8 @@
 
         @media (max-width: 900px) {
             .feat-page-header {
-                padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 14px);
-                padding-bottom: 10px;
+                padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + clamp(0.6rem, 2.5vw, 0.95rem));
+                padding-bottom: clamp(0.45rem, 1.5vw, 0.75rem);
             }
 
             .feat-title-group {
@@ -483,11 +484,11 @@
             }
 
             .feat-subtitle {
-                font-size: 0.92rem;
+                font-size: clamp(0.88rem, 0.82rem + 0.4vw, 0.98rem);
                 line-height: 1.55;
             }
 
-            /* 取消手機版 sticky 高度鎖定，改為自然垂直排版與清楚大圖呈現 */
+            /* 取消手機版 sticky 高度鎖定，改為自然垂直排版與雙軸比例縮放 */
             .story-wrap {
                 height: auto;
             }
@@ -497,7 +498,7 @@
                 top: auto;
                 height: auto;
                 min-height: 0;
-                padding: 8px 0 36px;
+                padding: clamp(0.4rem, 1.5dvh, 0.75rem) 0 clamp(1.75rem, 5dvh, 2.5rem);
                 overflow: visible;
                 display: block;
             }
@@ -510,24 +511,25 @@
             }
 
             .sp-layout-container {
+                container-type: inline-size;
                 flex-direction: column;
                 justify-content: flex-start;
                 align-items: center;
                 height: auto;
-                padding: 0 max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px));
+                padding: 0 max(clamp(12px, 4vw, 20px), env(safe-area-inset-right, 0px)) 0 max(clamp(12px, 4vw, 20px), env(safe-area-inset-left, 0px));
             }
 
             .sp-mobile-chapters {
                 display: flex;
                 align-items: center;
-                gap: 8px;
+                gap: clamp(6px, 2vw, 10px);
                 width: fit-content;
                 max-width: 100%;
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
                 scrollbar-width: none;
                 scroll-snap-type: x proximity;
-                padding: 4px 2px 14px;
+                padding: 4px 2px clamp(10px, 2dvh, 14px);
                 margin-bottom: 4px;
             }
 
@@ -541,13 +543,13 @@
                 scroll-snap-align: center;
                 min-block-size: 44px;
                 min-inline-size: 44px;
-                padding: 8px 14px;
+                padding: 8px clamp(11px, 3cqi, 15px);
                 border-radius: 99px;
                 border: 1px solid rgba(28, 28, 30, 0.14);
                 background: rgba(255, 255, 255, 0.92);
                 color: #48484A;
                 font-family: inherit;
-                font-size: 13px;
+                font-size: clamp(0.78rem, 0.72rem + 0.3cqi, 0.88rem);
                 font-weight: 700;
                 line-height: 1.2;
                 white-space: nowrap;
@@ -567,25 +569,32 @@
                 outline-offset: 2px;
             }
 
+            /* 實機外框依容器寬度 cqi 與視窗高度 dvh 雙軸比例縮放（涵蓋 320px 小機、Pro Max 與網址列收合） */
             .sp-phone-container {
-                width: clamp(228px, 60vw, 272px);
+                width: clamp(11.5rem, min(62vw, 37dvh), 17.5rem);
                 height: auto;
                 aspect-ratio: 285 / 580;
                 margin-right: 0;
-                margin-bottom: 18px;
+                margin-bottom: clamp(12px, 2.2dvh, 18px);
+            }
+
+            @supports (width: 1cqi) {
+                .sp-phone-container {
+                    width: clamp(11.5rem, min(62cqi, 37dvh), 17.5rem);
+                }
             }
 
             .sp-iphone-shell {
-                border-width: 7px;
-                border-radius: 42px;
+                border-width: clamp(5px, 1.5vw, 7px);
+                border-radius: clamp(1.85rem, 8.5vw, 2.65rem);
             }
 
             .sp-iphone-screen {
-                top: 7px;
-                left: 7px;
-                right: 7px;
-                bottom: 7px;
-                border-radius: 35px;
+                top: clamp(5px, 1.5vw, 7px);
+                left: clamp(5px, 1.5vw, 7px);
+                right: clamp(5px, 1.5vw, 7px);
+                bottom: clamp(5px, 1.5vw, 7px);
+                border-radius: clamp(1.45rem, 7vw, 2.2rem);
             }
 
             .sp-phone-track {
@@ -594,7 +603,7 @@
 
             .sp-text-viewport {
                 width: 100%;
-                max-width: 460px;
+                max-width: 30rem;
                 height: auto;
                 overflow: visible;
             }
@@ -620,17 +629,17 @@
 
             .panel-tag-badge {
                 margin-bottom: 10px;
-                font-size: 12px;
+                font-size: clamp(0.72rem, 0.68rem + 0.25vw, 0.8rem);
                 padding: 5px 12px;
             }
 
             .panel-heading {
-                font-size: clamp(1.38rem, 5.2vw, 1.8rem);
+                font-size: clamp(1.32rem, 1.05rem + 1.4vw, 1.8rem);
                 margin-bottom: 8px;
             }
 
             .panel-description {
-                font-size: 0.94rem;
+                font-size: clamp(0.88rem, 0.82rem + 0.35vw, 0.98rem);
                 line-height: 1.62;
                 margin-bottom: 12px;
                 max-width: 34ch;
@@ -643,13 +652,44 @@
             }
         }
 
+        /* 手機橫放 / 矮視窗突發狀況：改採雙欄橫向排列，避免直向手機圖超出 375px 螢幕高度 */
+        @media (max-width: 900px) and (max-height: 540px) {
+            .sp-layout-container {
+                display: grid;
+                grid-template-columns: auto minmax(0, 1fr);
+                align-items: center;
+                gap: 10px 24px;
+            }
+
+            .sp-mobile-chapters {
+                grid-column: 1 / -1;
+                justify-self: center;
+                margin-bottom: 0;
+                padding-bottom: 6px;
+            }
+
+            .sp-phone-container {
+                width: clamp(8.5rem, 32dvh, 11.5rem);
+                margin-bottom: 0;
+            }
+
+            .sp-text-card {
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .sp-subscreen-tabs {
+                justify-content: flex-start;
+            }
+        }
+
         @media (pointer: coarse) {
             .sp-sub-pill,
             .sp-mobile-ch-pill {
                 min-block-size: 44px;
                 min-inline-size: 44px;
                 padding: 8px 14px;
-                font-size: 13px;
+                font-size: clamp(0.78rem, 0.74rem + 0.2vw, 0.86rem);
             }
         }
 
