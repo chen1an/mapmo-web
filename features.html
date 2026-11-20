@@ -29,7 +29,7 @@
      2. screens_v28/camera-zoom.jpg (Camera & 2x Dial)
      3. 刪除紀錄.jpg (Delete Posts & Footprints)
      4. 封鎖.jpg (Block User & Report Safety)
-     5. screens_v28/settings-exhibition.jpg (Settings & Exhibition Demo Mode)
+     5. screens_v28/settings-exhibition.jpg (Settings & Account Management)
      6. screens_v28/profile-favorites.jpg (Profile Footprints & Favorites)
    • Fully isolated scoped classes (.sp-*)
    • Responsive compositor-driven scroll transitions (6 chapters, zero dead zones)
@@ -673,7 +673,7 @@
         <button type="button" class="story-dot" data-ch="1" aria-label="前往第 2 章：0.01 秒即拍即傳與拍立得"></button>
         <button type="button" class="story-dot" data-ch="2" aria-label="前往第 3 章：足跡自主控制"></button>
         <button type="button" class="story-dot" data-ch="3" aria-label="前往第 4 章：雙層 AI 審核與一鍵檢舉"></button>
-        <button type="button" class="story-dot" data-ch="4" aria-label="前往第 5 章：設定、避開標籤與展覽模式"></button>
+        <button type="button" class="story-dot" data-ch="4" aria-label="前往第 5 章：設定、避開標籤與帳號管理"></button>
         <button type="button" class="story-dot" data-ch="5" aria-label="前往第 6 章：個人檔案、我的收藏與權限"></button>
     </nav>
 
@@ -721,7 +721,7 @@
                                     alt="文山區 1KM 街區情緒氛圍即時色譜報告畫面" width="472" height="1024"
                                     loading="lazy" fetchpriority="low" class="sp-app-img sp-sub-img" data-sub-view="1">
                                 <img src="assets/screens_v28/cluster-drawer.jpg"
-                                    alt="聚合地標數字徽章 23 則足跡與底部抽屜情緒篩選畫面" width="472" height="1024"
+                                    alt="聚合地標數字徽章與底部抽屜情緒篩選畫面" width="472" height="1024"
                                     loading="lazy" fetchpriority="low" class="sp-app-img sp-sub-img" data-sub-view="2">
                             </div>
 
@@ -743,9 +743,9 @@
                                     fetchpriority="low" class="sp-app-img">
                             </div>
 
-                            <!-- Page 4: 設定與展覽演示模式 / 避開特定情緒標籤 -->
+                            <!-- Page 4: 設定與帳號管理 / 避開特定情緒標籤 -->
                             <div class="sp-screen-page" data-page-ch="4">
-                                <img src="assets/screens_v28/settings-exhibition.jpg" alt="MapMo 設定與展覽演示模式畫面"
+                                <img src="assets/screens_v28/settings-exhibition.jpg" alt="MapMo 設定與帳號管理畫面"
                                     width="472" height="1024" loading="lazy" fetchpriority="low"
                                     class="sp-app-img sp-sub-img is-sub-active" data-sub-view="0">
                                 <img src="assets/screens_v28/hide-emotions.jpg" alt="MapMo 避開特定情緒標籤開關畫面"
@@ -755,7 +755,7 @@
 
                             <!-- Page 5: 個人檔案、我的足跡與我的收藏 -->
                             <div class="sp-screen-page" data-page-ch="5">
-                                <img src="assets/screens_v28/profile-posts.jpg" alt="MapMo 個人檔案我的足跡 (26) 畫面"
+                                <img src="assets/screens_v28/profile-posts.jpg" alt="MapMo 個人檔案我的足跡畫面"
                                     width="472" height="1024" loading="lazy" fetchpriority="low"
                                     class="sp-app-img sp-sub-img is-sub-active" data-sub-view="0">
                                 <img src="assets/screens_v28/profile-favorites.jpg" alt="MapMo 個人檔案與我的收藏畫面" width="472"
@@ -787,7 +787,7 @@
                             <div class="sp-subscreen-tabs" role="group" aria-label="切換探索地圖實機畫面">
                                 <button type="button" class="sp-sub-pill is-active" data-sub-ch="0" data-sub-idx="0" aria-pressed="true">地圖與推播</button>
                                 <button type="button" class="sp-sub-pill" data-sub-ch="0" data-sub-idx="1" aria-pressed="false">1KM 氛圍報告</button>
-                                <button type="button" class="sp-sub-pill" data-sub-ch="0" data-sub-idx="2" aria-pressed="false">23則聚合抽屜</button>
+                                <button type="button" class="sp-sub-pill" data-sub-ch="0" data-sub-idx="2" aria-pressed="false">聚合地標抽屜</button>
                             </div>
                         </div>
 
@@ -841,14 +841,14 @@
                                 style="background:rgba(10,132,255,0.15);color:#0066CC;border:1px solid rgba(10,132,255,0.3);">
                                 05 · ACCOUNT &amp; GUARDIAN ⚙️
                             </div>
-                            <h2 class="panel-heading">設定、避開標籤與展覽模式</h2>
-                            <p class="panel-description">支援維護封鎖名單、相簿自動備份、一鍵開啟「避開負面情緒標籤」，並內建「展覽演示模式」零限制展示。</p>
+                            <h2 class="panel-heading">設定、避開標籤與帳號管理</h2>
+                            <p class="panel-description">支援相簿自動備份、封鎖名單管理、一鍵開啟「避開特定情緒標籤」，並可隨時查閱服務條款與隱私權政策。</p>
                             <div class="panel-feature-card">
                                 <h4><i class="fas fa-cog" style="color:#0A84FF;margin-right:6px;"></i>心理界線 ＋ 帳號銷毀</h4>
                                 <p>想徹底離開時可透過雙重確認永久刪除帳號與所有數據。</p>
                             </div>
                             <div class="sp-subscreen-tabs" role="group" aria-label="切換設定實機畫面">
-                                <button type="button" class="sp-sub-pill is-active" data-sub-ch="4" data-sub-idx="0" aria-pressed="true">設定與展覽模式</button>
+                                <button type="button" class="sp-sub-pill is-active" data-sub-ch="4" data-sub-idx="0" aria-pressed="true">設定與帳號管理</button>
                                 <button type="button" class="sp-sub-pill" data-sub-ch="4" data-sub-idx="1" aria-pressed="false">避開情緒標籤</button>
                             </div>
                         </div>
@@ -867,7 +867,7 @@
                                 <p>僅運算視覺風格偏好、絕不追蹤個人行蹤，放心回味每段城市故事。</p>
                             </div>
                             <div class="sp-subscreen-tabs" role="group" aria-label="切換個人檔案實機畫面">
-                                <button type="button" class="sp-sub-pill is-active" data-sub-ch="5" data-sub-idx="0" aria-pressed="true">我的足跡 (26)</button>
+                                <button type="button" class="sp-sub-pill is-active" data-sub-ch="5" data-sub-idx="0" aria-pressed="true">我的足跡</button>
                                 <button type="button" class="sp-sub-pill" data-sub-ch="5" data-sub-idx="1" aria-pressed="false">❤️ 我的收藏</button>
                             </div>
                         </div>
@@ -920,7 +920,7 @@
                             時空回音</span>
                     </div>
                     <h3>時空膠囊「故地重遊」</h3>
-                    <p>以正式帳號重返自己 7 天前曾親手留下的足跡 80 公尺內，地圖上方將喚醒「故地重遊」微膠囊（具 24 小時貼心冷卻），亦可在設定開啟「展覽演示模式」零障礙展示。</p>
+                    <p>以正式帳號重返自己 7 天前曾親手留下的足跡 80 公尺內，地圖上方將喚醒「故地重遊」微膠囊（具 24 小時貼心冷卻），帶你打開當時的畫面與心情對話。</p>
                 </article>
 
                 <article class="app-update-card">
@@ -931,7 +931,7 @@
                             style="background:rgba(10, 132, 255, 0.1);color:#0055B3;">百筆足跡不重疊</span>
                     </div>
                     <h3>聚合地標展開抽屜</h3>
-                    <p>熱門商圈或校園展覽聚集大量足跡時，自動收合為數字徽章避免標點互蓋；一指點開底部抽屜即可滑動翻閱每張回憶，並直接依 5 種情緒二次篩選。</p>
+                    <p>熱門商圈或校園活動聚集大量足跡時，自動收合為數字徽章避免標點互蓋；一指點開底部抽屜即可滑動翻閱每張回憶，並直接依 5 種情緒二次篩選。</p>
                 </article>
 
                 <article class="app-update-card">
