@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -10,7 +11,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Outfit:wght@400;600;800;900&display=swap"
+        rel="stylesheet">
 
     <!-- FontAwesome -->
     <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
@@ -18,8 +21,8 @@
     <!-- Shared CSS (Light Theme base) -->
     <link rel="stylesheet" href="style.css?v=20261116_faq2">
 
-<style>
-/* ══════════════════════════════════════════════
+    <style>
+        /* ══════════════════════════════════════════════
    MAPMO REAL APP SHOWCASE SCROLL STORYTELLING (6 CHAPTERS)
    • Real App screenshots (iOS Build 28 + Moderation Screens):
      1. screens_v28/map-explore-vibe.jpg (Map, Vibe, Memory Echo & AI Taste)
@@ -32,1708 +35,1394 @@
    • Responsive compositor-driven scroll transitions (6 chapters, zero dead zones)
 ══════════════════════════════════════════════ */
 
-*, *::before, *::after { box-sizing: border-box; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
 
-body {
-    background-color: #FAF9F6;
-    background-image: url('assets/bg-pattern.png');
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: cover;
-    background-attachment: fixed;
-    color: #2C2C2E;
-    font-family: 'Outfit', 'Noto Sans TC', sans-serif;
-    overflow-x: hidden;
-    overflow-x: clip;
-    margin: 0; padding: 0;
-}
+        body {
+            background-color: #FAF9F6;
+            background-image: url('assets/bg-pattern.png');
+            background-repeat: no-repeat;
+            background-position: center top;
+            background-size: cover;
+            background-attachment: fixed;
+            color: #2C2C2E;
+            font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+            overflow-x: hidden;
+            overflow-x: clip;
+            margin: 0;
+            padding: 0;
+        }
 
-/* Hide legacy section overrides */
-.page-header-banner,
-.features-main-section,
-.features-timeline-wrapper {
-    display: none !important;
-}
+        /* Hide legacy section overrides */
+        .page-header-banner,
+        .features-main-section,
+        .features-timeline-wrapper {
+            display: none !important;
+        }
 
-/* ---------- 1. Top Header Banner ("劉海"對齊 Contact/About/Post 頁面) ---------- */
-.feat-page-header {
-    text-align: center;
-    padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 28px);
-    padding-bottom: 18px;
-    background: transparent;
-    position: relative;
-    z-index: 10;
-}
-@media (max-width: 1024px), (pointer: coarse) {
-    body {
-        background-attachment: scroll;
-    }
-}
-.feat-header-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 16px;
-}
-.feat-title-group {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 12px;
-}
-.feat-title-icon {
-    width: clamp(36px, 5vw, 48px);
-    height: clamp(36px, 5vw, 48px);
-    object-fit: contain;
-    image-rendering: -webkit-optimize-contrast;
-}
-.feat-title {
-    font-family: 'Outfit', 'Noto Sans TC', sans-serif;
-    font-size: clamp(28px, 4.8vw, 42px);
-    font-weight: 900;
-    color: #111;
-    letter-spacing: 2px;
-    margin: 0;
-    line-height: 1.2;
-}
-.feat-subtitle {
-    font-size: clamp(15px, 2.2vw, 18px);
-    font-weight: 500;
-    color: #555;
-    letter-spacing: 0.5px;
-    line-height: 1.7;
-    margin: 0 auto;
-    max-width: 600px;
-}
+        /* ---------- 1. Top Header Banner ("劉海"對齊 Contact/About/Post 頁面) ---------- */
+        .feat-page-header {
+            text-align: center;
+            padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 28px);
+            padding-bottom: 18px;
+            background: transparent;
+            position: relative;
+            z-index: 10;
+        }
 
-/* ═══════════════════════════════════════════
+        @media (max-width: 1024px),
+        (pointer: coarse) {
+            body {
+                background-attachment: scroll;
+            }
+        }
+
+        .feat-header-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .feat-title-group {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .feat-title-icon {
+            width: clamp(36px, 5vw, 48px);
+            height: clamp(36px, 5vw, 48px);
+            object-fit: contain;
+            image-rendering: -webkit-optimize-contrast;
+        }
+
+        .feat-title {
+            font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+            font-size: clamp(28px, 4.8vw, 42px);
+            font-weight: 900;
+            color: #111;
+            letter-spacing: 2px;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .feat-subtitle {
+            font-size: clamp(15px, 2.2vw, 18px);
+            font-weight: 500;
+            color: #555;
+            letter-spacing: 0.5px;
+            line-height: 1.7;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        /* ═══════════════════════════════════════════
    2. BALANCED DWELL & GENTLE-SNAP STORYTELLING SECTION (6 CHAPTERS)
 ═══════════════════════════════════════════ */
-.story-wrap {
-    height: 370vh; /* 270vh scroll span (~54vh per chapter, light dwell + clean page snap) */
-    position: relative;
-    z-index: 20;
-}
-
-.story-sticky {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    height: 100dvh;
-    width: 100%;
-    padding-top: calc(var(--nav-height) * 0.45);
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Soft Ambient Glow Layer */
-.story-bg-layer {
-    position: absolute; inset: 0; z-index: 0;
-    background-color: #FAF9F6;
-    transition: background-color 0.6s ease;
-}
-.story-glow-spot {
-    position: absolute; inset: 0; z-index: 1;
-    background: radial-gradient(circle 650px at 50% 50%, var(--glow-tint, rgba(251, 189, 4, 0.14)), transparent 70%);
-    transition: all 0.6s ease;
-    pointer-events: none;
-}
-
-/* Main Layout Container (Shifted center-right to guarantee watermark breathing room) */
-.sp-layout-container {
-    position: relative;
-    z-index: 20;
-    width: 100%;
-    max-width: 1240px;
-    height: 600px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: max(6vw, 60px);
-    padding-left: 24px;
-}
-
-/* ---------- Background Giant Watermark Numbers (Full Viewport Positioned) ---------- */
-.sp-num-viewport {
-    position: absolute;
-    left: max(5vw, 60px);
-    top: 50%;
-    transform: translateY(-50%);
-    height: 400px;
-    width: 340px;
-    overflow: hidden;
-    z-index: 5;
-    pointer-events: none;
-}
-.sp-num-track {
-    display: flex;
-    flex-direction: column;
-    height: 600%;
-    will-change: transform;
-}
-.sp-num-item {
-    height: 16.666667%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-family: 'Outfit', sans-serif;
-    font-size: clamp(6.5rem, 9vw, 9.5rem);
-    font-weight: 900;
-    line-height: 1;
-    color: rgba(28, 28, 30, 0.07);
-    letter-spacing: -2px;
-    user-select: none;
-}
-
-/* ---------- Scoped iPhone Mockup Frame (.sp-phone-*) ---------- */
-.sp-phone-container {
-    position: relative;
-    z-index: 25;
-    width: 285px;
-    height: 580px;
-    flex-shrink: 0;
-    margin-right: 56px;
-    filter: drop-shadow(0 28px 56px rgba(0, 0, 0, 0.16));
-}
-
-.sp-iphone-shell {
-    position: absolute; inset: 0;
-    border-radius: 46px;
-    border: 8px solid #1c1c22;
-    background: transparent;
-    box-shadow:
-        inset 0 0 0 1.5px rgba(255, 255, 255, 0.35),
-        0 14px 36px rgba(0, 0, 0, 0.14);
-    z-index: 30; pointer-events: none;
-}
-.sp-iphone-screen {
-    position: absolute;
-    top: 8px; left: 8px; right: 8px; bottom: 8px;
-    border-radius: 38px; overflow: hidden; z-index: 10;
-    background: #111116;
-}
-
-/* Phone Screen Track (6 Items, locked 1:1 to scroll progress without viscous lag) */
-.sp-phone-track {
-    display: flex;
-    flex-direction: column;
-    height: 600%;
-    width: 100%;
-    will-change: transform;
-}
-.sp-screen-page {
-    height: 16.666667%;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0;
-    background: #000000;
-}
-.sp-app-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top center;
-    display: block;
-    image-rendering: auto;
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-}
-
-/* ---------- Scoped Right Side Text Panels (.sp-text-*) ---------- */
-.sp-text-viewport {
-    position: relative;
-    z-index: 25;
-    width: min(420px, 38vw);
-    height: 400px;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-
-.sp-text-track {
-    display: flex;
-    flex-direction: column;
-    height: 600%;
-    width: 100%;
-    will-change: transform;
-}
-.sp-text-card {
-    height: 16.666667%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px 0;
-    flex-shrink: 0;
-    will-change: opacity, transform;
-}
-
-.panel-tag-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 6px 16px; border-radius: 20px;
-    font-size: 13px; font-weight: 800;
-    margin-bottom: 14px; width: fit-content;
-}
-.panel-heading {
-    font-size: clamp(2rem, 3.2vw, 2.8rem); font-weight: 900;
-    line-height: 1.18; letter-spacing: -0.5px; margin-bottom: 14px;
-    color: #1C1C1E;
-}
-.panel-description {
-    font-size: 1.02rem; color: #6E6E73; line-height: 1.7; margin-bottom: 20px;
-}
-.panel-feature-card {
-    padding: 16px 18px; border-radius: 18px;
-    background: #ffffff;
-    border: 1px solid #E5E5EA;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-}
-.panel-feature-card h4 { font-size: 0.95rem; font-weight: 800; color: #1C1C1E; margin: 0 0 4px 0; }
-.panel-feature-card p  { font-size: 0.88rem; color: #6E6E73; line-height: 1.6; margin: 0; }
-
-/* ---------- Side Progress Dots (Right Edge) ---------- */
-.story-dots {
-    position: fixed; right: 24px; top: 50%;
-    transform: translateY(-50%);
-    display: flex; flex-direction: column; gap: 12px;
-    z-index: 200;
-    transition: opacity 0.25s ease;
-}
-.story-dots.is-outside-story {
-    opacity: 0;
-    pointer-events: none;
-}
-.story-dot {
-    position: relative;
-    width: 9px; height: 9px; border-radius: 5px;
-    border: none; padding: 0; appearance: none;
-    background: rgba(28, 28, 30, 0.22); cursor: pointer;
-    transition: height 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
-}
-.story-dot::after {
-    content: '';
-    position: absolute;
-    inset: -6px -10px;
-}
-.story-dot:focus-visible {
-    outline: 2px solid #1C1C1E;
-    outline-offset: 4px;
-}
-.story-dot.pending {
-    background: rgba(28, 28, 30, 0.48);
-    height: 18px;
-}
-.story-dot.active {
-    background: #1C1C1E; height: 32px;
-    box-shadow: 0 4px 12px rgba(28, 28, 30, 0.3);
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .sp-phone-track,
-    .sp-text-track,
-    .sp-num-track,
-    .sp-text-card,
-    .story-bg-layer,
-    .story-glow-spot,
-    .story-dot {
-        animation: none !important;
-        transition: none !important;
-    }
-}
-
-@media (max-width: 1180px) and (min-width: 901px) {
-    .sp-layout-container {
-        justify-content: center;
-        gap: clamp(28px, 4vw, 48px);
-        height: auto;
-        padding: 0 clamp(36px, 5vw, 56px) 0 24px;
-    }
-    .sp-num-viewport {
-        left: 20px;
-        width: 190px;
-        opacity: 0.65;
-    }
-    .sp-num-item {
-        font-size: clamp(4.8rem, 7vw, 7rem);
-    }
-    .sp-phone-container {
-        width: clamp(220px, 24vw, 275px);
-        height: clamp(448px, 70dvh, 560px);
-        margin-right: 0;
-    }
-    .sp-text-viewport {
-        width: min(400px, 43vw);
-        height: clamp(320px, 56dvh, 400px);
-    }
-}
-
-@media (max-width: 900px) {
-    .sp-layout-container {
-        flex-direction: column;
-        justify-content: center;
-        height: auto;
-        padding: 0 max(36px, env(safe-area-inset-right, 0px) + 28px) 0 max(20px, env(safe-area-inset-left, 0px));
-    }
-    .sp-phone-container {
-        width: clamp(160px, 25dvh, 245px);
-        height: clamp(325px, 50dvh, 498px);
-        margin-right: 0;
-        margin-bottom: 18px;
-    }
-    .sp-text-viewport {
-        width: 100%;
-        max-width: 500px;
-        height: clamp(255px, 32dvh, 320px);
-    }
-    .panel-tag-badge { margin-bottom: 8px; font-size: 12px; padding: 5px 12px; }
-    .panel-heading { font-size: clamp(1.38rem, 3.8vw, 1.85rem); margin-bottom: 8px; }
-    .panel-description { font-size: clamp(0.88rem, 2.3vw, 0.98rem); line-height: 1.55; margin-bottom: 12px; }
-    .panel-feature-card { padding: 12px 14px; border-radius: 14px; }
-    .sp-num-viewport { display: none !important; }
-    .story-dots { right: max(10px, env(safe-area-inset-right, 0px)); gap: 10px; }
-}
-
-@media (max-width: 639px) {
-    .sp-layout-container {
-        padding: 0 36px 0 16px;
-    }
-    .sp-phone-container {
-        width: clamp(138px, 21dvh, 185px);
-        height: clamp(280px, 42dvh, 376px);
-        margin-bottom: 12px;
-    }
-    .sp-iphone-shell {
-        border-width: 6px;
-        border-radius: 36px;
-    }
-    .sp-iphone-screen {
-        top: 6px; left: 6px; right: 6px; bottom: 6px;
-        border-radius: 30px;
-    }
-    .sp-text-viewport {
-        max-width: 390px;
-        height: clamp(255px, 41dvh, 305px);
-    }
-    .panel-heading { font-size: clamp(1.24rem, 5vw, 1.5rem); }
-    .panel-description { font-size: 0.87rem; line-height: 1.52; margin-bottom: 10px; }
-    .panel-feature-card h4 { font-size: 0.87rem; }
-    .panel-feature-card p { font-size: 0.81rem; line-height: 1.48; }
-}
-
-@media (max-width: 639px) and (max-height: 700px) {
-    .sp-phone-container {
-        width: 124px;
-        height: 252px;
-        margin-bottom: 8px;
-    }
-    .sp-text-viewport {
-        height: 252px;
-    }
-}
-
-/* ── Bento 實機預覽嵌框 + 8 張完整截圖庫 + 原生 Lightbox <dialog> ── */
-.bento-shot-btn {
-    margin-top: auto;
-    padding: 12px 12px 10px;
-    border-radius: 16px;
-    border: 1px solid rgba(28, 28, 30, 0.08);
-    background: linear-gradient(160deg, #F5F3EE 0%, #ECE8DF 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    width: 100%;
-    text-align: center;
-    font-family: inherit;
-    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
-}
-.bento-shot-btn:hover {
-    transform: translateY(-2px);
-    border-color: rgba(28, 28, 30, 0.22);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
-}
-.bento-shot-btn:focus-visible,
-.v28-shot-card:focus-visible,
-.lightbox-close-btn:focus-visible,
-.lightbox-nav-btn:focus-visible {
-    outline: 2.5px solid #1C1C1E;
-    outline-offset: 2px;
-}
-.bento-mini-phone {
-    width: 122px;
-    aspect-ratio: 472 / 1024;
-    border-radius: 20px;
-    border: 4px solid #1C1C22;
-    background: #111116;
-    overflow: hidden;
-    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.16);
-}
-.bento-mini-phone img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-.bento-shot-hint {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-    font-weight: 700;
-    color: #48484A;
-}
-
-.v28-gallery-band {
-    margin-top: 38px;
-    padding: 28px 24px 26px;
-    border-radius: 24px;
-    background: rgba(255, 255, 255, 0.88);
-    border: 1px solid rgba(28, 28, 30, 0.08);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.045);
-}
-.v28-gallery-head {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-.v28-gallery-head h3 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 900;
-    color: #1C1C1E;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-.v28-gallery-head p {
-    margin: 0;
-    font-size: 13.5px;
-    color: #636366;
-    font-weight: 600;
-}
-.v28-gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 16px;
-}
-.v28-shot-card {
-    appearance: none;
-    border: 1px solid rgba(28, 28, 30, 0.09);
-    background: #FAF9F6;
-    border-radius: 18px;
-    padding: 12px 10px 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 9px;
-    cursor: pointer;
-    font-family: inherit;
-    text-align: center;
-    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-}
-.v28-shot-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-    border-color: rgba(28, 28, 30, 0.2);
-}
-.v28-shot-frame {
-    width: 100%;
-    max-width: 148px;
-    aspect-ratio: 472 / 1024;
-    border-radius: 20px;
-    border: 4px solid #1C1C22;
-    background: #111116;
-    overflow: hidden;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
-}
-.v28-shot-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-.v28-shot-title {
-    font-size: 13.5px;
-    font-weight: 800;
-    color: #1C1C1E;
-    line-height: 1.3;
-}
-.v28-shot-sub {
-    font-size: 11.5px;
-    color: #6E6E73;
-    line-height: 1.4;
-}
-
-@media (max-width: 900px) {
-    .v28-gallery-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-    }
-    .v28-gallery-band {
-        padding: 20px 14px;
-    }
-}
-
-/* ── 原生 Modal Lightbox (<dialog>)：合規 scroll-lock 免疫、Light Dismiss 與 Top-layer 過渡 ── */
-dialog.screen-lightbox {
-    margin: auto;
-    padding: 18px 18px 16px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 26px;
-    background: #18181B;
-    color: #F4F4F5;
-    width: min(92vw, 430px);
-    max-height: 92dvh;
-    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.48);
-    overflow: auto;
-    opacity: 0;
-    transition-property: opacity, transform, display, overlay;
-    transition-duration: 0.24s;
-    transition-timing-function: ease-out;
-    transition-behavior: allow-discrete;
-}
-dialog.screen-lightbox:modal {
-    overscroll-behavior: contain;
-}
-dialog.screen-lightbox::backdrop {
-    background-color: rgba(10, 10, 14, 0);
-    overflow: hidden;
-    overscroll-behavior: contain;
-    transition-property: background-color, display, overlay;
-    transition-duration: 0.24s;
-    transition-timing-function: ease-out;
-    transition-behavior: allow-discrete;
-}
-:is(dialog.screen-lightbox[open]):where(:not([data-closing])) {
-    opacity: 1;
-}
-@starting-style {
-    :is(dialog.screen-lightbox[open]):where(:not([data-closing])) {
-        opacity: 0;
-    }
-}
-@media (prefers-reduced-motion: no-preference) {
-    dialog.screen-lightbox {
-        transform: scale(0.94);
-    }
-    :is(dialog.screen-lightbox[open]):where(:not([data-closing])) {
-        transform: scale(1);
-    }
-    @starting-style {
-        :is(dialog.screen-lightbox[open]):where(:not([data-closing])) {
-            transform: scale(0.94);
+        .story-wrap {
+            height: 370vh;
+            /* 270vh scroll span (~54vh per chapter, light dwell + clean page snap) */
+            position: relative;
+            z-index: 20;
         }
-    }
-}
-@media (prefers-reduced-motion: reduce) {
-    dialog.screen-lightbox,
-    dialog.screen-lightbox::backdrop {
-        transition-duration: 0.1s;
-    }
-}
-:is(dialog.screen-lightbox[open]):where(:not([data-closing]))::backdrop {
-    background-color: rgba(10, 10, 14, 0.78);
-}
-@starting-style {
-    :is(dialog.screen-lightbox[open]):where(:not([data-closing]))::backdrop {
-        background-color: rgba(10, 10, 14, 0);
-    }
-}
-.lightbox-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 12px;
-}
-.lightbox-title {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 800;
-    color: #FFFFFF;
-}
-.lightbox-close-btn {
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    background: rgba(255, 255, 255, 0.1);
-    color: #FFFFFF;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-.lightbox-phone-wrap {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 12px;
-}
-.lightbox-phone-bezel {
-    height: clamp(260px, 56dvh, 490px);
-    max-height: calc(92dvh - 185px);
-    width: auto;
-    max-width: min(72vw, 268px);
-    aspect-ratio: 472 / 1024;
-    border-radius: 32px;
-    border: 5px solid #09090B;
-    background: #000000;
-    overflow: hidden;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
-}
-.lightbox-phone-bezel img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-.lightbox-caption {
-    margin: 0 0 12px;
-    font-size: 13.5px;
-    line-height: 1.55;
-    color: #D4D4D8;
-    text-align: center;
-}
-.lightbox-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-}
-.lightbox-nav-btn {
-    padding: 8px 14px;
-    border-radius: 99px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background: rgba(255, 255, 255, 0.08);
-    color: #FFFFFF;
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-.lightbox-nav-btn:hover {
-    background: rgba(255, 255, 255, 0.16);
-}
-.lightbox-counter {
-    font-size: 12.5px;
-    font-weight: 700;
-    color: #A1A1AA;
-}
-</style>
+
+        .story-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            height: 100dvh;
+            width: 100%;
+            padding-top: calc(var(--nav-height) * 0.45);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Soft Ambient Glow Layer */
+        .story-bg-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-color: #FAF9F6;
+            transition: background-color 0.6s ease;
+        }
+
+        .story-glow-spot {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: radial-gradient(circle 650px at 50% 50%, var(--glow-tint, rgba(251, 189, 4, 0.14)), transparent 70%);
+            transition: all 0.6s ease;
+            pointer-events: none;
+        }
+
+        /* Main Layout Container (Shifted center-right to guarantee watermark breathing room) */
+        .sp-layout-container {
+            position: relative;
+            z-index: 20;
+            width: 100%;
+            max-width: 1240px;
+            height: 600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: max(6vw, 60px);
+            padding-left: 24px;
+        }
+
+        /* ---------- Background Giant Watermark Numbers (Full Viewport Positioned) ---------- */
+        .sp-num-viewport {
+            position: absolute;
+            left: max(5vw, 60px);
+            top: 50%;
+            transform: translateY(-50%);
+            height: 400px;
+            width: 340px;
+            overflow: hidden;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .sp-num-track {
+            display: flex;
+            flex-direction: column;
+            height: 600%;
+            will-change: transform;
+        }
+
+        .sp-num-item {
+            height: 16.666667%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(6.5rem, 9vw, 9.5rem);
+            font-weight: 900;
+            line-height: 1;
+            color: rgba(28, 28, 30, 0.07);
+            letter-spacing: -2px;
+            user-select: none;
+        }
+
+        /* ---------- Scoped iPhone Mockup Frame (.sp-phone-*) ---------- */
+        .sp-phone-container {
+            position: relative;
+            z-index: 25;
+            width: 285px;
+            height: 580px;
+            flex-shrink: 0;
+            margin-right: 56px;
+            filter: drop-shadow(0 28px 56px rgba(0, 0, 0, 0.16));
+        }
+
+        .sp-iphone-shell {
+            position: absolute;
+            inset: 0;
+            border-radius: 46px;
+            border: 8px solid #1c1c22;
+            background: transparent;
+            box-shadow:
+                inset 0 0 0 1.5px rgba(255, 255, 255, 0.35),
+                0 14px 36px rgba(0, 0, 0, 0.14);
+            z-index: 30;
+            pointer-events: none;
+        }
+
+        .sp-iphone-screen {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border-radius: 38px;
+            overflow: hidden;
+            z-index: 10;
+            background: #111116;
+        }
+
+        /* Phone Screen Track (6 Items, locked 1:1 to scroll progress without viscous lag) */
+        .sp-phone-track {
+            display: flex;
+            flex-direction: column;
+            height: 600%;
+            width: 100%;
+            will-change: transform;
+        }
+
+        .sp-screen-page {
+            height: 16.666667%;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #000000;
+        }
+
+        .sp-app-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            image-rendering: auto;
+            transform: translateZ(0);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        /* ---------- Scoped Right Side Text Panels (.sp-text-*) ---------- */
+        .sp-text-viewport {
+            position: relative;
+            z-index: 25;
+            width: min(420px, 38vw);
+            height: 400px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .sp-text-track {
+            display: flex;
+            flex-direction: column;
+            height: 600%;
+            width: 100%;
+            will-change: transform;
+        }
+
+        .sp-text-card {
+            height: 16.666667%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 10px 0;
+            flex-shrink: 0;
+            will-change: opacity, transform;
+        }
+
+        .panel-tag-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 14px;
+            width: fit-content;
+        }
+
+        .panel-heading {
+            font-size: clamp(2rem, 3.2vw, 2.8rem);
+            font-weight: 900;
+            line-height: 1.18;
+            letter-spacing: -0.5px;
+            margin-bottom: 14px;
+            color: #1C1C1E;
+        }
+
+        .panel-description {
+            font-size: 1.02rem;
+            color: #6E6E73;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .panel-feature-card {
+            padding: 16px 18px;
+            border-radius: 18px;
+            background: #ffffff;
+            border: 1px solid #E5E5EA;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+        }
+
+        .panel-feature-card h4 {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #1C1C1E;
+            margin: 0 0 4px 0;
+        }
+
+        .panel-feature-card p {
+            font-size: 0.88rem;
+            color: #6E6E73;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ---------- Side Progress Dots (Right Edge) ---------- */
+        .story-dots {
+            position: fixed;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 200;
+            transition: opacity 0.25s ease;
+        }
+
+        .story-dots.is-outside-story {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .story-dot {
+            position: relative;
+            width: 9px;
+            height: 9px;
+            border-radius: 5px;
+            border: none;
+            padding: 0;
+            appearance: none;
+            background: rgba(28, 28, 30, 0.22);
+            cursor: pointer;
+            transition: height 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .story-dot::after {
+            content: '';
+            position: absolute;
+            inset: -6px -10px;
+        }
+
+        .story-dot:focus-visible {
+            outline: 2px solid #1C1C1E;
+            outline-offset: 4px;
+        }
+
+        .story-dot.pending {
+            background: rgba(28, 28, 30, 0.48);
+            height: 18px;
+        }
+
+        .story-dot.active {
+            background: #1C1C1E;
+            height: 32px;
+            box-shadow: 0 4px 12px rgba(28, 28, 30, 0.3);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .sp-phone-track,
+            .sp-text-track,
+            .sp-num-track,
+            .sp-text-card,
+            .sp-sub-img,
+            .story-bg-layer,
+            .story-glow-spot,
+            .story-dot {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        @media (max-width: 1180px) and (min-width: 901px) {
+            .sp-layout-container {
+                justify-content: center;
+                gap: clamp(28px, 4vw, 48px);
+                height: auto;
+                padding: 0 clamp(36px, 5vw, 56px) 0 24px;
+            }
+
+            .sp-num-viewport {
+                left: 20px;
+                width: 190px;
+                opacity: 0.65;
+            }
+
+            .sp-num-item {
+                font-size: clamp(4.8rem, 7vw, 7rem);
+            }
+
+            .sp-phone-container {
+                width: clamp(220px, 24vw, 275px);
+                height: clamp(448px, 70dvh, 560px);
+                margin-right: 0;
+            }
+
+            .sp-text-viewport {
+                width: min(400px, 43vw);
+                height: clamp(320px, 56dvh, 400px);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .sp-layout-container {
+                flex-direction: column;
+                justify-content: center;
+                height: auto;
+                padding: 0 max(36px, env(safe-area-inset-right, 0px) + 28px) 0 max(20px, env(safe-area-inset-left, 0px));
+            }
+
+            .sp-phone-container {
+                width: clamp(160px, 25dvh, 245px);
+                height: clamp(325px, 50dvh, 498px);
+                margin-right: 0;
+                margin-bottom: 18px;
+            }
+
+            .sp-text-viewport {
+                width: 100%;
+                max-width: 500px;
+                height: clamp(255px, 32dvh, 320px);
+            }
+
+            .panel-tag-badge {
+                margin-bottom: 8px;
+                font-size: 12px;
+                padding: 5px 12px;
+            }
+
+            .panel-heading {
+                font-size: clamp(1.38rem, 3.8vw, 1.85rem);
+                margin-bottom: 8px;
+            }
+
+            .panel-description {
+                font-size: clamp(0.88rem, 2.3vw, 0.98rem);
+                line-height: 1.55;
+                margin-bottom: 12px;
+            }
+
+            .panel-feature-card {
+                padding: 12px 14px;
+                border-radius: 14px;
+            }
+
+            .sp-num-viewport {
+                display: none !important;
+            }
+
+            .story-dots {
+                right: max(10px, env(safe-area-inset-right, 0px));
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 639px) {
+            .sp-layout-container {
+                padding: 0 36px 0 16px;
+            }
+
+            .sp-phone-container {
+                width: clamp(138px, 21dvh, 185px);
+                height: clamp(280px, 42dvh, 376px);
+                margin-bottom: 12px;
+            }
+
+            .sp-iphone-shell {
+                border-width: 6px;
+                border-radius: 36px;
+            }
+
+            .sp-iphone-screen {
+                top: 6px;
+                left: 6px;
+                right: 6px;
+                bottom: 6px;
+                border-radius: 30px;
+            }
+
+            .sp-text-viewport {
+                max-width: 390px;
+                height: clamp(275px, 42dvh, 325px);
+            }
+
+            .panel-heading {
+                font-size: clamp(1.24rem, 5vw, 1.5rem);
+            }
+
+            .panel-description {
+                font-size: 0.87rem;
+                line-height: 1.52;
+                margin-bottom: 10px;
+            }
+
+            .panel-feature-card h4 {
+                font-size: 0.87rem;
+            }
+
+            .panel-feature-card p {
+                font-size: 0.81rem;
+                line-height: 1.48;
+            }
+        }
+
+        @media (max-width: 639px) and (max-height: 700px) {
+            .sp-phone-container {
+                width: 120px;
+                height: 244px;
+                margin-bottom: 8px;
+            }
+
+            .sp-text-viewport {
+                height: 274px;
+            }
+
+            .sp-subscreen-tabs {
+                margin-top: 8px;
+                gap: 5px;
+            }
+
+            .sp-sub-pill {
+                padding: 4px 10px;
+                font-size: 11px;
+            }
+        }
+
+        /* ── 單一主手機切換標籤（整合多張同章節實機截圖，消除重複頁面排版） ── */
+        .sp-sub-img {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .sp-sub-img.is-sub-active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .sp-subscreen-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 12px;
+        }
+
+        .sp-sub-pill {
+            appearance: none;
+            border: 1px solid rgba(28, 28, 30, 0.14);
+            background: rgba(255, 255, 255, 0.88);
+            color: #48484A;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 99px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .sp-sub-pill:hover {
+            border-color: rgba(28, 28, 30, 0.35);
+            color: #1C1C1E;
+        }
+
+        .sp-sub-pill.is-active {
+            background: #1C1C1E;
+            color: #FFFFFF;
+            border-color: #1C1C1E;
+            box-shadow: 0 4px 12px rgba(28, 28, 30, 0.18);
+        }
+
+        .sp-sub-pill:focus-visible {
+            outline: 2.5px solid #1C1C1E;
+            outline-offset: 2px;
+        }
+    </style>
 </head>
+
 <body class="feat-page">
 
-<!-- ── 1. 吸頂導覽列 (與其他頁面完全一致) ── -->
-<nav class="navbar" id="navbar">
-    <div class="nav-container">
-        <a href="index.html" class="logo-box">
-            <div class="logo-avatar"><img src="assets/icon.png" alt="MapMo Logo" class="logo-img"></div>
-            <img src="assets/logo-text.png" alt="MapMo" class="logo-text-img">
-        </a>
-        <div class="nav-links" id="navLinks">
-            <a href="index.html"    class="nav-link">首頁</a>
-            <a href="features.html" class="nav-link active">功能介紹</a>
-            <a href="post.html" class="nav-link">各地的故事</a>
-            <a href="about.html"    class="nav-link">關於我們</a>
-            <a href="contact.html"  class="nav-btn-highlight">聯絡我們</a>
+    <!-- ── 1. 吸頂導覽列 (與其他頁面完全一致) ── -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-box">
+                <div class="logo-avatar"><img src="assets/icon.png" alt="MapMo Logo" class="logo-img"></div>
+                <img src="assets/logo-text.png" alt="MapMo" class="logo-text-img">
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">首頁</a>
+                <a href="features.html" class="nav-link active">功能介紹</a>
+                <a href="post.html" class="nav-link">各地的故事</a>
+                <a href="about.html" class="nav-link">關於我們</a>
+                <a href="contact.html" class="nav-btn-highlight">聯絡我們</a>
+            </div>
+            <button type="button" class="mobile-menu-toggle" id="menuToggle" aria-label="選單" aria-expanded="false"
+                aria-controls="navLinks">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
         </div>
-        <button type="button" class="mobile-menu-toggle" id="menuToggle" aria-label="選單" aria-expanded="false" aria-controls="navLinks">
-            <i class="fas fa-bars" aria-hidden="true"></i>
-        </button>
-    </div>
-</nav>
+    </nav>
 
-<!-- ── 2. 頁面 Header (對齊 Contact / About / Post 頁面 "劉海" 區域) ── -->
-<header class="feat-page-header">
-    <div class="feat-header-container">
-        <div class="feat-title-group">
-            <img src="assets/post-icon-red.png" alt="MapMo Icon" class="feat-title-icon">
-            <h1 class="feat-title">功能介紹</h1>
+    <!-- ── 2. 頁面 Header (對齊 Contact / About / Post 頁面 "劉海" 區域) ── -->
+    <header class="feat-page-header">
+        <div class="feat-header-container">
+            <div class="feat-title-group">
+                <img src="assets/post-icon-red.png" alt="MapMo Icon" class="feat-title-icon">
+                <h1 class="feat-title">功能介紹</h1>
+            </div>
+            <p class="feat-subtitle">每一個感受，都值得被好好放置。MapMo 帶你探索地圖與情緒對應的創新體驗。</p>
         </div>
-        <p class="feat-subtitle">每一個感受，都值得被好好放置。MapMo 帶你探索地圖與情緒對應的創新體驗。</p>
-    </div>
-</header>
+    </header>
 
-<!-- ── Side Dots Navigation (6 Chapters) ── -->
-<nav class="story-dots" id="storyDots" aria-label="章節導覽">
-    <button type="button" class="story-dot active" data-ch="0" aria-label="前往第 1 章：探索地圖與即時情緒篩選" aria-current="step"></button>
-    <button type="button" class="story-dot" data-ch="1" aria-label="前往第 2 章：0.01 秒即拍即傳與拍立得"></button>
-    <button type="button" class="story-dot" data-ch="2" aria-label="前往第 3 章：足跡自主控制"></button>
-    <button type="button" class="story-dot" data-ch="3" aria-label="前往第 4 章：雙層 AI 審核與一鍵檢舉"></button>
-    <button type="button" class="story-dot" data-ch="4" aria-label="前往第 5 章：設定、避開標籤與展覽模式"></button>
-    <button type="button" class="story-dot" data-ch="5" aria-label="前往第 6 章：個人檔案、我的收藏與權限"></button>
-</nav>
+    <!-- ── Side Dots Navigation (6 Chapters) ── -->
+    <nav class="story-dots" id="storyDots" aria-label="章節導覽">
+        <button type="button" class="story-dot active" data-ch="0" aria-label="前往第 1 章：探索地圖與即時情緒篩選"
+            aria-current="step"></button>
+        <button type="button" class="story-dot" data-ch="1" aria-label="前往第 2 章：0.01 秒即拍即傳與拍立得"></button>
+        <button type="button" class="story-dot" data-ch="2" aria-label="前往第 3 章：足跡自主控制"></button>
+        <button type="button" class="story-dot" data-ch="3" aria-label="前往第 4 章：雙層 AI 審核與一鍵檢舉"></button>
+        <button type="button" class="story-dot" data-ch="4" aria-label="前往第 5 章：設定、避開標籤與展覽模式"></button>
+        <button type="button" class="story-dot" data-ch="5" aria-label="前往第 6 章：個人檔案、我的收藏與權限"></button>
+    </nav>
 
-<!-- ══════════════════════════════════════════
+    <!-- ══════════════════════════════════════════
      3. RESPONSIVE SCROLL STORYTELLING SECTION (6 CHAPTERS)
 ══════════════════════════════════════════ -->
-<div class="story-wrap" id="storyWrap">
+    <div class="story-wrap" id="storyWrap">
 
-    <div class="story-sticky">
+        <div class="story-sticky">
 
-        <!-- Soft Ambient Layer (MapMo Warm Light Tints) -->
-        <div class="story-bg-layer" id="storyBgLayer"></div>
-        <div class="story-glow-spot" id="storyGlowSpot"></div>
+            <!-- Soft Ambient Layer (MapMo Warm Light Tints) -->
+            <div class="story-bg-layer" id="storyBgLayer"></div>
+            <div class="story-glow-spot" id="storyGlowSpot"></div>
 
-        <!-- Giant Watermark Numbers Track (Unclipped) -->
-        <div class="sp-num-viewport">
-            <div class="sp-num-track" id="giantTrack">
-                <div class="sp-num-item">01</div>
-                <div class="sp-num-item">02</div>
-                <div class="sp-num-item">03</div>
-                <div class="sp-num-item">04</div>
-                <div class="sp-num-item">05</div>
-                <div class="sp-num-item">06</div>
-            </div>
-        </div>
-
-        <!-- ── Main Layout Container ── -->
-        <div class="sp-layout-container">
-
-            <!-- ── Centered iPhone Hardware (Real App Screenshots) ── -->
-            <div class="sp-phone-container">
-                <div class="sp-iphone-shell"></div>
-                <div class="sp-iphone-notch"></div>
-
-                <div class="sp-iphone-screen">
-                    <!-- Phone Screen Track displaying 6 user uploaded App screenshots -->
-                    <div class="sp-phone-track" id="phoneTrack">
-
-                        <!-- Page 0: 新版探索地圖、街區情緒氛圍、故地重遊與 AI 大數據風格推播 -->
-                        <div class="sp-screen-page">
-                            <img src="assets/screens_v28/map-explore-vibe.jpg" alt="MapMo 新版探索地圖、街區氛圍、故地重遊與 AI 大數據風格推播畫面" width="472" height="1024" fetchpriority="high" class="sp-app-img">
-                        </div>
-
-                        <!-- Page 1: 放置回憶與相機 2x 變焦拍攝 -->
-                        <div class="sp-screen-page">
-                            <img src="assets/screens_v28/camera-zoom.jpg" alt="MapMo 相機拍攝與 2x 變焦畫面" width="472" height="1024" loading="lazy" fetchpriority="low" class="sp-app-img">
-                        </div>
-
-                        <!-- Page 2: 足跡自主與刪除 -->
-                        <div class="sp-screen-page">
-                            <img src="assets/刪除紀錄.jpg" alt="MapMo 刪除紀錄與管理" width="1179" height="2556" loading="lazy" fetchpriority="low" class="sp-app-img">
-                        </div>
-
-                        <!-- Page 3: 安全審核與檢舉 -->
-                        <div class="sp-screen-page">
-                            <img src="assets/封鎖.jpg" alt="MapMo 安全審核與一鍵檢舉" width="1179" height="2556" loading="lazy" fetchpriority="low" class="sp-app-img">
-                        </div>
-
-                        <!-- Page 4: 設定與展覽演示模式 -->
-                        <div class="sp-screen-page">
-                            <img src="assets/screens_v28/settings-exhibition.jpg" alt="MapMo 設定、避開情緒標籤與展覽演示模式畫面" width="472" height="1024" loading="lazy" fetchpriority="low" class="sp-app-img">
-                        </div>
-
-                        <!-- Page 5: 個人檔案、我的足跡與我的收藏 -->
-                        <div class="sp-screen-page">
-                            <img src="assets/screens_v28/profile-favorites.jpg" alt="MapMo 個人檔案與我的收藏畫面" width="472" height="1024" loading="lazy" fetchpriority="low" class="sp-app-img">
-                        </div>
-
-                    </div><!-- /sp-phone-track -->
-                </div><!-- /sp-iphone-screen -->
-            </div><!-- /sp-phone-container -->
-
-            <!-- ── Right Side Text Panels Track (6 Cards) ── -->
-            <div class="sp-text-viewport">
-                <div class="sp-text-track" id="textTrack">
-
-                    <!-- Card 0: 新版探索地圖與情緒分類 -->
-                    <div class="sp-text-card">
-                        <div class="panel-tag-badge" style="background:rgba(251,189,4,0.15);color:#D99B00;border:1px solid rgba(251,189,4,0.3);">
-                            01 · EXPLORE &amp; VIBE 😊
-                        </div>
-                        <h2 class="panel-heading">探索地圖與即時篩選</h2>
-                        <p class="panel-description">改採輕巧五色迷你標點，搭配頂部「街區情緒氛圍」與底部「AI 品味推播」微膠囊，左側一鍵過濾喜樂怒哀無。</p>
-                        <div class="panel-feature-card">
-                            <h4><i class="fas fa-layer-group" style="color:#FBBD04;margin-right:6px;"></i>聚合地標與展開抽屜</h4>
-                            <p>同地點累積多筆心聲時收合為數字徽章，點開抽屜即可橫向滑動並篩選情緒。</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 1: 放置回憶與相機拍攝 -->
-                    <div class="sp-text-card">
-                        <div class="panel-tag-badge" style="background:rgba(48,209,88,0.15);color:#1E9E3C;border:1px solid rgba(48,209,88,0.3);">
-                            02 · CAMERA & GPS 📷
-                        </div>
-                        <h2 class="panel-heading">0.01s 即拍即傳與拍立得</h2>
-                        <p class="panel-description">快門瞬間鎖定 GPS 蓋上不可竄改「即拍即傳」標章，搭配 1.0x~5.0x 弧形變焦轉盤，相簿也能輕鬆上傳。</p>
-                        <div class="panel-feature-card">
-                            <h4><i class="fas fa-compass" style="color:#30D158;margin-right:6px;"></i>自動存相簿 ＋ 心靈拍立得</h4>
-                            <p>支援自動備份原圖至手機相簿，發文即贈帶時空印記的專屬拍立得憑證卡。</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 2: 刪除紀錄與足跡自主 -->
-                    <div class="sp-text-card">
-                        <div class="panel-tag-badge" style="background:rgba(255,149,0,0.15);color:#D97700;border:1px solid rgba(255,149,0,0.3);">
-                            03 · DELETE & CONTROL 🗑️
-                        </div>
-                        <h2 class="panel-heading">足跡自主控制</h2>
-                        <p class="panel-description">隨時掌握自己的所有紀錄與回憶發文，在詳細資料中可隨心刪除過往貼文或轉為私人，資料完全自主掌控。</p>
-                        <div class="panel-feature-card">
-                            <h4><i class="fas fa-trash-alt" style="color:#FF9500;margin-right:6px;"></i>徹底刪除與清理</h4>
-                            <p>一鍵刪除個人歷史記錄與相片，系統即時同步清除，不留痕跡。</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: 雙層 AI 審核與一鍵檢舉 (對應 封鎖.jpg 畫面) -->
-                    <div class="sp-text-card">
-                        <div class="panel-tag-badge" style="background:rgba(234,67,53,0.15);color:#EA4335;border:1px solid rgba(234,67,53,0.3);">
-                            04 · AI SAFETY & REPORT 🛡️
-                        </div>
-                        <h2 class="panel-heading">雙層 AI 審核與一鍵檢舉</h2>
-                        <p class="panel-description">上傳前 Gemini 先把關圖文安全；遇違規貼文可檢舉由雲端讀取影像仲裁，或一鍵「封鎖此創作者」立即隱蔽。</p>
-                        <div class="panel-feature-card">
-                            <h4><i class="fas fa-shield-alt" style="color:#EA4335;margin-right:6px;"></i>斷路器防誤殺保護</h4>
-                            <p>AI 信心度不足時轉由人工複核，防堵惡意檢舉濫殺正常足跡，守護溫暖社群。</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 4: 設定與帳號管理 (對應 個人檔案設定.jpg 畫面) -->
-                    <div class="sp-text-card">
-                        <div class="panel-tag-badge" style="background:rgba(10,132,255,0.15);color:#0066CC;border:1px solid rgba(10,132,255,0.3);">
-                            05 · ACCOUNT & GUARDIAN ⚙️
-                        </div>
-                        <h2 class="panel-heading">設定、避開標籤與展覽模式</h2>
-                        <p class="panel-description">支援維護封鎖名單、相簿自動備份、一鍵開啟「避開負面情緒標籤」，並內建「展覽演示模式」零限制展示。</p>
-                        <div class="panel-feature-card">
-                            <h4><i class="fas fa-cog" style="color:#0A84FF;margin-right:6px;"></i>心理界線 ＋ 帳號銷毀</h4>
-                            <p>想徹底離開時可透過雙重確認永久刪除帳號與所有數據。</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 5: 個人檔案與足跡 (對應 個人檔案.jpg 畫面) -->
-                    <div class="sp-text-card">
-                        <div class="panel-tag-badge" style="background:rgba(175,82,222,0.15);color:#AF52DE;border:1px solid rgba(175,82,222,0.3);">
-                            06 · PROFILE & SAVED 🔒
-                        </div>
-                        <h2 class="panel-heading">個人檔案、收藏與權限</h2>
-                        <p class="panel-description">底部抽屜支援「我的足跡」與「我的收藏 ❤️」秒切連動地圖；每篇貼文皆可獨立切換公開或私人瀏覽。</p>
-                        <div class="panel-feature-card">
-                            <h4><i class="fas fa-toggle-on" style="color:#AF52DE;margin-right:6px;"></i>對風格不對人的隱私守護</h4>
-                            <p>僅運算視覺風格偏好、絕不追蹤個人行蹤，放心回味每段城市故事。</p>
-                        </div>
-                    </div>
-
-                </div><!-- /sp-text-track -->
-            </div><!-- /sp-text-viewport -->
-
-        </div><!-- /sp-layout-container -->
-
-    </div><!-- /story-sticky -->
-</div><!-- /story-wrap -->
-
-<!-- ── 4. App 全新進化：六大智慧引擎與細節亮點 (Bento Showcase) ── -->
-<section class="app-updates-section" id="appUpdatesShowcase">
-    <div class="section-container">
-        <div class="section-header center">
-            <span class="section-tag">WHAT'S NEW IN MAPMO APP ✦</span>
-            <h2 class="section-title">新版 App 嶄新進化：六大核心引擎與細節</h2>
-            <p class="section-subtitle">不只保留零壓力匿名初衷，更加入 AI 視覺品味運算、1KM 街區氛圍感應與時空重遊體驗。</p>
-        </div>
-
-        <div class="app-updates-grid">
-            <article class="app-update-card">
-                <div class="app-update-top">
-                    <span class="app-update-icon" style="background:rgba(109, 76, 230, 0.12);color:#6D4CE6;"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i></span>
-                    <span class="app-update-badge" style="background:rgba(109, 76, 230, 0.1);color:#5B3BD4;">16 大風格向量</span>
+            <!-- Giant Watermark Numbers Track (Unclipped) -->
+            <div class="sp-num-viewport">
+                <div class="sp-num-track" id="giantTrack">
+                    <div class="sp-num-item">01</div>
+                    <div class="sp-num-item">02</div>
+                    <div class="sp-num-item">03</div>
+                    <div class="sp-num-item">04</div>
+                    <div class="sp-num-item">05</div>
+                    <div class="sp-num-item">06</div>
                 </div>
-                <h3>AI 大數據風格品味推播</h3>
-                <p>結合你的 ❤️ 收藏與公開貼文，以 Cosine 相似度＋畫面關鍵字計算審美契合度（例如「校園日常 85%」）並附上透明理由；嚴格「對風格不對個人」，徹底反肉搜。</p>
-                <button type="button" class="bento-shot-btn" data-shot-idx="0" aria-label="放大檢視 AI 大數據風格品味推播實機畫面">
-                    <div class="bento-mini-phone">
-                        <img src="assets/screens_v28/map-explore-vibe.jpg" alt="探索地圖與 AI 大數據風格推播實機畫面" width="472" height="1024" loading="lazy">
-                    </div>
-                    <span class="bento-shot-hint"><i class="fas fa-magnifying-glass-plus" aria-hidden="true"></i> 點擊放大實機畫面</span>
-                </button>
-            </article>
+            </div>
 
-            <article class="app-update-card">
-                <div class="app-update-top">
-                    <span class="app-update-icon" style="background:rgba(251, 189, 4, 0.16);color:#C48A00;"><i class="fas fa-bullseye" aria-hidden="true"></i></span>
-                    <span class="app-update-badge" style="background:rgba(251, 189, 4, 0.14);color:#A87400;">1km 生活圈感知</span>
-                </div>
-                <h3>街區情緒氛圍</h3>
-                <p>頂部「街區・氛圍」微膠囊即時統計生活圈（1 公里半徑）匿名情緒色譜與主調比例，讓你一秒感知身邊城市的集體心情脈動，並自動移除精確門牌保護隱私。</p>
-                <button type="button" class="bento-shot-btn" data-shot-idx="1" aria-label="放大檢視街區情緒氛圍報告實機畫面">
-                    <div class="bento-mini-phone">
-                        <img src="assets/screens_v28/vibe-report.jpg" alt="1KM 街區情緒氛圍即時色譜報告實機畫面" width="472" height="1024" loading="lazy">
-                    </div>
-                    <span class="bento-shot-hint"><i class="fas fa-magnifying-glass-plus" aria-hidden="true"></i> 點擊放大實機畫面</span>
-                </button>
-            </article>
+            <!-- ── Main Layout Container ── -->
+            <div class="sp-layout-container">
 
-            <article class="app-update-card">
-                <div class="app-update-top">
-                    <span class="app-update-icon" style="background:rgba(245, 158, 11, 0.14);color:#D97706;"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span>
-                    <span class="app-update-badge" style="background:rgba(245, 158, 11, 0.12);color:#B45309;">80m 時空回音</span>
-                </div>
-                <h3>時空膠囊「故地重遊」</h3>
-                <p>以正式帳號重返自己 7 天前曾親手留下的足跡 80 公尺內，地圖上方將喚醒「故地重遊」微膠囊（具 24 小時貼心冷卻），亦可在設定開啟「展覽演示模式」零障礙展示。</p>
-                <button type="button" class="bento-shot-btn" data-shot-idx="3" aria-label="放大檢視設定與展覽演示模式實機畫面">
-                    <div class="bento-mini-phone">
-                        <img src="assets/screens_v28/settings-exhibition.jpg" alt="設定與帳號管理內建展覽演示模式開關實機畫面" width="472" height="1024" loading="lazy">
-                    </div>
-                    <span class="bento-shot-hint"><i class="fas fa-magnifying-glass-plus" aria-hidden="true"></i> 點擊放大實機畫面</span>
-                </button>
-            </article>
+                <!-- ── Centered iPhone Hardware (Real App Screenshots) ── -->
+                <div class="sp-phone-container">
+                    <div class="sp-iphone-shell"></div>
+                    <div class="sp-iphone-notch"></div>
 
-            <article class="app-update-card">
-                <div class="app-update-top">
-                    <span class="app-update-icon" style="background:rgba(10, 132, 255, 0.12);color:#0066CC;"><i class="fas fa-layer-group" aria-hidden="true"></i></span>
-                    <span class="app-update-badge" style="background:rgba(10, 132, 255, 0.1);color:#0055B3;">百筆足跡不重疊</span>
-                </div>
-                <h3>聚合地標展開抽屜</h3>
-                <p>熱門商圈或校園展覽聚集大量足跡時，自動收合為數字徽章避免標點互蓋；一指點開底部抽屜即可滑動翻閱每張回憶，並直接依 5 種情緒二次篩選。</p>
-                <button type="button" class="bento-shot-btn" data-shot-idx="2" aria-label="放大檢視聚合地標展開抽屜實機畫面">
-                    <div class="bento-mini-phone">
-                        <img src="assets/screens_v28/cluster-drawer.jpg" alt="聚合地標數字徽章與底部展開抽屜實機畫面" width="472" height="1024" loading="lazy">
-                    </div>
-                    <span class="bento-shot-hint"><i class="fas fa-magnifying-glass-plus" aria-hidden="true"></i> 點擊放大實機畫面</span>
-                </button>
-            </article>
+                    <div class="sp-iphone-screen">
+                        <!-- Phone Screen Track displaying 6 chapters inside ONE unified iPhone -->
+                        <div class="sp-phone-track" id="phoneTrack">
 
-            <article class="app-update-card">
-                <div class="app-update-top">
-                    <span class="app-update-icon" style="background:rgba(48, 209, 88, 0.14);color:#1E9E3C;"><i class="fas fa-camera-retro" aria-hidden="true"></i></span>
-                    <span class="app-update-badge" style="background:rgba(48, 209, 88, 0.12);color:#188531;">即拍即傳憑證</span>
-                </div>
-                <h3>弧形變焦 ＋ 心靈拍立得</h3>
-                <p>拍照介面配備 1.0x~5.0x 弧形刻度變焦轉盤，快門 0.01 秒鎖定 GPS 加蓋不可後製「即拍即傳」綠標；上傳成功還會獲得帶時空戳記的專屬拍立得回憶卡。</p>
-                <button type="button" class="bento-shot-btn" data-shot-idx="5" aria-label="放大檢視相機 2x 變焦實機畫面">
-                    <div class="bento-mini-phone">
-                        <img src="assets/screens_v28/camera-zoom.jpg" alt="MapMo 相機 2x 變焦與方形觀景窗實機畫面" width="472" height="1024" loading="lazy">
-                    </div>
-                    <span class="bento-shot-hint"><i class="fas fa-magnifying-glass-plus" aria-hidden="true"></i> 點擊放大實機畫面</span>
-                </button>
-            </article>
+                            <!-- Page 0: 新版探索地圖、1KM 街區氛圍報告、聚合抽屜 -->
+                            <div class="sp-screen-page" data-page-ch="0">
+                                <img src="assets/screens_v28/map-explore-vibe.jpg"
+                                    alt="MapMo 新版探索地圖、街區氛圍、故地重遊與 AI 大數據風格推播畫面" width="472" height="1024"
+                                    fetchpriority="high" class="sp-app-img sp-sub-img is-sub-active" data-sub-view="0">
+                                <img src="assets/screens_v28/vibe-report.jpg"
+                                    alt="文山區 1KM 街區情緒氛圍即時色譜報告畫面" width="472" height="1024"
+                                    loading="lazy" fetchpriority="low" class="sp-app-img sp-sub-img" data-sub-view="1">
+                                <img src="assets/screens_v28/cluster-drawer.jpg"
+                                    alt="聚合地標數字徽章 23 則足跡與底部抽屜情緒篩選畫面" width="472" height="1024"
+                                    loading="lazy" fetchpriority="low" class="sp-app-img sp-sub-img" data-sub-view="2">
+                            </div>
 
-            <article class="app-update-card">
-                <div class="app-update-top">
-                    <span class="app-update-icon" style="background:rgba(234, 67, 53, 0.12);color:#DC2626;"><i class="fas fa-shield-heart" aria-hidden="true"></i></span>
-                    <span class="app-update-badge" style="background:rgba(234, 67, 53, 0.1);color:#B91C1C;">雙層守護清單</span>
-                </div>
-                <h3>Gemini 雙層安全 ＆ 避開負面情緒</h3>
-                <p>結合上傳前圖文審查與檢舉雲端影像仲裁（附人工斷路器不誤殺）；同時可在個人設定勾選「避開特定情緒標籤」，或透過 ❤️ 收藏管理自己的純淨品味相簿。</p>
-                <button type="button" class="bento-shot-btn" data-shot-idx="4" aria-label="放大檢視避開特定情緒標籤設定實機畫面">
-                    <div class="bento-mini-phone">
-                        <img src="assets/screens_v28/hide-emotions.jpg" alt="自訂避開特定情緒標籤開關實機畫面" width="472" height="1024" loading="lazy">
+                            <!-- Page 1: 放置回憶與相機 2x 變焦拍攝 -->
+                            <div class="sp-screen-page" data-page-ch="1">
+                                <img src="assets/screens_v28/camera-zoom.jpg" alt="MapMo 相機拍攝與 2x 變焦畫面" width="472"
+                                    height="1024" loading="lazy" fetchpriority="low" class="sp-app-img">
+                            </div>
+
+                            <!-- Page 2: 足跡自主與刪除 -->
+                            <div class="sp-screen-page" data-page-ch="2">
+                                <img src="assets/刪除紀錄.jpg" alt="MapMo 刪除紀錄與管理" width="1179" height="2556" loading="lazy"
+                                    fetchpriority="low" class="sp-app-img">
+                            </div>
+
+                            <!-- Page 3: 安全審核與檢舉 -->
+                            <div class="sp-screen-page" data-page-ch="3">
+                                <img src="assets/封鎖.jpg" alt="MapMo 安全審核與一鍵檢舉" width="1179" height="2556" loading="lazy"
+                                    fetchpriority="low" class="sp-app-img">
+                            </div>
+
+                            <!-- Page 4: 設定與展覽演示模式 / 避開特定情緒標籤 -->
+                            <div class="sp-screen-page" data-page-ch="4">
+                                <img src="assets/screens_v28/settings-exhibition.jpg" alt="MapMo 設定與展覽演示模式畫面"
+                                    width="472" height="1024" loading="lazy" fetchpriority="low"
+                                    class="sp-app-img sp-sub-img is-sub-active" data-sub-view="0">
+                                <img src="assets/screens_v28/hide-emotions.jpg" alt="MapMo 避開特定情緒標籤開關畫面"
+                                    width="472" height="1024" loading="lazy" fetchpriority="low"
+                                    class="sp-app-img sp-sub-img" data-sub-view="1">
+                            </div>
+
+                            <!-- Page 5: 個人檔案、我的足跡與我的收藏 -->
+                            <div class="sp-screen-page" data-page-ch="5">
+                                <img src="assets/screens_v28/profile-posts.jpg" alt="MapMo 個人檔案我的足跡 (26) 畫面"
+                                    width="472" height="1024" loading="lazy" fetchpriority="low"
+                                    class="sp-app-img sp-sub-img is-sub-active" data-sub-view="0">
+                                <img src="assets/screens_v28/profile-favorites.jpg" alt="MapMo 個人檔案與我的收藏畫面" width="472"
+                                    height="1024" loading="lazy" fetchpriority="low"
+                                    class="sp-app-img sp-sub-img" data-sub-view="1">
+                            </div>
+
+                        </div><!-- /sp-phone-track -->
+                    </div><!-- /sp-iphone-screen -->
+                </div><!-- /sp-phone-container -->
+
+                <!-- ── Right Side Text Panels Track (6 Cards) ── -->
+                <div class="sp-text-viewport">
+                    <div class="sp-text-track" id="textTrack">
+
+                        <!-- Card 0: 新版探索地圖與情緒分類 -->
+                        <div class="sp-text-card">
+                            <div class="panel-tag-badge"
+                                style="background:rgba(251,189,4,0.15);color:#D99B00;border:1px solid rgba(251,189,4,0.3);">
+                                01 · EXPLORE &amp; VIBE 😊
+                            </div>
+                            <h2 class="panel-heading">探索地圖與即時篩選</h2>
+                            <p class="panel-description">改採輕巧五色迷你標點，搭配頂部「街區情緒氛圍」與底部「AI 品味推播」微膠囊，左側一鍵過濾喜樂怒哀無。</p>
+                            <div class="panel-feature-card">
+                                <h4><i class="fas fa-layer-group" style="color:#FBBD04;margin-right:6px;"></i>聚合地標與展開抽屜
+                                </h4>
+                                <p>同地點累積多筆心聲時收合為數字徽章，點開抽屜即可滑動翻閱並篩選情緒。</p>
+                            </div>
+                            <div class="sp-subscreen-tabs" role="group" aria-label="切換探索地圖實機畫面">
+                                <button type="button" class="sp-sub-pill is-active" data-sub-ch="0" data-sub-idx="0" aria-pressed="true">地圖與推播</button>
+                                <button type="button" class="sp-sub-pill" data-sub-ch="0" data-sub-idx="1" aria-pressed="false">1KM 氛圍報告</button>
+                                <button type="button" class="sp-sub-pill" data-sub-ch="0" data-sub-idx="2" aria-pressed="false">23則聚合抽屜</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 1: 放置回憶與相機拍攝 -->
+                        <div class="sp-text-card">
+                            <div class="panel-tag-badge"
+                                style="background:rgba(48,209,88,0.15);color:#1E9E3C;border:1px solid rgba(48,209,88,0.3);">
+                                02 · CAMERA &amp; GPS 📷
+                            </div>
+                            <h2 class="panel-heading">0.01s 即拍即傳與拍立得</h2>
+                            <p class="panel-description">快門瞬間鎖定 GPS 蓋上不可竄改「即拍即傳」標章，搭配 1.0x~5.0x 弧形變焦轉盤，相簿也能輕鬆上傳。</p>
+                            <div class="panel-feature-card">
+                                <h4><i class="fas fa-compass" style="color:#30D158;margin-right:6px;"></i>自動存相簿 ＋ 心靈拍立得
+                                </h4>
+                                <p>支援自動備份原圖至手機相簿，發文即贈帶時空印記的專屬拍立得憑證卡。</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: 刪除紀錄與足跡自主 -->
+                        <div class="sp-text-card">
+                            <div class="panel-tag-badge"
+                                style="background:rgba(255,149,0,0.15);color:#D97700;border:1px solid rgba(255,149,0,0.3);">
+                                03 · DELETE &amp; CONTROL 🗑️
+                            </div>
+                            <h2 class="panel-heading">足跡自主控制</h2>
+                            <p class="panel-description">隨時掌握自己的所有紀錄與回憶發文，在詳細資料中可隨心刪除過往貼文或轉為私人，資料完全自主掌控。</p>
+                            <div class="panel-feature-card">
+                                <h4><i class="fas fa-trash-alt" style="color:#FF9500;margin-right:6px;"></i>徹底刪除與清理</h4>
+                                <p>一鍵刪除個人歷史記錄與相片，系統即時同步清除，不留痕跡。</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: 雙層 AI 審核與一鍵檢舉 (對應 封鎖.jpg 畫面) -->
+                        <div class="sp-text-card">
+                            <div class="panel-tag-badge"
+                                style="background:rgba(234,67,53,0.15);color:#EA4335;border:1px solid rgba(234,67,53,0.3);">
+                                04 · AI SAFETY &amp; REPORT 🛡️
+                            </div>
+                            <h2 class="panel-heading">雙層 AI 審核與一鍵檢舉</h2>
+                            <p class="panel-description">上傳前 Gemini 先把關圖文安全；遇違規貼文可檢舉由雲端讀取影像仲裁，或一鍵「封鎖此創作者」立即隱蔽。</p>
+                            <div class="panel-feature-card">
+                                <h4><i class="fas fa-shield-alt" style="color:#EA4335;margin-right:6px;"></i>斷路器防誤殺保護
+                                </h4>
+                                <p>AI 信心度不足時轉由人工複核，防堵惡意檢舉濫殺正常足跡，守護溫暖社群。</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: 設定與帳號管理 -->
+                        <div class="sp-text-card">
+                            <div class="panel-tag-badge"
+                                style="background:rgba(10,132,255,0.15);color:#0066CC;border:1px solid rgba(10,132,255,0.3);">
+                                05 · ACCOUNT &amp; GUARDIAN ⚙️
+                            </div>
+                            <h2 class="panel-heading">設定、避開標籤與展覽模式</h2>
+                            <p class="panel-description">支援維護封鎖名單、相簿自動備份、一鍵開啟「避開負面情緒標籤」，並內建「展覽演示模式」零限制展示。</p>
+                            <div class="panel-feature-card">
+                                <h4><i class="fas fa-cog" style="color:#0A84FF;margin-right:6px;"></i>心理界線 ＋ 帳號銷毀</h4>
+                                <p>想徹底離開時可透過雙重確認永久刪除帳號與所有數據。</p>
+                            </div>
+                            <div class="sp-subscreen-tabs" role="group" aria-label="切換設定實機畫面">
+                                <button type="button" class="sp-sub-pill is-active" data-sub-ch="4" data-sub-idx="0" aria-pressed="true">設定與展覽模式</button>
+                                <button type="button" class="sp-sub-pill" data-sub-ch="4" data-sub-idx="1" aria-pressed="false">避開情緒標籤</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 5: 個人檔案、足跡與收藏 -->
+                        <div class="sp-text-card">
+                            <div class="panel-tag-badge"
+                                style="background:rgba(175,82,222,0.15);color:#AF52DE;border:1px solid rgba(175,82,222,0.3);">
+                                06 · PROFILE &amp; SAVED 🔒
+                            </div>
+                            <h2 class="panel-heading">個人檔案、收藏與權限</h2>
+                            <p class="panel-description">底部抽屜支援「我的足跡」與「我的收藏 ❤️」秒切連動地圖；每篇貼文皆可獨立切換公開或私人瀏覽。</p>
+                            <div class="panel-feature-card">
+                                <h4><i class="fas fa-toggle-on" style="color:#AF52DE;margin-right:6px;"></i>對風格不對人的隱私守護
+                                </h4>
+                                <p>僅運算視覺風格偏好、絕不追蹤個人行蹤，放心回味每段城市故事。</p>
+                            </div>
+                            <div class="sp-subscreen-tabs" role="group" aria-label="切換個人檔案實機畫面">
+                                <button type="button" class="sp-sub-pill is-active" data-sub-ch="5" data-sub-idx="0" aria-pressed="true">我的足跡 (26)</button>
+                                <button type="button" class="sp-sub-pill" data-sub-ch="5" data-sub-idx="1" aria-pressed="false">❤️ 我的收藏</button>
+                            </div>
+                        </div>
+
+                    </div><!-- /sp-text-track -->
+                </div><!-- /sp-text-viewport -->
+
+            </div><!-- /sp-layout-container -->
+
+        </div><!-- /story-sticky -->
+    </div><!-- /story-wrap -->
+
+    <!-- ── 4. App 全新進化：六大智慧引擎與細節亮點 (純淨文字 Bento Showcase) ── -->
+    <section class="app-updates-section" id="appUpdatesShowcase">
+        <div class="section-container">
+            <div class="section-header center">
+                <span class="section-tag">WHAT'S NEW IN MAPMO APP ✦</span>
+                <h2 class="section-title">新版 App 嶄新進化：六大核心引擎與細節</h2>
+                <p class="section-subtitle">不只保留零壓力匿名初衷，更加入 AI 視覺品味運算、1KM 街區氛圍感應與時空重遊體驗。</p>
+            </div>
+
+            <div class="app-updates-grid">
+                <article class="app-update-card">
+                    <div class="app-update-top">
+                        <span class="app-update-icon" style="background:rgba(109, 76, 230, 0.12);color:#6D4CE6;"><i
+                                class="fas fa-wand-magic-sparkles" aria-hidden="true"></i></span>
+                        <span class="app-update-badge" style="background:rgba(109, 76, 230, 0.1);color:#5B3BD4;">16
+                            大風格向量</span>
                     </div>
-                    <span class="bento-shot-hint"><i class="fas fa-magnifying-glass-plus" aria-hidden="true"></i> 點擊放大實機畫面</span>
-                </button>
-            </article>
+                    <h3>AI 大數據風格品味推播</h3>
+                    <p>結合你的 ❤️ 收藏與公開貼文，以 Cosine 相似度＋畫面關鍵字計算審美契合度（例如「校園日常 85%」）並附上透明理由；嚴格「對風格不對個人」，徹底反肉搜。</p>
+                </article>
+
+                <article class="app-update-card">
+                    <div class="app-update-top">
+                        <span class="app-update-icon" style="background:rgba(251, 189, 4, 0.16);color:#C48A00;"><i
+                                class="fas fa-bullseye" aria-hidden="true"></i></span>
+                        <span class="app-update-badge" style="background:rgba(251, 189, 4, 0.14);color:#A87400;">1km
+                            生活圈感知</span>
+                    </div>
+                    <h3>街區情緒氛圍</h3>
+                    <p>頂部「街區・氛圍」微膠囊即時統計生活圈（1 公里半徑）匿名情緒色譜與主調比例，讓你一秒感知身邊城市的集體心情脈動，並自動移除精確門牌保護隱私。</p>
+                </article>
+
+                <article class="app-update-card">
+                    <div class="app-update-top">
+                        <span class="app-update-icon" style="background:rgba(245, 158, 11, 0.14);color:#D97706;"><i
+                                class="fas fa-hourglass-half" aria-hidden="true"></i></span>
+                        <span class="app-update-badge" style="background:rgba(245, 158, 11, 0.12);color:#B45309;">80m
+                            時空回音</span>
+                    </div>
+                    <h3>時空膠囊「故地重遊」</h3>
+                    <p>以正式帳號重返自己 7 天前曾親手留下的足跡 80 公尺內，地圖上方將喚醒「故地重遊」微膠囊（具 24 小時貼心冷卻），亦可在設定開啟「展覽演示模式」零障礙展示。</p>
+                </article>
+
+                <article class="app-update-card">
+                    <div class="app-update-top">
+                        <span class="app-update-icon" style="background:rgba(10, 132, 255, 0.12);color:#0066CC;"><i
+                                class="fas fa-layer-group" aria-hidden="true"></i></span>
+                        <span class="app-update-badge"
+                            style="background:rgba(10, 132, 255, 0.1);color:#0055B3;">百筆足跡不重疊</span>
+                    </div>
+                    <h3>聚合地標展開抽屜</h3>
+                    <p>熱門商圈或校園展覽聚集大量足跡時，自動收合為數字徽章避免標點互蓋；一指點開底部抽屜即可滑動翻閱每張回憶，並直接依 5 種情緒二次篩選。</p>
+                </article>
+
+                <article class="app-update-card">
+                    <div class="app-update-top">
+                        <span class="app-update-icon" style="background:rgba(48, 209, 88, 0.14);color:#1E9E3C;"><i
+                                class="fas fa-camera-retro" aria-hidden="true"></i></span>
+                        <span class="app-update-badge"
+                            style="background:rgba(48, 209, 88, 0.12);color:#188531;">即拍即傳憑證</span>
+                    </div>
+                    <h3>弧形變焦 ＋ 心靈拍立得</h3>
+                    <p>拍照介面配備 1.0x~5.0x 弧形刻度變焦轉盤，快門 0.01 秒鎖定 GPS 加蓋不可後製「即拍即傳」綠標；上傳成功還會獲得帶時空戳記的專屬拍立得回憶卡。</p>
+                </article>
+
+                <article class="app-update-card">
+                    <div class="app-update-top">
+                        <span class="app-update-icon" style="background:rgba(234, 67, 53, 0.12);color:#DC2626;"><i
+                                class="fas fa-shield-heart" aria-hidden="true"></i></span>
+                        <span class="app-update-badge"
+                            style="background:rgba(234, 67, 53, 0.1);color:#B91C1C;">雙層守護清單</span>
+                    </div>
+                    <h3>Gemini 雙層安全 ＆ 避開負面情緒</h3>
+                    <p>結合上傳前圖文審查與檢舉雲端影像仲裁（附人工斷路器不誤殺）；同時可在個人設定勾選「避開特定情緒標籤」，或透過 ❤️ 收藏管理自己的純淨品味相簿。</p>
+                </article>
+            </div>
+
+            <div class="app-updates-cta-row">
+                <a href="demo.html" class="app-updates-cta-btn primary">
+                    <i class="fas fa-map-marked-alt" aria-hidden="true"></i> 體驗地圖情緒篩選 Demo
+                </a>
+                <a href="faq.html#faq-ai-vibe" class="app-updates-cta-btn secondary">
+                    <i class="fas fa-circle-question" aria-hidden="true"></i> 查看 AI 反肉搜與重遊 FAQ
+                </a>
+            </div>
         </div>
+    </section>
 
-        <!-- 8 張 TestFlight 實機全畫面覽 -->
-        <div class="v28-gallery-band" aria-label="最新版 App 實機介面截圖總覽">
-            <div class="v28-gallery-head">
-                <h3><i class="fas fa-mobile-screen-button" style="color:#0A84FF;" aria-hidden="true"></i> 最新實機介面全覽</h3>
-                <p>點選任一手機畫面，開啟高清放大檢視（支援鍵盤左右切換與 Esc 關閉）</p>
+    <!-- ── Footer ── -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="pdf-footer-row">
+                <div class="pdf-footer-col">
+                    <h4 class="pdf-footer-heading">網站選單</h4>
+                    <ul class="pdf-footer-list">
+                        <li><a href="index.html">首頁</a></li>
+                        <li><a href="features.html">功能介紹</a></li>
+                        <li><a href="post.html">各地的故事</a></li>
+                        <li><a href="about.html">關於我們</a></li>
+                        <li><a href="contact.html">聯絡我們</a></li>
+                    </ul>
+                </div>
+                <div class="pdf-footer-col">
+                    <h4 class="pdf-footer-heading">常見問題</h4>
+                    <ul class="pdf-footer-list">
+                        <li><a href="faq.html#faq-anonymous">匿名登入說明</a></li>
+                        <li><a href="faq.html#faq-visibility">公開與私人足跡</a></li>
+                        <li><a href="faq.html#faq-ai-vibe">AI 推播與反肉搜</a></li>
+                        <li><a href="faq.html#faq-safety">檢舉與一鍵封鎖</a></li>
+                        <li><a href="faq.html#faq-delete">刪除所有帳號資料</a></li>
+                    </ul>
+                </div>
+                <div class="pdf-footer-col">
+                    <h4 class="pdf-footer-heading">聯絡方式</h4>
+                    <ul class="pdf-footer-list">
+                        <li><i class="fab fa-instagram"></i> <a href="https://instagram.com/mapmo_112.ics"
+                                target="_blank">mapmo_112.ics</a></li>
+                        <li><i class="far fa-envelope"></i> <a
+                                href="mailto:mapmo.ics112@gmail.com">mapmo.ics112@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="pdf-footer-col">
+                    <h4 class="pdf-footer-heading">條款與條例</h4>
+                    <ul class="pdf-footer-list">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="v28-gallery-grid">
-                <button type="button" class="v28-shot-card" data-shot-idx="0">
-                    <div class="v28-shot-frame">
-                        <img src="assets/screens_v28/map-explore-vibe.jpg" alt="探索地圖與 AI 大數據風格推播" width="472" height="1024" loading="lazy">
-                    </div>
-                    <span class="v28-shot-title">探索地圖・AI 品味推播</span>
-                    <span class="v28-shot-sub">頂部氛圍與故地重遊 + Gemini 推播卡</span>
-                </button>
-                <button type="button" class="v28-shot-card" data-shot-idx="1">
-                    <div class="v28-shot-frame">
-                        <img src="assets/screens_v28/vibe-report.jpg" alt="文山區 1KM 街區情緒氛圍即時報告" width="472" height="1024" loading="lazy">
-                    </div>
-                    <span class="v28-shot-title">1KM 街區情緒氛圍</span>
-                    <span class="v28-shot-sub">匿名情緒色譜比例與心靈脈動分析</span>
-                </button>
-                <button type="button" class="v28-shot-card" data-shot-idx="2">
-                    <div class="v28-shot-frame">
-                        <img src="assets/screens_v28/cluster-drawer.jpg" alt="23 則聚合地標展開抽屜與情緒篩選" width="472" height="1024" loading="lazy">
-                    </div>
-                    <span class="v28-shot-title">聚合地標展開抽屜</span>
-                    <span class="v28-shot-sub">數字徽章整合多筆紀錄與情緒二次篩選</span>
-                </button>
-                <button type="button" class="v28-shot-card" data-shot-idx="3">
-                    <div class="v28-shot-frame">
-                        <img src="assets/screens_v28/settings-exhibition.jpg" alt="設定與帳號管理含展覽演示模式開關" width="472" height="1024" loading="lazy">
-                    </div>
-                    <span class="v28-shot-title">設定・展覽演示模式</span>
-                    <span class="v28-shot-sub">相簿同步、展覽開關、條款與帳號銷毀</span>
-                </button>
-                <button type="button" class="v28-shot-card" data-shot-idx="4">
-                    <div class="v28-shot-frame">
-                        <img src="assets/screens_v28/hide-emotions.jpg" alt="避開特定情緒標籤自由切換開關" width="472" height="1024" loading="lazy">
-                    </div>
-                    <span class="v28-shot-title">避開特定情緒標籤</span>
-                    <span class="v28-shot-sub">自由隱藏指定情緒，守護當下心理邊界</span>
-                </button>
-                <button type="button" class="v28-shot-card" data-shot-idx="5">
-                    <div class="v28-shot-frame">
-                        <img src="assets/screens_v28/camera-zoom.jpg" alt="相機拍攝與 2x 變焦轉盤畫面" width="472" height="1024" loading="lazy">
-                    </div>
-                    <span class="v28-shot-title">相機 2x 變焦即拍即傳</span>
-                    <span class="v28-shot-sub">快門鎖定真實位置並支援相簿挑選上傳</span>
-                </button>
-                <button type="button" class="v28-shot-card" data-shot-idx="6">
-                    <div class="v28-shot-frame">
-                        <img src="assets/screens_v28/profile-posts.jpg" alt="個人檔案我的足跡與公開私人切換" width="472" height="1024" loading="lazy">
-                    </div>
-                    <span class="v28-shot-title">個人檔案・我的足跡</span>
-                    <span class="v28-shot-sub">足跡清單連動地圖與公開/私人自主權</span>
-                </button>
-                <button type="button" class="v28-shot-card" data-shot-idx="7">
-                    <div class="v28-shot-frame">
-                        <img src="assets/screens_v28/profile-favorites.jpg" alt="個人檔案我的收藏與地圖愛心標記" width="472" height="1024" loading="lazy">
-                    </div>
-                    <span class="v28-shot-title">個人檔案・❤️ 我的收藏</span>
-                    <span class="v28-shot-sub">愛心標記聯動與 AI 風格回憶相簿</span>
-                </button>
+            <div class="pdf-footer-bottom">
+                <img src="assets/icon.png" class="pdf-footer-mini-logo" alt="Logo">
+                <span>© 2026 Mapmo</span>
             </div>
         </div>
+    </footer>
 
-        <div class="app-updates-cta-row">
-            <a href="demo.html" class="app-updates-cta-btn primary">
-                <i class="fas fa-map-marked-alt" aria-hidden="true"></i> 體驗地圖情緒篩選 Demo
-            </a>
-            <a href="faq.html#faq-ai-vibe" class="app-updates-cta-btn secondary">
-                <i class="fas fa-circle-question" aria-hidden="true"></i> 查看 AI 反肉搜與重遊 FAQ
-            </a>
-        </div>
-    </div>
-</section>
+    <script src="script.js?v=20261116_faq2"></script>
 
-<!-- ── Footer ── -->
-<footer class="site-footer">
-    <div class="footer-container">
-        <div class="pdf-footer-row">
-            <div class="pdf-footer-col">
-                <h4 class="pdf-footer-heading">網站選單</h4>
-                <ul class="pdf-footer-list">
-                    <li><a href="index.html">首頁</a></li>
-                    <li><a href="features.html">功能介紹</a></li>
-                    <li><a href="post.html">各地的故事</a></li>
-                    <li><a href="about.html">關於我們</a></li>
-                    <li><a href="contact.html">聯絡我們</a></li>
-                </ul>
-            </div>
-            <div class="pdf-footer-col">
-                <h4 class="pdf-footer-heading">常見問題</h4>
-                <ul class="pdf-footer-list">
-                    <li><a href="faq.html#faq-anonymous">匿名登入說明</a></li>
-                    <li><a href="faq.html#faq-visibility">公開與私人足跡</a></li>
-                    <li><a href="faq.html#faq-ai-vibe">AI 推播與反肉搜</a></li>
-                    <li><a href="faq.html#faq-safety">檢舉與一鍵封鎖</a></li>
-                    <li><a href="faq.html#faq-delete">刪除所有帳號資料</a></li>
-                </ul>
-            </div>
-            <div class="pdf-footer-col">
-                <h4 class="pdf-footer-heading">聯絡方式</h4>
-                <ul class="pdf-footer-list">
-                    <li><i class="fab fa-instagram"></i> <a href="https://instagram.com/mapmo_112.ics" target="_blank">mapmo_112.ics</a></li>
-                    <li><i class="far fa-envelope"></i> <a href="mailto:mapmo.ics112@gmail.com">mapmo.ics112@gmail.com</a></li>
-                </ul>
-            </div>
-            <div class="pdf-footer-col">
-                <h4 class="pdf-footer-heading">條款與條例</h4>
-                <ul class="pdf-footer-list">
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                    <li><a href="terms-of-service.html">Terms of Service</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="pdf-footer-bottom">
-            <img src="assets/icon.png" class="pdf-footer-mini-logo" alt="Logo">
-            <span>© 2026 Mapmo</span>
-        </div>
-    </div>
-</footer>
+    <script>
+        /* ═══════════════════════════════════════════════
+           MAPMO REAL APP SHOWCASE SCROLL ENGINE (6 CHAPTERS)
+           - Brief dwell zone around each page stop (~50px buffer, never freezes 9 clicks)
+           - Light frame-rate-independent inertia damping (no heavy 450ms CSS lag)
+           - Smart precision snap on scrollend: always lands cleanly on each chapter
+        ═══════════════════════════════════════════════ */
+        (function () {
+            'use strict';
 
-<script src="script.js?v=20261116_faq2"></script>
+            const TINTS = [
+                'rgba(251, 189, 4, 0.14)',  // Mood Yellow (01)
+                'rgba(48, 209, 88, 0.14)',  // Mood Green (02)
+                'rgba(255, 149, 0, 0.14)',  // Orange Delete (03)
+                'rgba(234, 67, 53, 0.14)',  // Mood Red (04)
+                'rgba(10, 132, 255, 0.14)', // Blue Block (05)
+                'rgba(175, 82, 222, 0.14)'  // Mood Purple (06)
+            ];
 
-<script>
-/* ═══════════════════════════════════════════════
-   MAPMO REAL APP SHOWCASE SCROLL ENGINE (6 CHAPTERS)
-   - Brief dwell zone around each page stop (~50px buffer, never freezes 9 clicks)
-   - Light frame-rate-independent inertia damping (no heavy 450ms CSS lag)
-   - Smart precision snap on scrollend: always lands cleanly on each chapter
-═══════════════════════════════════════════════ */
-(function() {
-    'use strict';
+            const DWELL_EDGE = 0.10;         // Gentle 10% dwell at each end of an interval (~50px hold)
+            const DAMPING_SPEED = 15;        // Light exponential damping (120Hz/60Hz invariant)
+            const SNAP_PX_TRIGGER = 55;      // 1 crisp wheel notch (~100px) reliably advances chapter
+            const SNAP_SETTLE_TOLERANCE = 6; // Already centered within 6px -> skip auto-snap
+            const SNAP_IDLE_MS = 135;        // Fallback settle timer where scrollend isn't supported
 
-    const TINTS = [
-        'rgba(251, 189, 4, 0.14)',  // Mood Yellow (01)
-        'rgba(48, 209, 88, 0.14)',  // Mood Green (02)
-        'rgba(255, 149, 0, 0.14)',  // Orange Delete (03)
-        'rgba(234, 67, 53, 0.14)',  // Mood Red (04)
-        'rgba(10, 132, 255, 0.14)', // Blue Block (05)
-        'rgba(175, 82, 222, 0.14)'  // Mood Purple (06)
-    ];
+            const wrap = document.getElementById('storyWrap');
+            const glowSpot = document.getElementById('storyGlowSpot');
+            const phoneTrack = document.getElementById('phoneTrack');
+            const textTrack = document.getElementById('textTrack');
+            const giantTrack = document.getElementById('giantTrack');
+            const dots = document.querySelectorAll('.story-dot');
+            const dotsNav = document.getElementById('storyDots');
+            const textCards = document.querySelectorAll('.sp-text-card');
+            const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+            const supportsScrollEnd = 'onscrollend' in window;
 
-    const DWELL_EDGE = 0.10;         // Gentle 10% dwell at each end of an interval (~50px hold)
-    const DAMPING_SPEED = 15;        // Light exponential damping (120Hz/60Hz invariant)
-    const SNAP_PX_TRIGGER = 55;      // 1 crisp wheel notch (~100px) reliably advances chapter
-    const SNAP_SETTLE_TOLERANCE = 6; // Already centered within 6px -> skip auto-snap
-    const SNAP_IDLE_MS = 135;        // Fallback settle timer where scrollend isn't supported
+            let targetChapterVal = 0;
+            let displayChapterVal = 0;
+            let activeChapter = -1;
+            let pendingChapter = -2;
+            let rafId = null;
+            let lastFrameTime = 0;
 
-    const wrap = document.getElementById('storyWrap');
-    const glowSpot = document.getElementById('storyGlowSpot');
-    const phoneTrack = document.getElementById('phoneTrack');
-    const textTrack = document.getElementById('textTrack');
-    const giantTrack = document.getElementById('giantTrack');
-    const dots = document.querySelectorAll('.story-dot');
-    const dotsNav = document.getElementById('storyDots');
-    const textCards = document.querySelectorAll('.sp-text-card');
-    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const supportsScrollEnd = 'onscrollend' in window;
+            let prevScrollY = window.scrollY;
+            let lastScrollDir = 0;
+            let scrollDirty = false;
+            let isPointerDown = false;
+            let isAutoSnapping = false;
+            let autoSnapTimer = null;
+            let settleTimer = null;
 
-    let targetChapterVal = 0;
-    let displayChapterVal = 0;
-    let activeChapter = -1;
-    let pendingChapter = -2;
-    let rafId = null;
-    let lastFrameTime = 0;
-
-    let prevScrollY = window.scrollY;
-    let lastScrollDir = 0;
-    let scrollDirty = false;
-    let isPointerDown = false;
-    let isAutoSnapping = false;
-    let autoSnapTimer = null;
-    let settleTimer = null;
-
-    function smoothEase(t) {
-        return t * t * (3 - 2 * t);
-    }
-
-    function calcChapterVal(progress) {
-        const scaled = Math.max(0, Math.min(5, progress * 5));
-        const idx = Math.min(4, Math.floor(scaled));
-        const u = scaled - idx;
-
-        if (u <= DWELL_EDGE) return idx;
-        if (u >= 1 - DWELL_EDGE) return idx + 1;
-
-        const norm = (u - DWELL_EDGE) / (1 - 2 * DWELL_EDGE);
-        return idx + smoothEase(norm);
-    }
-
-    function getMetrics() {
-        if (!wrap) return null;
-        const rect = wrap.getBoundingClientRect();
-        const totalScrollSpace = wrap.offsetHeight - window.innerHeight;
-        if (totalScrollSpace <= 0) return null;
-
-        const scrolled = -rect.top;
-        const progress = Math.max(0, Math.min(1, scrolled / totalScrollSpace));
-        const wrapTop = rect.top + window.scrollY;
-        return { rect, totalScrollSpace, scrolled, progress, wrapTop };
-    }
-
-    function updateDotsAndGlow(settledIdx, pendingIdx) {
-        if (settledIdx === activeChapter && pendingIdx === pendingChapter) {
-            return;
-        }
-
-        if (settledIdx !== activeChapter) {
-            activeChapter = settledIdx;
-            if (glowSpot) glowSpot.style.setProperty('--glow-tint', TINTS[settledIdx]);
-        }
-        pendingChapter = pendingIdx;
-
-        dots.forEach((d, i) => {
-            if (i === settledIdx) {
-                d.classList.add('active');
-                d.classList.remove('pending');
-                d.setAttribute('aria-current', 'step');
-            } else {
-                d.classList.remove('active');
-                d.removeAttribute('aria-current');
-                if (i === pendingIdx) d.classList.add('pending');
-                else d.classList.remove('pending');
+            function smoothEase(t) {
+                return t * t * (3 - 2 * t);
             }
-        });
-    }
 
-    function applyVisuals(chapterVal, isReduced) {
-        if (isReduced) {
-            const discrete = Math.max(0, Math.min(5, Math.round(chapterVal)));
-            const shiftPercent = -(discrete / 6) * 100;
-            if (phoneTrack) phoneTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
-            if (textTrack) textTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
-            if (giantTrack) giantTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
-            textCards.forEach((card, index) => {
-                card.style.opacity = index === discrete ? '1' : '0';
-                card.style.transform = 'none';
+            function calcChapterVal(progress) {
+                const scaled = Math.max(0, Math.min(5, progress * 5));
+                const idx = Math.min(4, Math.floor(scaled));
+                const u = scaled - idx;
+
+                if (u <= DWELL_EDGE) return idx;
+                if (u >= 1 - DWELL_EDGE) return idx + 1;
+
+                const norm = (u - DWELL_EDGE) / (1 - 2 * DWELL_EDGE);
+                return idx + smoothEase(norm);
+            }
+
+            function getMetrics() {
+                if (!wrap) return null;
+                const rect = wrap.getBoundingClientRect();
+                const totalScrollSpace = wrap.offsetHeight - window.innerHeight;
+                if (totalScrollSpace <= 0) return null;
+
+                const scrolled = -rect.top;
+                const progress = Math.max(0, Math.min(1, scrolled / totalScrollSpace));
+                const wrapTop = rect.top + window.scrollY;
+                return { rect, totalScrollSpace, scrolled, progress, wrapTop };
+            }
+
+            function updateDotsAndGlow(settledIdx, pendingIdx) {
+                if (settledIdx === activeChapter && pendingIdx === pendingChapter) {
+                    return;
+                }
+
+                if (settledIdx !== activeChapter) {
+                    activeChapter = settledIdx;
+                    if (glowSpot) glowSpot.style.setProperty('--glow-tint', TINTS[settledIdx]);
+                }
+                pendingChapter = pendingIdx;
+
+                dots.forEach((d, i) => {
+                    if (i === settledIdx) {
+                        d.classList.add('active');
+                        d.classList.remove('pending');
+                        d.setAttribute('aria-current', 'step');
+                    } else {
+                        d.classList.remove('active');
+                        d.removeAttribute('aria-current');
+                        if (i === pendingIdx) d.classList.add('pending');
+                        else d.classList.remove('pending');
+                    }
+                });
+            }
+
+            function applyVisuals(chapterVal, isReduced) {
+                if (isReduced) {
+                    const discrete = Math.max(0, Math.min(5, Math.round(chapterVal)));
+                    const shiftPercent = -(discrete / 6) * 100;
+                    if (phoneTrack) phoneTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+                    if (textTrack) textTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+                    if (giantTrack) giantTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+                    textCards.forEach((card, index) => {
+                        card.style.opacity = index === discrete ? '1' : '0';
+                        card.style.transform = 'none';
+                    });
+                    updateDotsAndGlow(discrete, -1);
+                    return;
+                }
+
+                const shiftPercent = -(chapterVal / 6) * 100;
+                if (phoneTrack) phoneTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+                if (textTrack) textTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+                if (giantTrack) giantTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+
+                textCards.forEach((card, index) => {
+                    const dist = Math.abs(chapterVal - index);
+                    if (dist < 0.05) {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    } else {
+                        const opacity = Math.max(0.12, 1 - dist * 1.25);
+                        const scale = Math.max(0.94, 1 - dist * 0.06);
+                        card.style.opacity = opacity.toFixed(3);
+                        card.style.transform = `scale(${scale.toFixed(3)})`;
+                    }
+                });
+
+                const settledIdx = Math.max(0, Math.min(5, Math.round(chapterVal)));
+                const targetRounded = Math.max(0, Math.min(5, Math.round(targetChapterVal)));
+                updateDotsAndGlow(settledIdx, targetRounded !== settledIdx ? targetRounded : -1);
+            }
+
+            function tickAnimation(now) {
+                if (reducedMotionQuery.matches) {
+                    displayChapterVal = targetChapterVal;
+                    applyVisuals(displayChapterVal, true);
+                    rafId = null;
+                    return;
+                }
+
+                const dt = lastFrameTime ? Math.min(0.05, (now - lastFrameTime) / 1000) : (1 / 60);
+                lastFrameTime = now;
+
+                const diff = targetChapterVal - displayChapterVal;
+                if (Math.abs(diff) <= 0.0008) {
+                    displayChapterVal = targetChapterVal;
+                    applyVisuals(displayChapterVal, false);
+                    rafId = null;
+                    lastFrameTime = 0;
+                    return;
+                }
+
+                const alpha = 1 - Math.exp(-DAMPING_SPEED * dt);
+                displayChapterVal += diff * alpha;
+                applyVisuals(displayChapterVal, false);
+                rafId = requestAnimationFrame(tickAnimation);
+            }
+
+            function ensureAnimating() {
+                if (rafId !== null) return;
+                lastFrameTime = 0;
+                rafId = requestAnimationFrame(tickAnimation);
+            }
+
+            function cancelAutoSnap() {
+                isAutoSnapping = false;
+                clearTimeout(autoSnapTimer);
+            }
+
+            function pickSnapChapter(progress, totalScrollSpace, dir) {
+                const exact = progress * 5;
+                const pxPerChapter = totalScrollSpace / 5;
+                const triggerFrac = Math.min(0.24, SNAP_PX_TRIGGER / pxPerChapter);
+
+                const base = Math.min(4, Math.floor(exact));
+                const frac = exact - base;
+
+                if (dir > 0) {
+                    return frac >= triggerFrac ? Math.min(5, base + 1) : base;
+                }
+                if (dir < 0) {
+                    return (1 - frac) >= triggerFrac ? base : Math.min(5, base + 1);
+                }
+                return Math.max(0, Math.min(5, Math.round(exact)));
+            }
+
+            function scrollToChapter(chIndex, smooth) {
+                const m = getMetrics();
+                if (!m) return;
+
+                const minTarget = Math.ceil(m.wrapTop);
+                const maxTarget = Math.floor(m.wrapTop + m.totalScrollSpace);
+                const rawTarget = m.wrapTop + (chIndex / 5) * m.totalScrollSpace;
+                const targetScroll = Math.max(minTarget, Math.min(maxTarget, Math.round(rawTarget)));
+
+                if (Math.abs(window.scrollY - targetScroll) <= SNAP_SETTLE_TOLERANCE) {
+                    scrollDirty = false;
+                    return;
+                }
+
+                scrollDirty = false;
+                isAutoSnapping = true;
+                clearTimeout(autoSnapTimer);
+                autoSnapTimer = setTimeout(() => {
+                    isAutoSnapping = false;
+                }, 700);
+
+                window.scrollTo({
+                    top: targetScroll,
+                    behavior: smooth && !reducedMotionQuery.matches ? 'smooth' : 'auto'
+                });
+            }
+
+            function onSettle() {
+                clearTimeout(settleTimer);
+
+                if (isAutoSnapping) {
+                    isAutoSnapping = false;
+                    scrollDirty = false;
+                    clearTimeout(autoSnapTimer);
+                    const settledIdx = Math.max(0, Math.min(5, Math.round(targetChapterVal)));
+                    updateDotsAndGlow(settledIdx, -1);
+                    return;
+                }
+
+                if (!scrollDirty || isPointerDown || reducedMotionQuery.matches) return;
+                scrollDirty = false;
+
+                const m = getMetrics();
+                if (!m) return;
+
+                // Allow free scrolling in top header and bottom footer
+                if (m.scrolled <= 2 || m.scrolled >= m.totalScrollSpace - 2) return;
+
+                const exact = m.progress * 5;
+                // Let user escape cleanly into header (top) or footer (bottom) when at boundary ends
+                if (lastScrollDir < 0 && exact < 0.16) return;
+                if (lastScrollDir > 0 && exact > 4.84) return;
+
+                const snapIdx = pickSnapChapter(m.progress, m.totalScrollSpace, lastScrollDir);
+                const settledIdx = Math.max(0, Math.min(5, Math.round(displayChapterVal)));
+                updateDotsAndGlow(settledIdx, -1);
+                scrollToChapter(snapIdx, true);
+            }
+
+            function onScroll() {
+                const curY = window.scrollY;
+                const dy = curY - prevScrollY;
+                if (Math.abs(dy) >= 1 && !isAutoSnapping) {
+                    lastScrollDir = dy > 0 ? 1 : -1;
+                    scrollDirty = true;
+                }
+                prevScrollY = curY;
+
+                const m = getMetrics();
+                if (!m) return;
+                if (dotsNav) {
+                    const outside = m.rect.top > window.innerHeight * 0.65 || m.rect.bottom < window.innerHeight * 0.45;
+                    dotsNav.classList.toggle('is-outside-story', outside);
+                }
+
+                targetChapterVal = calcChapterVal(m.progress);
+                if (reducedMotionQuery.matches) {
+                    displayChapterVal = targetChapterVal;
+                    applyVisuals(displayChapterVal, true);
+                } else {
+                    ensureAnimating();
+                }
+
+                if (!supportsScrollEnd && !isAutoSnapping && !isPointerDown && !reducedMotionQuery.matches) {
+                    clearTimeout(settleTimer);
+                    settleTimer = setTimeout(onSettle, SNAP_IDLE_MS);
+                }
+            }
+
+            function syncImmediate() {
+                const m = getMetrics();
+                if (!m) return;
+                if (dotsNav) {
+                    const outside = m.rect.top > window.innerHeight * 0.65 || m.rect.bottom < window.innerHeight * 0.45;
+                    dotsNav.classList.toggle('is-outside-story', outside);
+                }
+                prevScrollY = window.scrollY;
+                scrollDirty = false;
+                targetChapterVal = calcChapterVal(m.progress);
+                displayChapterVal = targetChapterVal;
+                applyVisuals(displayChapterVal, reducedMotionQuery.matches);
+            }
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const chIndex = parseInt(dot.getAttribute('data-ch'), 10);
+                    if (isNaN(chIndex)) return;
+                    lastScrollDir = 0;
+                    scrollToChapter(chIndex, true);
+                });
             });
-            updateDotsAndGlow(discrete, -1);
-            return;
-        }
 
-        const shiftPercent = -(chapterVal / 6) * 100;
-        if (phoneTrack) phoneTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
-        if (textTrack) textTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
-        if (giantTrack) giantTrack.style.transform = `translate3d(0, ${shiftPercent}%, 0)`;
+            window.addEventListener('wheel', () => {
+                isPointerDown = false;
+                if (isAutoSnapping) cancelAutoSnap();
+            }, { passive: true });
 
-        textCards.forEach((card, index) => {
-            const dist = Math.abs(chapterVal - index);
-            if (dist < 0.05) {
-                card.style.opacity = '1';
-                card.style.transform = 'scale(1)';
+            window.addEventListener('touchstart', () => {
+                isPointerDown = true;
+                if (isAutoSnapping) cancelAutoSnap();
+            }, { passive: true });
+
+            function onTouchRelease() {
+                isPointerDown = false;
+                if (!supportsScrollEnd && scrollDirty && !reducedMotionQuery.matches) {
+                    clearTimeout(settleTimer);
+                    settleTimer = setTimeout(onSettle, SNAP_IDLE_MS);
+                }
+            }
+
+            window.addEventListener('touchend', onTouchRelease, { passive: true });
+            window.addEventListener('touchcancel', () => {
+                isPointerDown = false;
+            }, { passive: true });
+
+            window.addEventListener('pointerdown', (e) => {
+                if (e.pointerType !== 'mouse' && (!e.target.closest || !e.target.closest('.story-dot, .sp-sub-pill'))) {
+                    isPointerDown = true;
+                    if (isAutoSnapping) cancelAutoSnap();
+                }
+            }, { passive: true });
+
+            window.addEventListener('pointerup', (e) => {
+                if (e.pointerType !== 'mouse' && isPointerDown) {
+                    onTouchRelease();
+                }
+            }, { passive: true });
+
+            window.addEventListener('pointercancel', () => {
+                isPointerDown = false;
+            }, { passive: true });
+
+            window.addEventListener('blur', () => {
+                isPointerDown = false;
+            }, { passive: true });
+
+            window.addEventListener('keydown', (e) => {
+                if (['ArrowDown', 'PageDown', ' '].includes(e.key)) {
+                    lastScrollDir = 1;
+                    if (isAutoSnapping) cancelAutoSnap();
+                } else if (['ArrowUp', 'PageUp'].includes(e.key)) {
+                    lastScrollDir = -1;
+                    if (isAutoSnapping) cancelAutoSnap();
+                }
+            }, { passive: true });
+
+            if (supportsScrollEnd) {
+                window.addEventListener('scrollend', onSettle, { passive: true });
+            }
+
+            if (typeof reducedMotionQuery.addEventListener === 'function') {
+                reducedMotionQuery.addEventListener('change', syncImmediate);
+            } else if (typeof reducedMotionQuery.addListener === 'function') {
+                reducedMotionQuery.addListener(syncImmediate);
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', syncImmediate, { passive: true });
+
+            if (document.readyState === 'complete') {
+                syncImmediate();
             } else {
-                const opacity = Math.max(0.12, 1 - dist * 1.25);
-                const scale = Math.max(0.94, 1 - dist * 0.06);
-                card.style.opacity = opacity.toFixed(3);
-                card.style.transform = `scale(${scale.toFixed(3)})`;
+                window.addEventListener('load', syncImmediate, { once: true });
+                syncImmediate();
             }
-        });
 
-        const settledIdx = Math.max(0, Math.min(5, Math.round(chapterVal)));
-        const targetRounded = Math.max(0, Math.min(5, Math.round(targetChapterVal)));
-        updateDotsAndGlow(settledIdx, targetRounded !== settledIdx ? targetRounded : -1);
-    }
+            document.querySelectorAll('.sp-sub-pill').forEach((pill) => {
+                pill.addEventListener('click', () => {
+                    const ch = pill.getAttribute('data-sub-ch');
+                    const idx = pill.getAttribute('data-sub-idx');
+                    if (ch === null || idx === null) return;
 
-    function tickAnimation(now) {
-        if (reducedMotionQuery.matches) {
-            displayChapterVal = targetChapterVal;
-            applyVisuals(displayChapterVal, true);
-            rafId = null;
-            return;
-        }
+                    document.querySelectorAll(`.sp-sub-pill[data-sub-ch="${ch}"]`).forEach((btn) => {
+                        const active = btn === pill;
+                        btn.classList.toggle('is-active', active);
+                        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+                    });
 
-        const dt = lastFrameTime ? Math.min(0.05, (now - lastFrameTime) / 1000) : (1 / 60);
-        lastFrameTime = now;
-
-        const diff = targetChapterVal - displayChapterVal;
-        if (Math.abs(diff) <= 0.0008) {
-            displayChapterVal = targetChapterVal;
-            applyVisuals(displayChapterVal, false);
-            rafId = null;
-            lastFrameTime = 0;
-            return;
-        }
-
-        const alpha = 1 - Math.exp(-DAMPING_SPEED * dt);
-        displayChapterVal += diff * alpha;
-        applyVisuals(displayChapterVal, false);
-        rafId = requestAnimationFrame(tickAnimation);
-    }
-
-    function ensureAnimating() {
-        if (rafId !== null) return;
-        lastFrameTime = 0;
-        rafId = requestAnimationFrame(tickAnimation);
-    }
-
-    function cancelAutoSnap() {
-        isAutoSnapping = false;
-        clearTimeout(autoSnapTimer);
-    }
-
-    function pickSnapChapter(progress, totalScrollSpace, dir) {
-        const exact = progress * 5;
-        const pxPerChapter = totalScrollSpace / 5;
-        const triggerFrac = Math.min(0.24, SNAP_PX_TRIGGER / pxPerChapter);
-
-        const base = Math.min(4, Math.floor(exact));
-        const frac = exact - base;
-
-        if (dir > 0) {
-            return frac >= triggerFrac ? Math.min(5, base + 1) : base;
-        }
-        if (dir < 0) {
-            return (1 - frac) >= triggerFrac ? base : Math.min(5, base + 1);
-        }
-        return Math.max(0, Math.min(5, Math.round(exact)));
-    }
-
-    function scrollToChapter(chIndex, smooth) {
-        const m = getMetrics();
-        if (!m) return;
-
-        const minTarget = Math.ceil(m.wrapTop);
-        const maxTarget = Math.floor(m.wrapTop + m.totalScrollSpace);
-        const rawTarget = m.wrapTop + (chIndex / 5) * m.totalScrollSpace;
-        const targetScroll = Math.max(minTarget, Math.min(maxTarget, Math.round(rawTarget)));
-
-        if (Math.abs(window.scrollY - targetScroll) <= SNAP_SETTLE_TOLERANCE) {
-            scrollDirty = false;
-            return;
-        }
-
-        scrollDirty = false;
-        isAutoSnapping = true;
-        clearTimeout(autoSnapTimer);
-        autoSnapTimer = setTimeout(() => {
-            isAutoSnapping = false;
-        }, 700);
-
-        window.scrollTo({
-            top: targetScroll,
-            behavior: smooth && !reducedMotionQuery.matches ? 'smooth' : 'auto'
-        });
-    }
-
-    function onSettle() {
-        clearTimeout(settleTimer);
-
-        if (isAutoSnapping) {
-            isAutoSnapping = false;
-            scrollDirty = false;
-            clearTimeout(autoSnapTimer);
-            const settledIdx = Math.max(0, Math.min(5, Math.round(targetChapterVal)));
-            updateDotsAndGlow(settledIdx, -1);
-            return;
-        }
-
-        if (!scrollDirty || isPointerDown || reducedMotionQuery.matches) return;
-        scrollDirty = false;
-
-        const m = getMetrics();
-        if (!m) return;
-
-        // Allow free scrolling in top header and bottom footer
-        if (m.scrolled <= 2 || m.scrolled >= m.totalScrollSpace - 2) return;
-
-        const exact = m.progress * 5;
-        // Let user escape cleanly into header (top) or footer (bottom) when at boundary ends
-        if (lastScrollDir < 0 && exact < 0.16) return;
-        if (lastScrollDir > 0 && exact > 4.84) return;
-
-        const snapIdx = pickSnapChapter(m.progress, m.totalScrollSpace, lastScrollDir);
-        const settledIdx = Math.max(0, Math.min(5, Math.round(displayChapterVal)));
-        updateDotsAndGlow(settledIdx, -1);
-        scrollToChapter(snapIdx, true);
-    }
-
-    function onScroll() {
-        const curY = window.scrollY;
-        const dy = curY - prevScrollY;
-        if (Math.abs(dy) >= 1 && !isAutoSnapping) {
-            lastScrollDir = dy > 0 ? 1 : -1;
-            scrollDirty = true;
-        }
-        prevScrollY = curY;
-
-        const m = getMetrics();
-        if (!m) return;
-        if (dotsNav) {
-            const outside = m.rect.top > window.innerHeight * 0.65 || m.rect.bottom < window.innerHeight * 0.45;
-            dotsNav.classList.toggle('is-outside-story', outside);
-        }
-
-        targetChapterVal = calcChapterVal(m.progress);
-        if (reducedMotionQuery.matches) {
-            displayChapterVal = targetChapterVal;
-            applyVisuals(displayChapterVal, true);
-        } else {
-            ensureAnimating();
-        }
-
-        if (!supportsScrollEnd && !isAutoSnapping && !isPointerDown && !reducedMotionQuery.matches) {
-            clearTimeout(settleTimer);
-            settleTimer = setTimeout(onSettle, SNAP_IDLE_MS);
-        }
-    }
-
-    function syncImmediate() {
-        const m = getMetrics();
-        if (!m) return;
-        if (dotsNav) {
-            const outside = m.rect.top > window.innerHeight * 0.65 || m.rect.bottom < window.innerHeight * 0.45;
-            dotsNav.classList.toggle('is-outside-story', outside);
-        }
-        prevScrollY = window.scrollY;
-        scrollDirty = false;
-        targetChapterVal = calcChapterVal(m.progress);
-        displayChapterVal = targetChapterVal;
-        applyVisuals(displayChapterVal, reducedMotionQuery.matches);
-    }
-
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            const chIndex = parseInt(dot.getAttribute('data-ch'), 10);
-            if (isNaN(chIndex)) return;
-            lastScrollDir = 0;
-            scrollToChapter(chIndex, true);
-        });
-    });
-
-    window.addEventListener('wheel', () => {
-        isPointerDown = false;
-        if (isAutoSnapping) cancelAutoSnap();
-    }, { passive: true });
-
-    window.addEventListener('touchstart', () => {
-        isPointerDown = true;
-        if (isAutoSnapping) cancelAutoSnap();
-    }, { passive: true });
-
-    function onTouchRelease() {
-        isPointerDown = false;
-        if (!supportsScrollEnd && scrollDirty && !reducedMotionQuery.matches) {
-            clearTimeout(settleTimer);
-            settleTimer = setTimeout(onSettle, SNAP_IDLE_MS);
-        }
-    }
-
-    window.addEventListener('touchend', onTouchRelease, { passive: true });
-    window.addEventListener('touchcancel', () => {
-        isPointerDown = false;
-    }, { passive: true });
-
-    window.addEventListener('pointerdown', (e) => {
-        if (e.pointerType !== 'mouse' && (!e.target.closest || !e.target.closest('.story-dot'))) {
-            isPointerDown = true;
-            if (isAutoSnapping) cancelAutoSnap();
-        }
-    }, { passive: true });
-
-    window.addEventListener('pointerup', (e) => {
-        if (e.pointerType !== 'mouse' && isPointerDown) {
-            onTouchRelease();
-        }
-    }, { passive: true });
-
-    window.addEventListener('pointercancel', () => {
-        isPointerDown = false;
-    }, { passive: true });
-
-    window.addEventListener('blur', () => {
-        isPointerDown = false;
-    }, { passive: true });
-
-    window.addEventListener('keydown', (e) => {
-        if (['ArrowDown', 'PageDown', ' '].includes(e.key)) {
-            lastScrollDir = 1;
-            if (isAutoSnapping) cancelAutoSnap();
-        } else if (['ArrowUp', 'PageUp'].includes(e.key)) {
-            lastScrollDir = -1;
-            if (isAutoSnapping) cancelAutoSnap();
-        }
-    }, { passive: true });
-
-    if (supportsScrollEnd) {
-        window.addEventListener('scrollend', onSettle, { passive: true });
-    }
-
-    if (typeof reducedMotionQuery.addEventListener === 'function') {
-        reducedMotionQuery.addEventListener('change', syncImmediate);
-    } else if (typeof reducedMotionQuery.addListener === 'function') {
-        reducedMotionQuery.addListener(syncImmediate);
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', syncImmediate, { passive: true });
-
-    if (document.readyState === 'complete') {
-        syncImmediate();
-    } else {
-        window.addEventListener('load', syncImmediate, { once: true });
-        syncImmediate();
-    }
-})();
-</script>
-
-<!-- ── 實機截圖 Lightbox 原生 Dialog (closedby="any") ── -->
-<dialog id="screenLightbox" class="screen-lightbox" closedby="any" aria-labelledby="lightboxTitle">
-    <div class="lightbox-header">
-        <h3 id="lightboxTitle" class="lightbox-title">探索地圖・AI 品味推播</h3>
-        <button type="button" class="lightbox-close-btn" id="lightboxCloseBtn" aria-label="關閉實機截圖預覽">
-            <i class="fas fa-times" aria-hidden="true"></i>
-        </button>
-    </div>
-    <div class="lightbox-phone-wrap">
-        <div class="lightbox-phone-bezel">
-            <img id="lightboxImg" src="assets/screens_v28/map-explore-vibe.jpg" alt="MapMo 實機截圖放大檢視" width="472" height="1024" fetchpriority="low">
-        </div>
-    </div>
-    <p id="lightboxCaption" class="lightbox-caption">顯示頂部街區情緒氛圍、故地重遊時空膠囊（69天前）與 AI 大數據風格推播卡。</p>
-    <div class="lightbox-footer">
-        <button type="button" class="lightbox-nav-btn" id="lightboxPrevBtn">
-            <i class="fas fa-chevron-left" aria-hidden="true"></i> 上一張
-        </button>
-        <span id="lightboxCounter" class="lightbox-counter">1 / 8</span>
-        <button type="button" class="lightbox-nav-btn" id="lightboxNextBtn">
-            下一張 <i class="fas fa-chevron-right" aria-hidden="true"></i>
-        </button>
-    </div>
-</dialog>
-
-<script>
-(function() {
-    'use strict';
-
-    const SHOTS = [
-        {
-            src: 'assets/screens_v28/map-explore-vibe.jpg',
-            title: '探索地圖・AI 大數據風格推播',
-            alt: 'MapMo 探索地圖、街區氛圍、故地重遊 69 天前與 AI 大數據風格推播卡',
-            caption: '整合頂部「街區氛圍」與「故地重遊 69天前」微膠囊、地圖金色回音光環及下方「AI 大數據風格推播」卡片。'
-        },
-        {
-            src: 'assets/screens_v28/vibe-report.jpg',
-            title: '1KM 街區情緒氛圍感知報告',
-            alt: '文山區 1KM 即時氛圍感知與心靈色譜分佈報告',
-            caption: '彙整半徑 1 公里生活圈 61 則匿名足跡，即時統計情緒主調（喜 28%）與色譜分佈並隱去精確門牌。'
-        },
-        {
-            src: 'assets/screens_v28/cluster-drawer.jpg',
-            title: '聚合地標展開抽屜',
-            alt: '聚合地標數字徽章 23 則足跡與底部抽屜情緒篩選畫面',
-            caption: '單點累積 23 則心聲自動收合為數字徽章，展開底部抽屜後可依全部、怒、喜、樂、哀、無二次篩選。'
-        },
-        {
-            src: 'assets/screens_v28/settings-exhibition.jpg',
-            title: '設定與帳號管理・展覽演示模式',
-            alt: '設定選單包含展覽演示模式開關、避開特定情緒標籤、條款與刪除帳號',
-            caption: '提供使用指南、拍照同步相簿、一鍵解除限制之「展覽演示模式」、避開特定情緒與雙重確認帳號銷毀。'
-        },
-        {
-            src: 'assets/screens_v28/hide-emotions.jpg',
-            title: '避開特定情緒標籤',
-            alt: '避開特定情緒標籤彈窗可自由開關怒喜樂哀無五種情緒顯示',
-            caption: '可隨時關閉指定情緒標籤，地圖標記、聚合抽屜與清單同步隱藏該情緒，保持舒心探索體驗。'
-        },
-        {
-            src: 'assets/screens_v28/camera-zoom.jpg',
-            title: '相機 2x 變焦即拍即傳',
-            alt: 'MapMo 相機方形觀景窗與 2x 變焦轉盤畫面',
-            caption: '內建 1.0x～5.0x 弧形刻度變焦轉盤與方形取景框，快門按下瞬間鎖定當下真實 GPS 位置。'
-        },
-        {
-            src: 'assets/screens_v28/profile-posts.jpg',
-            title: '個人檔案・我的足跡 (26)',
-            alt: '個人檔案地圖顯示個人心情標記與下方我的足跡清單',
-            caption: '個人檔案抽屜列出 26 筆親手留下的心情紀錄，點擊即可地圖對焦並自由切換「公開」或「私人」。'
-        },
-        {
-            src: 'assets/screens_v28/profile-favorites.jpg',
-            title: '個人檔案・❤️ 我的收藏',
-            alt: '個人檔案切換我的收藏分頁並於地圖顯示愛心收藏標記',
-            caption: '一鍵切換至「❤️ 我的收藏」分頁，地圖同步呈現愛心收藏標記並持續精準化專屬 AI 風格品味向量。'
-        }
-    ];
-
-    const dialog = document.getElementById('screenLightbox');
-    const titleEl = document.getElementById('lightboxTitle');
-    const imgEl = document.getElementById('lightboxImg');
-    const captionEl = document.getElementById('lightboxCaption');
-    const counterEl = document.getElementById('lightboxCounter');
-    const closeBtn = document.getElementById('lightboxCloseBtn');
-    const prevBtn = document.getElementById('lightboxPrevBtn');
-    const nextBtn = document.getElementById('lightboxNextBtn');
-    if (!dialog || !imgEl) return;
-
-    let currentIdx = 0;
-
-    let supportsDisplayTransition;
-    function canTransitionDisplay() {
-        if (supportsDisplayTransition !== undefined) return supportsDisplayTransition;
-        if (!window.CSS?.supports?.('transition-behavior', 'allow-discrete') || !document.body) {
-            return false;
-        }
-        const probe = document.createElement('div');
-        probe.style.cssText = 'transition: display 1s allow-discrete !important; display: block;';
-        document.body.appendChild(probe);
-        getComputedStyle(probe).display;
-        probe.style.display = 'none';
-        supportsDisplayTransition = getComputedStyle(probe).display === 'block';
-        probe.remove();
-        return supportsDisplayTransition;
-    }
-
-    function supportsTopLayerExit() {
-        return Boolean(window.CSS?.supports?.('overlay', 'auto')) && canTransitionDisplay();
-    }
-
-    async function closeTopLayer(el) {
-        if (!el.open || el.hasAttribute('data-closing')) return;
-        if (!supportsTopLayerExit()) {
-            el.setAttribute('data-closing', '');
-            const animations = el.getAnimations ? el.getAnimations({ subtree: true }) : [];
-            if (animations.length > 0) {
-                await Promise.race([
-                    Promise.allSettled(animations.map((a) => a.finished)),
-                    new Promise((r) => setTimeout(r, 400)),
-                ]);
-            }
-            if (!el.hasAttribute('data-closing')) return;
-            el.removeAttribute('data-closing');
-        }
-        el.close('dismiss');
-    }
-
-    function renderShot(idx) {
-        currentIdx = (idx + SHOTS.length) % SHOTS.length;
-        const shot = SHOTS[currentIdx];
-        titleEl.textContent = shot.title;
-        imgEl.src = shot.src;
-        imgEl.alt = shot.alt;
-        captionEl.textContent = shot.caption;
-        counterEl.textContent = `${currentIdx + 1} / ${SHOTS.length}`;
-    }
-
-    function openLightbox(idx) {
-        dialog.removeAttribute('data-closing');
-        renderShot(idx);
-        if (!dialog.open) dialog.showModal();
-    }
-
-    document.querySelectorAll('[data-shot-idx]').forEach((trigger) => {
-        trigger.addEventListener('click', () => {
-            const idx = parseInt(trigger.getAttribute('data-shot-idx'), 10);
-            if (!isNaN(idx)) openLightbox(idx);
-        });
-    });
-
-    closeBtn?.addEventListener('click', () => closeTopLayer(dialog));
-    prevBtn?.addEventListener('click', () => renderShot(currentIdx - 1));
-    nextBtn?.addEventListener('click', () => renderShot(currentIdx + 1));
-
-    dialog.addEventListener('cancel', (event) => {
-        event.preventDefault();
-        closeTopLayer(dialog);
-    });
-
-    dialog.addEventListener('keydown', (event) => {
-        if (event.key === 'ArrowLeft') {
-            event.preventDefault();
-            renderShot(currentIdx - 1);
-        } else if (event.key === 'ArrowRight') {
-            event.preventDefault();
-            renderShot(currentIdx + 1);
-        }
-    });
-
-    dialog.addEventListener('close', () => {
-        dialog.removeAttribute('data-closing');
-        dialog.returnValue = '';
-    });
-
-    if (!('closedBy' in HTMLDialogElement.prototype)) {
-        const outside = (e) => {
-            const r = dialog.getBoundingClientRect();
-            return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
-        };
-        let pressedOutside = false;
-        dialog.addEventListener('pointerdown', (e) => { pressedOutside = outside(e); });
-        dialog.addEventListener('pointerup', (e) => {
-            if (pressedOutside && outside(e)) closeTopLayer(dialog);
-        });
-    }
-})();
-</script>
+                    const page = document.querySelector(`.sp-screen-page[data-page-ch="${ch}"]`);
+                    if (page) {
+                        page.querySelectorAll('.sp-sub-img').forEach((img) => {
+                            img.classList.toggle('is-sub-active', img.getAttribute('data-sub-view') === idx);
+                        });
+                    }
+                });
+            });
+        })();
+    </script>
 
 </body>
+
 </html>
