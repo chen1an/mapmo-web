@@ -1552,6 +1552,10 @@ a {
     object-fit: contain;
 }
 
+.foreword-mobile-editorial {
+    display: none;
+}
+
 .card-header-top-right {
     position: absolute;
     top: 48px;
@@ -2784,6 +2788,108 @@ a {
     transform: translateX(4px);
 }
 
+/* ── Homepage Exhibition Quiz Banner (below 2x2 pages-grid) ── */
+.quiz-promo-banner {
+    container-type: inline-size;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(1rem, 3vw, 1.75rem);
+    margin-top: clamp(1rem, 2.5vw, 1.5rem);
+    padding: clamp(1.25rem, 4cqi, 1.75rem) clamp(1.25rem, 4.5cqi, 2rem);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(255, 253, 249, 0.96) 0%, rgba(248, 244, 232, 0.94) 100%);
+    border: 1px solid rgba(28, 28, 30, 0.08);
+    box-shadow: var(--shadow-soft);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.quiz-promo-banner:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.quiz-promo-content {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.quiz-promo-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: rgba(28, 28, 30, 0.06);
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.quiz-promo-dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.quiz-promo-dots i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.quiz-promo-banner h3 {
+    font-size: clamp(1.2rem, 1.05rem + 1.1cqi, 1.5rem);
+    font-weight: 900;
+    color: var(--text-primary);
+    margin: 0 0 6px;
+}
+
+.quiz-promo-banner p {
+    font-size: clamp(0.875rem, 0.84rem + 0.35cqi, 0.95rem);
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.quiz-promo-cta {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-block-size: var(--target-size);
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: var(--text-primary);
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 800;
+    white-space: nowrap;
+    box-shadow: 0 6px 16px rgba(28, 28, 30, 0.16);
+    transition: transform 0.25s ease;
+}
+
+.quiz-promo-banner:hover .quiz-promo-cta {
+    transform: translateX(3px);
+}
+
+@media (max-width: 767px) {
+    .quiz-promo-banner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .quiz-promo-cta {
+        width: 100%;
+    }
+}
+
 /* Contact Cards Grid */
 .contact-cards-grid {
     display: grid;
@@ -4007,6 +4113,113 @@ a {
     .foreword-user-card {
         border-radius: 20px;
         margin-bottom: 32px;
+        background: linear-gradient(155deg, #FFFDF8 0%, #F7F3E9 100%);
+        border: 1px solid rgba(28, 28, 30, 0.08);
+    }
+
+    .foreword-user-img {
+        display: none;
+    }
+
+    .foreword-mobile-editorial {
+        display: block;
+        container-type: inline-size;
+        padding: clamp(1.35rem, 6cqi, 1.85rem) clamp(1.2rem, 5.5cqi, 1.65rem);
+        color: #1C1C1E;
+    }
+
+    .foreword-mob-header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        margin-bottom: 16px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(28, 28, 30, 0.09);
+    }
+
+    .foreword-mob-eyebrow {
+        font-family: 'Outfit', sans-serif;
+        font-size: clamp(1.25rem, 1.05rem + 1.5cqi, 1.6rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: #1C1C1E;
+    }
+
+    .foreword-mob-zh {
+        font-size: 13px;
+        font-weight: 700;
+        color: #6B7280;
+        letter-spacing: 0.08em;
+    }
+
+    .foreword-mob-hook {
+        font-size: clamp(1.2rem, 1.02rem + 1.3cqi, 1.45rem);
+        font-weight: 900;
+        line-height: 1.38;
+        margin: 0 0 12px;
+        color: #1C1C1E;
+    }
+
+    .foreword-mob-copy {
+        font-size: clamp(0.92rem, 0.88rem + 0.45cqi, 1.02rem);
+        line-height: 1.75;
+        color: #4B5563;
+        margin: 0;
+    }
+
+    .foreword-mob-divider {
+        width: 36px;
+        height: 3px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #FBBD04, #F48FB1, #4285F4);
+        margin: 18px 0 16px;
+    }
+
+    .foreword-mob-brand {
+        font-size: clamp(1.02rem, 0.96rem + 0.6cqi, 1.15rem);
+        font-weight: 700;
+        color: #1C1C1E;
+        margin: 0 0 10px;
+    }
+
+    .foreword-mob-brand strong {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 900;
+        font-size: 1.12em;
+    }
+
+    .foreword-mob-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 14px;
+    }
+
+    .foreword-mob-pill {
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 12px;
+        border-radius: 999px;
+        background: rgba(28, 28, 30, 0.07);
+        color: #1C1C1E;
+        font-size: 12.5px;
+        font-weight: 800;
+    }
+
+    .foreword-mob-closing {
+        font-size: clamp(0.94rem, 0.9rem + 0.45cqi, 1.04rem);
+        line-height: 1.75;
+        color: #374151;
+        margin: 0;
+    }
+
+    .foreword-mob-closing strong {
+        color: #1C1C1E;
+        font-weight: 900;
+        text-decoration: underline;
+        text-decoration-color: rgba(251, 189, 4, 0.75);
+        text-decoration-thickness: 3px;
+        text-underline-offset: 3px;
     }
 
     /* 首頁 #featuresSection：手機版轉為左直虛線＋右側卡片時間軸（保留走路小人動畫） */
@@ -4286,4 +4499,4 @@ a {
     }
 }
 
-/* DEPLOY_VERSION: 20261121_fluid_adaptive_v1 */
+/* DEPLOY_VERSION: 20261123_echo_web_v1 */
