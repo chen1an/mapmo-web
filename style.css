@@ -4499,4 +4499,43 @@ a {
     }
 }
 
-/* DEPLOY_VERSION: 20261123_echo_web_v1 */
+/* Long Card Lists & Mobile GPU Optimization (Zero Blur Jank + Lazy Rendering) */
+.flip-card,
+.team-pastel-card,
+.app-update-card {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 24rem;
+}
+
+@media (max-width: 767px), (pointer: coarse) {
+    .flip-card-front,
+    .flip-card-back,
+    .page-entry-card,
+    .contact-card,
+    .about-intro-card,
+    .faq-item,
+    .app-update-card,
+    .demo-control-panel,
+    .features-interactive-box,
+    .foreword-text-box,
+    .story-card,
+    .team-pastel-card,
+    .quote-chip {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    .page-entry-card,
+    .contact-card,
+    .app-update-card {
+        background: rgba(255, 255, 255, 0.96);
+    }
+
+    .navbar {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(250, 249, 246, 0.96);
+    }
+}
+
+/* DEPLOY_VERSION: 20261124_perf1 */
