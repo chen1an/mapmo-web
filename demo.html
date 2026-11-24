@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="style.css?v=20261125_hb1">
+    <link rel="stylesheet" href="style.css?v=20261125_demo1">
 </head>
 <body>
 
@@ -51,50 +51,98 @@
     <!-- 3. 擬真 App 地圖體驗區塊 -->
     <section class="demo-section page-body-padding">
         <div class="section-container">
-            <!-- 擬真 App 手機介面框 -->
+            <!-- 擬真 App 探索地圖 ＋ 詳細貼文檢視（還原 App 照片、情緒與心聲文字） -->
             <div class="app-map-mockup-container">
-                <div class="app-map-header-overlay">
-                    <!-- App 五大情緒切換列 -->
-                    <div class="app-emotion-bar">
-                        <button class="app-emo-pill emo-joy-pill" data-emo="joy">
-                            <div class="emo-icon-badge emo-joy-bg">
-                                <img src="assets/joy.png" class="emo-img" alt="喜">
+                <div class="app-demo-stage">
+                    <div class="app-demo-map-pane">
+                        <div class="app-map-header-overlay">
+                            <!-- App 五大情緒切換列 -->
+                            <div class="app-emotion-bar">
+                                <button type="button" class="app-emo-pill emo-joy-pill" data-emo="joy">
+                                    <div class="emo-icon-badge emo-joy-bg">
+                                        <img src="assets/joy.png" class="emo-img" alt="喜">
+                                    </div>
+                                    <span>喜</span>
+                                </button>
+                                <button type="button" class="app-emo-pill emo-fun-pill" data-emo="fun">
+                                    <div class="emo-icon-badge emo-fun-bg">
+                                        <img src="assets/fun.png" class="emo-img" alt="樂">
+                                    </div>
+                                    <span>樂</span>
+                                </button>
+                                <button type="button" class="app-emo-pill emo-angry-pill" data-emo="angry">
+                                    <div class="emo-icon-badge emo-angry-bg">
+                                        <img src="assets/angry.png" class="emo-img" alt="怒">
+                                    </div>
+                                    <span>怒</span>
+                                </button>
+                                <button type="button" class="app-emo-pill emo-sad-pill" data-emo="sad">
+                                    <div class="emo-icon-badge emo-sad-bg">
+                                        <img src="assets/sad.png" class="emo-img" alt="哀">
+                                    </div>
+                                    <span>哀</span>
+                                </button>
+                                <button type="button" class="app-emo-pill emo-none-pill" data-emo="none">
+                                    <div class="emo-icon-badge emo-none-bg">
+                                        <img src="assets/none.png" class="emo-img" alt="無">
+                                    </div>
+                                    <span>無</span>
+                                </button>
                             </div>
-                            <span>喜</span>
-                        </button>
-                        <button class="app-emo-pill emo-fun-pill" data-emo="fun">
-                            <div class="emo-icon-badge emo-fun-bg">
-                                <img src="assets/fun.png" class="emo-img" alt="樂">
-                            </div>
-                            <span>樂</span>
-                        </button>
-                        <button class="app-emo-pill emo-angry-pill" data-emo="angry">
-                            <div class="emo-icon-badge emo-angry-bg">
-                                <img src="assets/angry.png" class="emo-img" alt="怒">
-                            </div>
-                            <span>怒</span>
-                        </button>
-                        <button class="app-emo-pill emo-sad-pill" data-emo="sad">
-                            <div class="emo-icon-badge emo-sad-bg">
-                                <img src="assets/sad.png" class="emo-img" alt="哀">
-                            </div>
-                            <span>哀</span>
-                        </button>
-                        <button class="app-emo-pill emo-none-pill" data-emo="none">
-                            <div class="emo-icon-badge emo-none-bg">
-                                <img src="assets/none.png" class="emo-img" alt="無">
-                            </div>
-                            <span>無</span>
-                        </button>
+                        </div>
+
+                        <!-- Leaflet 地圖容器 -->
+                        <div class="map-view-canvas" id="interactiveMap"></div>
                     </div>
+
+                    <!-- 實機貼文詳細檢視卡（還原 post-detail.tsx：照片 ＋ 情緒標籤 ＋ 驗證標章 ＋ 地點時間 ＋ 心聲文字） -->
+                    <aside class="demo-detail-panel" id="demoPostDetailCard" aria-live="polite" aria-label="地圖足跡詳細內容">
+                        <div class="demo-detail-topbar">
+                            <span class="demo-detail-screen-title">詳細資料</span>
+                            <span class="demo-detail-counter" id="demoDetailCounter">1 / 5</span>
+                        </div>
+
+                        <div class="demo-detail-photo-box">
+                            <img src="assets/24.jpg" alt="建國高架快速道路" class="demo-detail-photo" id="demoDetailPhoto" decoding="async">
+                            <span class="demo-detail-privacy-badge">
+                                <i class="fas fa-eye" aria-hidden="true"></i> 公開
+                            </span>
+                            <span class="demo-detail-emo-badge" id="demoDetailEmoBadge" style="background:#fbbd04;">
+                                <img src="assets/joy.png" alt="" class="demo-detail-emo-icon" id="demoDetailEmoIcon">
+                                <span id="demoDetailEmoLabel">喜</span>
+                            </span>
+                        </div>
+
+                        <div class="demo-detail-infobox">
+                            <div class="demo-detail-val-row" id="demoDetailBadges">
+                                <span class="demo-val-badge"><i class="fas fa-map-pin" aria-hidden="true"></i> 真實位置</span>
+                            </div>
+
+                            <div class="demo-detail-loc-row">
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                <span class="demo-detail-loc-text" id="demoDetailLoc">建國高架快速道路</span>
+                            </div>
+                            <div class="demo-detail-date" id="demoDetailDate">2026/05/30 05:38</div>
+
+                            <div class="demo-detail-divider"></div>
+
+                            <p class="demo-detail-story" id="demoDetailText">清晨 5:38 的建國高架快速道路，遠處還能看見 101 與晨光雲彩，停下來的瞬間突然覺得很值得紀念。</p>
+                        </div>
+
+                        <div class="demo-detail-nav">
+                            <button type="button" class="demo-detail-nav-btn" id="demoPrevPostBtn" aria-label="上一則足跡">
+                                <i class="fas fa-chevron-left" aria-hidden="true"></i> 上一則
+                            </button>
+                            <button type="button" class="demo-detail-nav-btn" id="demoNextPostBtn" aria-label="下一則足跡">
+                                下一則 <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </aside>
                 </div>
 
-                <!-- Leaflet 地圖容器 -->
-                <div class="map-view-canvas" id="interactiveMap"></div>
-
                 <!-- 底部引導 Hint -->
-                <div class="app-map-footer-hint">
-                    <i class="fas fa-hand-pointer"></i> 點擊情緒按鈕可切換過濾，再次點擊即可還原顯示全部情緒！
+                <div class="app-map-footer-hint" id="demoMapFooterHint">
+                    <i class="fas fa-hand-pointer" aria-hidden="true"></i> 點擊地圖標點查看完整照片與心情故事；點擊上方情緒可切換過濾，再點一次恢復全部！
                 </div>
             </div>
         </div>
@@ -148,6 +196,6 @@
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script defer src="script.js?v=20261116_faq2"></script>
+    <script defer src="script.js?v=20261125_demo1"></script>
 </body>
 </html>

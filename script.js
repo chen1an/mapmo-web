@@ -641,16 +641,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initLetterModal();
 
-    // 5. Native App Style Leaflet Interactive Map
+    // 5. Native App Style Leaflet Interactive Map + App Post Detail View
     const mapContainer = document.getElementById('interactiveMap');
     if (mapContainer && typeof L !== 'undefined') {
-        // Center around Taipei 101 with attributionControl: false to REMOVE Leaflet copyright text completely
         const map = L.map('interactiveMap', {
-            center: [25.0350, 121.5450],
-            zoom: 13,
+            center: [25.0220, 121.5400],
+            zoom: 12,
             zoomControl: false,
             scrollWheelZoom: false,
-            attributionControl: false // Completely removes 'Leaflet | OpenStreetMap contributors' text!
+            attributionControl: false
         });
         let mapResizeTimer = null;
         window.addEventListener('resize', () => {
@@ -658,99 +657,132 @@ document.addEventListener('DOMContentLoaded', () => {
             mapResizeTimer = setTimeout(() => map.invalidateSize(), 150);
         }, { passive: true });
 
-        // Use Standard OpenStreetMap Tiles (100% FREE, NO API KEY REQUIRED, ZERO WATERMARKS)
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19
         }).addTo(map);
 
-        // App Real Demo Posts Data with App Exact Colors
+        // App-authentic demo posts (matching real photos, locations, emotions & stories)
         const demoPosts = [
             {
                 id: '1',
-                title: '台北 101',
+                title: '建國高架快速道路',
                 emo: 'joy',
                 emoLabel: '喜',
                 icon: 'assets/joy.png',
+                photo: 'assets/24.jpg',
                 bgColor: '#fcf4d9',
-                borderColor: '#fbbd04',
+                glowColor: 'rgba(251, 189, 4, 0.34)',
                 color: '#fbbd04',
-                lat: 25.033976,
-                lng: 121.564537,
-                content: '在 101 觀景台俯瞰夜晚的台北，萬家燈火讓人覺得溫暖而平靜。',
-                date: '2026.08.28 20:15'
+                lat: 25.0419,
+                lng: 121.5372,
+                badges: [{ icon: 'fa-map-pin', label: '真實位置' }],
+                content: '清晨 5:38 的建國高架快速道路，遠處還能看見 101 與晨光雲彩，停下來的瞬間突然覺得很值得紀念。',
+                date: '2026/05/30 05:38'
             },
             {
                 id: '2',
-                title: '西門町徒步區',
+                title: '忠孝東路四段 248 巷',
                 emo: 'fun',
                 emoLabel: '樂',
                 icon: 'assets/fun.png',
+                photo: 'assets/16.jpg',
                 bgColor: '#fde4ef',
-                borderColor: '#f48fb1',
+                glowColor: 'rgba(244, 143, 177, 0.36)',
                 color: '#f48fb1',
-                lat: 25.0421,
-                lng: 121.5082,
-                content: '週末的熱鬧街頭，聽著街頭藝人的吉他彈唱，默默在角落享受這份歡樂。',
-                date: '2026.08.27 16:30'
+                lat: 25.0407,
+                lng: 121.5553,
+                badges: [
+                    { icon: 'fa-camera', label: '即拍即傳' },
+                    { icon: 'fa-map-pin', label: '真實位置' }
+                ],
+                content: '享用美食配著在旁邊呼呼大睡的可愛貓咪，週末的疲憊感一下子就被徹底治癒了。',
+                date: '2026/08/27 16:30'
             },
             {
                 id: '3',
-                title: '大安森林公園',
-                emo: 'sad',
-                emoLabel: '哀',
-                icon: 'assets/sad.png',
-                bgColor: '#dbe5fc',
-                borderColor: '#4285f4',
-                color: '#4285f4',
-                lat: 25.0300,
-                lng: 121.5358,
-                content: '午後獨自坐在長椅上吹風，思考著未來的方向，這裡總是能包容我的情緒。',
-                date: '2026.08.26 14:10'
-            },
-            {
-                id: '4',
-                title: '捷運忠孝復興站',
+                title: '市民大道旁城市天際',
                 emo: 'angry',
                 emoLabel: '怒',
                 icon: 'assets/angry.png',
+                photo: 'assets/21.jpg',
                 bgColor: '#fcdcd8',
-                borderColor: '#ea4335',
+                glowColor: 'rgba(234, 67, 53, 0.32)',
                 color: '#ea4335',
-                lat: 25.0416,
-                lng: 121.5438,
-                content: '下班時間擠滿了人潮，雖然很煩躁，但看到大家都努力生活著，又覺得沒那麼氣了。',
-                date: '2026.08.25 18:45'
+                lat: 25.0462,
+                lng: 121.5225,
+                badges: [
+                    { icon: 'fa-camera', label: '即拍即傳' },
+                    { icon: 'fa-map-pin', label: '真實位置' }
+                ],
+                content: '下班尖峰剛結束令人煩躁的會議，仰望被橘紅晚霞染透的夜空，把這口悶氣留在原地就好。',
+                date: '2026/08/25 18:10'
+            },
+            {
+                id: '4',
+                title: '台北市文山區試院路',
+                emo: 'sad',
+                emoLabel: '哀',
+                icon: 'assets/sad.png',
+                photo: 'assets/25.jpg',
+                bgColor: '#dbe5fc',
+                glowColor: 'rgba(66, 133, 244, 0.34)',
+                color: '#4285f4',
+                lat: 24.9896,
+                lng: 121.5472,
+                badges: [{ icon: 'fa-map-pin', label: '真實位置' }],
+                content: '在這麼小的房間裡，每天出門前都會站在這面鏡子前；偶爾感到焦慮不安，卻也期待突然到來的自信與微光。',
+                date: '2026/08/26 22:15'
             },
             {
                 id: '5',
-                title: '松山文創園區',
+                title: '大安森林公園林蔭道',
                 emo: 'none',
                 emoLabel: '無',
                 icon: 'assets/none.png',
+                photo: 'assets/18.jpg',
                 bgColor: '#f0f0f0',
-                borderColor: '#9e9e9e',
+                glowColor: 'rgba(158, 158, 158, 0.35)',
                 color: '#9e9e9e',
-                lat: 25.0438,
-                lng: 121.5607,
-                content: '古老木造建築與生態池，找個安靜的角落看看書，放空一整天。',
-                date: '2026.08.24 11:20'
+                lat: 25.0300,
+                lng: 121.5358,
+                badges: [
+                    { icon: 'fa-camera', label: '即拍即傳' },
+                    { icon: 'fa-map-pin', label: '真實位置' }
+                ],
+                content: '待在大自然中抬頭看著樹梢與天空，能感覺時間慢慢放緩，城市生活中的壓迫感也暫時被撫平。',
+                date: '2026/08/24 11:20'
             }
         ];
 
-        let markers = [];
+        const detailCard = document.getElementById('demoPostDetailCard');
+        const detailCounter = document.getElementById('demoDetailCounter');
+        const detailPhoto = document.getElementById('demoDetailPhoto');
+        const detailEmoBadge = document.getElementById('demoDetailEmoBadge');
+        const detailEmoIcon = document.getElementById('demoDetailEmoIcon');
+        const detailEmoLabel = document.getElementById('demoDetailEmoLabel');
+        const detailBadges = document.getElementById('demoDetailBadges');
+        const detailLoc = document.getElementById('demoDetailLoc');
+        const detailDate = document.getElementById('demoDetailDate');
+        const detailText = document.getElementById('demoDetailText');
+        const prevBtn = document.getElementById('demoPrevPostBtn');
+        const nextBtn = document.getElementById('demoNextPostBtn');
 
-        // Function to create MapMo App exact Pin Marker (pinBox + pinArrow pointing down)
-        function createAppPinMarker(title, iconUrl, color) {
+        let markers = [];
+        let visiblePosts = demoPosts.slice();
+        let activePostId = demoPosts[0].id;
+        let currentActiveEmo = null;
+
+        function createAppPinMarker(post, isSelected) {
             return L.divIcon({
                 className: 'custom-app-pin-marker',
                 html: `
-                    <div class="app-pin-wrapper">
-                        <div class="app-pin-box" style="border-color: ${color};">
-                            <div class="app-pin-icon-bg" style="background: ${color};">
-                                <img src="${iconUrl}" class="app-pin-img" alt="emo">
+                    <div class="app-pin-wrapper${isSelected ? ' is-selected' : ''}" style="--pin-glow: ${post.glowColor};">
+                        <div class="app-pin-box" style="border-color: ${post.color};">
+                            <div class="app-pin-icon-bg" style="background: ${post.color};">
+                                <img src="${post.icon}" class="app-pin-img" alt="${post.emoLabel}">
                             </div>
                         </div>
-                        <div class="app-pin-arrow" style="border-top-color: ${color};"></div>
+                        <div class="app-pin-arrow" style="border-top-color: ${post.color};"></div>
                     </div>
                 `,
                 iconSize: [40, 48],
@@ -758,47 +790,140 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Render Markers
-        function renderMarkers(filterEmo = null) {
-            // Clear existing
-            markers.forEach(m => map.removeLayer(m));
-            markers = [];
+        function renderDetailCard(post) {
+            if (!post || !detailCard) return;
+            detailCard.style.backgroundColor = post.bgColor;
+            if (detailPhoto) {
+                detailPhoto.src = post.photo;
+                detailPhoto.alt = post.title;
+            }
+            if (detailEmoBadge) detailEmoBadge.style.backgroundColor = post.color;
+            if (detailEmoIcon) detailEmoIcon.src = post.icon;
+            if (detailEmoLabel) detailEmoLabel.textContent = post.emoLabel;
+            if (detailLoc) detailLoc.textContent = post.title;
+            if (detailDate) detailDate.textContent = post.date;
+            if (detailText) detailText.textContent = post.content;
 
-            demoPosts.forEach(post => {
-                if (filterEmo !== null && post.emo !== filterEmo) return;
+            if (detailBadges) {
+                detailBadges.innerHTML = post.badges.map((b) =>
+                    `<span class="demo-val-badge"><i class="fas ${b.icon}" aria-hidden="true"></i> ${b.label}</span>`
+                ).join('');
+            }
 
-                const marker = L.marker([post.lat, post.lng], {
-                    icon: createAppPinMarker(post.title, post.icon, post.color)
-                }).addTo(map);
+            const idx = visiblePosts.findIndex((item) => item.id === post.id);
+            if (detailCounter) {
+                detailCounter.textContent = `${idx >= 0 ? idx + 1 : 1} / ${visiblePosts.length}`;
+            }
+            const multi = visiblePosts.length > 1;
+            if (prevBtn) prevBtn.disabled = !multi;
+            if (nextBtn) nextBtn.disabled = !multi;
+        }
 
-                marker.bindPopup(`
-                    <div class="app-popup-card">
-                        <div class="popup-header" style="background: ${post.bgColor};">
-                            <div style="width: 30px; height: 30px; border-radius: 15px; background: ${post.color}; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <img src="${post.icon}" style="width: 18px; height: 18px; filter: brightness(0) invert(1);">
-                            </div>
-                            <div>
-                                <h4 class="popup-title">${post.title}</h4>
-                                <span class="popup-date">${post.date}</span>
-                            </div>
-                        </div>
-                        <div class="popup-body">
-                            <p class="popup-content">${post.content}</p>
-                        </div>
-                    </div>
-                `, {
-                    className: 'app-leaflet-popup',
-                    maxWidth: 260
+        function selectPost(post, panToMarker = true) {
+            if (!post) return;
+            activePostId = post.id;
+            renderDetailCard(post);
+            markers.forEach((entry) => {
+                const selected = entry.post.id === post.id;
+                entry.marker.setIcon(createAppPinMarker(entry.post, selected));
+                entry.marker.setZIndexOffset(selected ? 900 : 100);
+                entry.marker.unbindTooltip();
+                entry.marker.bindTooltip(`${entry.post.emoLabel} · ${entry.post.title}`, {
+                    permanent: selected,
+                    direction: 'top',
+                    offset: [0, -46],
+                    className: 'app-pin-tooltip'
                 });
-
-                markers.push(marker);
+                if (selected) {
+                    entry.marker.openTooltip();
+                    if (panToMarker) {
+                        map.panTo([entry.post.lat, entry.post.lng], { animate: true });
+                    }
+                } else {
+                    entry.marker.closeTooltip();
+                }
             });
         }
 
-        renderMarkers(null); // Default: show all posts
+        function renderMarkers(filterEmo = null, fitMap = false) {
+            markers.forEach((entry) => map.removeLayer(entry.marker));
+            markers = [];
+
+            visiblePosts = filterEmo === null
+                ? demoPosts.slice()
+                : demoPosts.filter((post) => post.emo === filterEmo);
+
+            if (!visiblePosts.some((post) => post.id === activePostId) && visiblePosts.length > 0) {
+                activePostId = visiblePosts[0].id;
+            }
+
+            const bounds = [];
+            visiblePosts.forEach((post) => {
+                const isSelected = post.id === activePostId;
+                const marker = L.marker([post.lat, post.lng], {
+                    icon: createAppPinMarker(post, isSelected),
+                    zIndexOffset: isSelected ? 900 : 100
+                }).addTo(map);
+
+                marker.bindTooltip(`${post.emoLabel} · ${post.title}`, {
+                    permanent: isSelected,
+                    direction: 'top',
+                    offset: [0, -46],
+                    className: 'app-pin-tooltip'
+                });
+
+                marker.on('click', () => {
+                    selectPost(post, true);
+                    if (window.matchMedia('(max-width: 920px)').matches && detailCard) {
+                        detailCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                });
+
+                if (isSelected) marker.openTooltip();
+                bounds.push([post.lat, post.lng]);
+                markers.push({ marker, post });
+            });
+
+            const activePost = visiblePosts.find((p) => p.id === activePostId) || visiblePosts[0];
+            if (activePost) renderDetailCard(activePost);
+
+            if (fitMap && bounds.length > 0) {
+                if (bounds.length === 1) {
+                    map.setView(bounds[0], 14, { animate: true });
+                } else {
+                    map.fitBounds(bounds, {
+                        paddingTopLeft: [44, 118],
+                        paddingBottomRight: [44, 36],
+                        maxZoom: 13
+                    });
+                }
+            }
+        }
+
+        renderMarkers(null, true);
+        setTimeout(() => {
+            map.invalidateSize();
+            renderMarkers(currentActiveEmo, true);
+        }, 120);
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                if (visiblePosts.length <= 1) return;
+                const idx = visiblePosts.findIndex((p) => p.id === activePostId);
+                const nextIdx = (idx - 1 + visiblePosts.length) % visiblePosts.length;
+                selectPost(visiblePosts[nextIdx], true);
+            });
+        }
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                if (visiblePosts.length <= 1) return;
+                const idx = visiblePosts.findIndex((p) => p.id === activePostId);
+                const nextIdx = (idx + 1) % visiblePosts.length;
+                selectPost(visiblePosts[nextIdx], true);
+            });
+        }
 
         // Emotion Filter Pills Toggle Logic (No 'All' button: click active -> toggle off to null / show all)
-        let currentActiveEmo = null;
         const filterBtns = document.querySelectorAll('.app-emotion-bar .app-emo-pill');
 
         filterBtns.forEach(btn => {
@@ -806,17 +931,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const targetEmo = btn.getAttribute('data-emo');
 
                 if (currentActiveEmo === targetEmo) {
-                    // Clicked ALREADY ACTIVE emotion -> Toggle OFF to null (show all)!
                     currentActiveEmo = null;
                     filterBtns.forEach(b => b.classList.remove('active'));
                 } else {
-                    // Clicked a new emotion -> Activate it!
                     currentActiveEmo = targetEmo;
                     filterBtns.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
                 }
 
-                renderMarkers(currentActiveEmo);
+                renderMarkers(currentActiveEmo, true);
             });
         });
     }
