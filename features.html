@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="text-scale" content="scale">
     <title>功能介紹 - MapMo | 安心 × 純粹 × 共鳴</title>
+    <script>
+        if (window.location.hash === '#appUpdatesShowcase') {
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+    </script>
     <link rel="icon" type="image/png" href="assets/icon.png">
     <meta name="description" content="MapMo 提供情緒分類、照片定位、刪除紀錄管理、一鍵封鎖與安全審核機制，讓你純粹地記錄與分享每一段回憶。">
 
