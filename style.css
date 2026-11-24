@@ -76,6 +76,19 @@ h1, h2, h3 {
     text-wrap: balance;
 }
 
+.heading-chunked,
+h1.heading-chunked,
+h2.heading-chunked,
+h3.heading-chunked,
+.app-update-card h3.heading-chunked {
+    text-wrap: wrap;
+}
+
+.heading-chunk {
+    display: inline-block;
+    max-width: 100%;
+}
+
 .legal-content-body p,
 .legal-content-body li,
 .faq-answer p,
