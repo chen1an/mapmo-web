@@ -3486,21 +3486,21 @@ a {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
-    row-gap: 65px;
-    margin-top: 65px;
+    row-gap: 82px;
+    margin-top: 76px;
 }
 
 @media (max-width: 1024px) {
     .team-pastel-grid {
         grid-template-columns: repeat(2, 1fr);
-        row-gap: 65px;
+        row-gap: 78px;
     }
 }
 
 @media (max-width: 600px) {
     .team-pastel-grid {
         grid-template-columns: 1fr;
-        row-gap: 65px;
+        row-gap: 74px;
     }
 }
 
@@ -3988,7 +3988,7 @@ a {
     .team-pastel-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 20px;
-        row-gap: 64px;
+        row-gap: 78px;
     }
 
     .mosaic-grid-canvas {
@@ -4348,8 +4348,8 @@ a {
     }
 
     .team-pastel-grid {
-        row-gap: 64px;
-        margin-top: 52px;
+        row-gap: 72px;
+        margin-top: 64px;
     }
 
     .team-circle-avatar {
@@ -4512,13 +4512,7 @@ a {
     }
 }
 
-/* Long Card Lists & Mobile GPU Optimization (Zero Blur Jank + Lazy Rendering) */
-.flip-card,
-.team-pastel-card,
-.app-update-card {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 24rem;
-}
+/* Do not apply content-visibility: auto (which implies contain: paint) to .team-pastel-card or .flip-card, because paint containment clips protruding circular avatars (top: -67.5px) and 3D flip card shadows. */
 
 @media (max-width: 767px), (pointer: coarse) {
     .flip-card-front,
@@ -4551,4 +4545,4 @@ a {
     }
 }
 
-/* DEPLOY_VERSION: 20261124_perf1 */
+/* DEPLOY_VERSION: 20261125_av1 */
