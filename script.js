@@ -755,7 +755,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
 
         const detailCard = document.getElementById('demoPostDetailCard');
-        const detailCounter = document.getElementById('demoDetailCounter');
         const detailPhoto = document.getElementById('demoDetailPhoto');
         const detailEmoBadge = document.getElementById('demoDetailEmoBadge');
         const detailEmoIcon = document.getElementById('demoDetailEmoIcon');
@@ -764,8 +763,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const detailLoc = document.getElementById('demoDetailLoc');
         const detailDate = document.getElementById('demoDetailDate');
         const detailText = document.getElementById('demoDetailText');
-        const prevBtn = document.getElementById('demoPrevPostBtn');
-        const nextBtn = document.getElementById('demoNextPostBtn');
 
         let markers = [];
         let visiblePosts = demoPosts.slice();
@@ -809,14 +806,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     `<span class="demo-val-badge"><i class="fas ${b.icon}" aria-hidden="true"></i> ${b.label}</span>`
                 ).join('');
             }
-
-            const idx = visiblePosts.findIndex((item) => item.id === post.id);
-            if (detailCounter) {
-                detailCounter.textContent = `${idx >= 0 ? idx + 1 : 1} / ${visiblePosts.length}`;
-            }
-            const multi = visiblePosts.length > 1;
-            if (prevBtn) prevBtn.disabled = !multi;
-            if (nextBtn) nextBtn.disabled = !multi;
         }
 
         function selectPost(post, panToMarker = true) {
@@ -905,23 +894,6 @@ document.addEventListener('DOMContentLoaded', () => {
             map.invalidateSize();
             renderMarkers(currentActiveEmo, true);
         }, 120);
-
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                if (visiblePosts.length <= 1) return;
-                const idx = visiblePosts.findIndex((p) => p.id === activePostId);
-                const nextIdx = (idx - 1 + visiblePosts.length) % visiblePosts.length;
-                selectPost(visiblePosts[nextIdx], true);
-            });
-        }
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                if (visiblePosts.length <= 1) return;
-                const idx = visiblePosts.findIndex((p) => p.id === activePostId);
-                const nextIdx = (idx + 1) % visiblePosts.length;
-                selectPost(visiblePosts[nextIdx], true);
-            });
-        }
 
         // Emotion Filter Pills Toggle Logic (No 'All' button: click active -> toggle off to null / show all)
         const filterBtns = document.querySelectorAll('.app-emotion-bar .app-emo-pill');
